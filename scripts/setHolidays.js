@@ -82,7 +82,7 @@ function generateHolidaysDetailsHTML(month) {
 
  function addingLoadingPage() {
   document.querySelector(".loading-page").innerHTML = `
-    <img src="icons/loading.svg" />
+    <img src="../icons/loading.svg" />
     <p>Loading...</p>
   `;
 }

@@ -247,7 +247,7 @@ async function runRenderProcesses() {
 
   // Show loading before rendering
   loadingElement.innerHTML = `
-    <img src="icons/loading.svg" />
+    <img src="../icons/loading.svg" />
     <p>Loading...</p>
   `;
 
