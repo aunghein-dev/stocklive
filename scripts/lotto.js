@@ -24,7 +24,7 @@ async function fetchLottoData() {
 
 async function addingLoadingPage(querySelector) {
     document.querySelector(querySelector).innerHTML = 
-    `<img src="icons/loading.svg" />
+    `<img src="../icons/loading.svg" />
      loading...`;
 }
 
