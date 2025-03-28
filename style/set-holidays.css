@@ -1,0 +1,134 @@
+@media (min-width: 1200px) {
+  .main-content {
+    margin-left: 400px;
+    margin-right: 400px;
+  }
+}
+
+@media (min-width: 1600px) {
+  .main-content {
+    margin-left: 800px;
+    margin-right: 800px;
+  }
+}
+
+.main-content{
+  margin-left: clamp(20px, 5vw, 100px); /* Reduced values */
+  margin-right: clamp(20px, 5vw, 100px); /* Reduced values */
+}
+
+.holiday-row-container{
+  min-height: 70px;
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  justify-content: space-between;
+  align-items: top;
+  color: var(--setvalue-text-color);
+  margin-bottom: 10px;
+}
+.holiday-month-container{
+  position: relative;
+}
+.holiday-month{
+  margin-top: -4px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  text-align: right;
+  margin-right: 32px;
+}
+.drawing {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center bubble and line */
+  top: 1px;
+  right: 14px;
+  bottom: -8px;
+}
+.last-drawing{
+  bottom: 0px;
+}
+
+.drawing-bubble {
+  background-color: var(--setvalue-text-color);
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  margin-bottom: -1px; /* Slight overlap to ensure connection */
+}
+
+.drawing-line {
+  background-color: var(--setvalue-text-color);
+  height: 100%;
+  width: 2px;
+}
+
+.holiday-date{
+  height: 44px;
+  width: 44px;
+  background-color: var(--navi-bar-bg-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  color: var(--set-holiday-date);
+}
+
+
+.right-details-box-section{
+  padding: 10px;
+  background-color: var(--box-bg-color);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border-radius: 8px;
+  color: var(--setvalue-text-color);
+  box-shadow: var(--box-bg-shadow);
+  cursor: pointer;
+  row-gap: 6px;
+}
+
+
+
+.inner-right-box {
+  align-items: flex-start;
+  margin-left: 10px;
+  flex: 1; 
+  min-width: 0; 
+  word-break: break-word;
+}
+
+
+.inner-right-row1 {
+  font-size: 0.9rem;
+  line-height: 20px;
+  margin-bottom: 4px;
+  max-width: 100%;
+}
+
+.inner-right-row2{
+  font-size: 0.75rem;
+}
+
+.right-details-row-box{
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.right-details-row-box:hover{
+  scale: 1.02;
+}
+
+.text-year{
+  color: var(--setvalue-text-color);
+  font-weight: 700;
+  text-align: center;
+  font-size: 1.5rem;
+  margin-top: -20px;
+  margin-bottom: 20px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2), 
+               2px 2px 3px rgba(0, 0, 0, 0.15); 
+}

@@ -1,0 +1,101 @@
+
+
+.tab-content{
+  position: relative;
+}
+
+.tab-container{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background-color: var(--navi-bar-bg-color);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 5px;
+  padding-right: 5px;
+  z-index: 1000;
+}
+
+.home-link img{
+  height: 36px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.home-link:hover{
+  background-color: var(--navi-bar-hover-color);
+  border-radius: 5px;
+}
+.home-link a:active{
+  opacity: 0.8;
+}
+
+.home-link{
+  max-width: 16px;
+  border-radius: 5px;
+  background-color: var(--navi-bar-hover-color);
+  padding: 5px 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 700;
+  transition: scale 0.2, opacity 0.2;
+}
+
+/* Tab Buttons */
+.tab {
+  display: flex;
+  justify-content: center;
+}
+
+.tab-button {
+  height: 47px;
+  width: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: none;
+  border: none;
+  padding: 8px 10px;
+  cursor: pointer;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: #ffffff;
+  transition: 0.2s;
+}
+
+.tab-button:hover {
+  background-color: var(--navi-bar-hover-color);
+  border-radius: 5px;
+}
+
+.tab-button.active {
+  background-color: var(--navi-bar-hover-color);
+  color: white;
+  border-radius: 5px;
+}
+
+
+.tab-panel {
+  position: relative;
+  display: none;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.tab-panel.active {
+  display: block;
+}
+
+/* Fade In Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

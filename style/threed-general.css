@@ -1,0 +1,38 @@
+.threed-bd{
+  margin-top: -20px;
+}
+
+.navi-bar-3D {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background-color: var(--navi-bar-bg-color);
+  display: flex;
+  justify-content: center; /* Centers items horizontally */
+  align-items: center;
+  z-index: 1000;
+  border-bottom: 0.2px solid rgba(255, 255, 255, 0.1);
+
+}
+
+.home-link img,.home-link-back img {
+  height: 36px;
+}
+
+.home-link {
+  border-radius: 5px;
+  background-color: var(--navi-bar-hover-color);
+  max-width: 16px;
+  position: absolute;
+  left: 5px; /* Keeps the back button on the left */
+}
+
+
+.header-3D {
+  color: white;
+  font-size: 18px;
+  text-shadow: 6px 1px 5px rgba(0, 0, 0, 0.1);
+  font-weight: 700;
+}
