@@ -331,20 +331,21 @@ async function renderingShowingLastResults() {
 
 
   if (!isLiveActive){
-    if (now < eveningStart) {
+    if (!finishedResults.child[3]) {
+      
       if (finishedResults.child[1]) {
         mainNumberElement.innerHTML = finishedResults.child[1].twod;
       } else {
         mainNumberElement.innerHTML = mainCachedMorning.twod;
       }
-    }
-
-    if (now > eveningEnd) {
+      
+    } else {
       if (finishedResults.child[3]) {
         mainNumberElement.innerHTML = finishedResults.child[3].twod;
       } else {
         mainNumberElement.innerHTML = mainCachedEvening.twod;
       }
+      
     }
   }
     /*
