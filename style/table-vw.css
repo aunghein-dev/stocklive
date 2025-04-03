@@ -1,0 +1,247 @@
+.each-month-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: -10px;
+  overflow-y: auto; /* ✅ Enables scrolling inside the container */
+  position: relative; /* ✅ Required for sticky to work */
+  overflow: hidden;
+}
+
+.header-of-table-month{
+  text-align: center;
+  padding: 16px 20px;
+  background-color: var(--result-month-container);
+  color: var(--main-num-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 230px;
+  border-radius: 16px;
+  /* Center horizontally */
+  margin: 0 auto;
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: -10px;
+  box-shadow: var(--box-bg-shadow);
+}
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px); /* Optional: slight movement */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.styled-table {
+  background-color: var(--tb-bg-color);
+  margin-top: 30px;
+  color: var(--text-color);
+  border-collapse: separate; /* ✅ Allows border-radius to work */
+  border-spacing: 0;
+  font-size: 0.8em;
+  width: 100%;
+  border: 0.2px solid var(--text-color);
+  border-radius: 16px;
+  overflow: visible; /* ✅ Allow sticky elements to appear */
+  /* 🟢 Apply fade-in effect */
+  animation: fadeIn 0.5s ease-in-out;
+  min-height: 20px;
+}
+
+
+
+.table-vw-header{
+  top: 0;
+  z-index: 100;
+  background-color: var(--tb-bg-color); /* ✅ Ensures visibility */
+}
+
+.ideal-row {
+  border-bottom: 1px solid var(--text-color); /* Default closing border for each group */
+}
+
+.ideal-row:last-child {
+  border-bottom: none; /* Remove border from last row */
+}
+
+
+/* Table Header */
+.styled-table thead tr {
+  background-color:var(--header-box-month);
+  color: black;
+  text-align: center;
+  font-size: 14px;
+}
+
+/* Table Cells */
+.styled-table th,
+.styled-table td {
+  padding: 8px 10px;
+  text-align: center;
+  vertical-align: middle;
+  transition: scale 0.2s;
+}
+
+
+.main-result-twod-table{
+  color: var(--tb-digit-color);
+  font-weight: 700;
+}
+
+
+
+/* Default styles for smaller screens */
+.td-header-of-date,
+.td-header-of-time,
+.td-header-of-twod {
+  transition: width 0.3s ease-in-out; /* Smooth width change */
+}
+
+.td-header-of-date {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: center;
+  border-top-left-radius: 16px;
+}
+
+.right-corner-round-cell{
+  border-top-right-radius: 16px;
+}
+
+.td-header-of-time {
+  min-width: 55px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.td-header-of-twod {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Tablet (600px and up) */
+@media (min-width: 600px) {
+  .styled-table {
+    font-size: 0.9em;  /* Slightly larger font */
+  }
+  .td-header-of-date {
+    width: 58px;
+  }
+  .td-header-of-time {
+    width: 90px;
+  }
+  .td-header-of-twod {
+    width: 46px;
+  }
+  .styled-table thead tr {
+    font-size: 18px;
+  
+  }
+}
+
+/* Laptops (1024px and up) */
+@media (min-width: 1024px) {
+  .styled-table {
+    font-size: 1em;  /* Larger font for desktops */
+  }
+  .td-header-of-date {
+    width: 68px;
+  }
+  .td-header-of-time {
+    width: 90px;
+  }
+  .td-header-of-twod {
+    width: 46px;
+  }
+  .styled-table thead tr {
+    font-size: 20px;
+  }
+}
+
+
+/* Table Rows */
+.styled-table tbody tr {
+  border-spacing: 0 2px;
+}
+
+/* Merged Header Cells */
+.styled-table th[colspan] {
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.active-b {
+  background: var(--text-color);
+  color: var(--main-num-color);
+  border-radius: 1px;
+  padding: 2px 4px;
+}
+
+.header-number,.inner-num {
+  position: relative; /* Ensures the tooltip is positioned relative to this */
+}
+
+
+
+/* Tooltip Styling */
+.tooltip,.tooltip-i{
+  position: absolute;
+  border-radius: 20px;
+  color: white;
+  background-color: var(--noti-back-bg-color);
+  color: var(--tooltip-color);
+  padding: 1px 4px;
+  font-size: 14px;
+  transition: opacity 0.2s ease-in-out;
+  top: -5px;  
+  left: 50%;
+  transform: translateX(-18%);
+  z-index: 100;
+  white-space: nowrap;
+}
+
+.tooltip-i{
+  transform: translateX(-0%);
+  top: -2px;  
+  font-size: 11px;
+  padding: 1px 4px;
+  background-color: rgb(29, 170, 69);
+}
+
+
+/* Apply border to all table cells */
+.styled-table th,
+.styled-table td {
+  border: 0.2px dotted var(--dotted-line-color);
+  padding: 8px; /* Add some spacing for better visibility */
+}
+
+/* Apply bottom border for all cells in the second row */
+.evening-row-twod td,
+.evening-row-twod th {
+  border-bottom: 0.2px solid var(--dotted-line-color); /* Thicker bottom border for effect */
+  padding-bottom: 5px; /* Adds space between content and border */
+}
+
+tbody:last-of-type tr:last-child th:last-child {
+  border-bottom-right-radius: 16px;
+}
+
+
+
+/* Ensure rowspan cell gets a bottom border */
+td[rowspan] {
+  border-bottom: 0.2px solid var(--dotted-line-color);
+} 
+

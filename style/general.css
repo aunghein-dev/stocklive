@@ -1,0 +1,345 @@
+:root {
+  /* Default (light mode) */
+  color-scheme: light dark;
+  --bg-color: white;
+  --text-color: rgb(85, 58, 36);
+  --navi-bar-bg-color: rgb(88,60,36);
+  --navi-bar-hover-color: rgb(98, 68, 43);
+  --box-bg-color: rgba(254,243,236,1);
+  --box-bg-shadow:  0px 1px 3px rgba(0, 0, 0, 0.2), 0px 1px 2px rgba(0, 0, 0, 0.12);
+  --result-time-text-color: rgba(149,139,130,255);
+  --setvalue-text-color: rgb(88,60,36);
+  --dotted-line-color: rgb(55, 55, 55);
+  --result-digit-color:  rgba(211,113,60,1);
+  --main-num-color: white;
+  --mainnum-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+  --sliding-bg-color: rgba(178, 178, 178, 0.3); 
+  --sliding-text-color:    #303030;
+  --result-month-container: rgb(85, 58, 36);
+  --tb-cell-border :rgba(160, 160, 160, 0.8);
+  --curr-date-box-border:  rgb(85, 58, 36);
+  --dayofmonth-text-color: rgba(0, 0, 0, 0.4);
+  --header-box-month: rgba(254,243,236,1);
+  --noti-back-bg-color: rgb(239,93,10);
+  --live-area-color: rgb(85, 58, 36);
+  --time-update-color: rgba(254,243,236,1);
+  --tooltip-color: white;
+  --tb-header-color: white;
+  --daybox-color: white;
+  --tb-digit-color:  #ff7272;
+  --month-selection-color: rgb(98, 68, 43);
+  --aside-bg-color:rgb(85, 58, 36);
+  --aside-hover-color:rgb(98, 68, 43);
+  --aside-text-hover-color: rgba(254,243,236,1);
+  --aside-text-color: rgb(85, 58, 36);
+  --aside-bg-main-color: white;
+  --set-holiday-date:rgba(254,243,236,1);
+}
+
+body {
+  font-family: Roboto, Arial;
+  margin: 0;
+  position: relative;
+  padding-top: 100px;
+  background-color: var(--bg-color);
+  background-image: var(--bg-image);
+  background-size: cover;
+  background-position: center;
+  padding-bottom: 50px;
+  transition: background 0.3s ease-in-out; /* Smooth transition */
+  
+}
+
+.dark-mode {
+  --bg-color: #121212;
+  --text-color:white;
+  --navi-bar-bg-color:  #121212;
+  --navi-bar-hover-color:  rgb(75, 75, 75);
+  --box-bg-color: rgb(85, 58, 36);
+  --box-bg-shadow:  0px 1px 3px rgba(0, 0, 0, 0.2), 0px 1px 2px rgba(0, 0, 0, 0.12);
+  --result-time-text-color: #a98e7d;
+  --setvalue-text-color: #a98e7d;
+  --dotted-line-color: rgb(161, 161, 161);
+  --result-digit-color:  rgba(254,243,236,1);
+  --main-num-color: #3E3E3E;
+  --mainnum-shadow:6px 1px 5px rgba(0, 0, 0, 0.4);
+  --sliding-bg-color:  #1E1E1E;
+  --sliding-text-color:  #ffffff;
+  --result-month-container: rgba(254,243,236,1);
+  --tb-cell-border :rgba(254, 254, 254, 0.4);
+  --curr-date-box-border: rgb(255, 255, 255);
+  --dayofmonth-text-color: rgba(213, 213, 213, 0.4);
+  --header-box-month:  rgba(254,243,236,1);
+  --noti-back-bg-color: #FF4444;
+  --live-area-color:rgba(254,243,236,1);
+  --time-update-color: rgb(85, 58, 36);
+  --tooltip-color: white;
+  --tb-bg-color: rgb(85, 58, 36);
+  --tb-header-color: #3E3E3E;
+  --daybox-color:#644632;
+  --tb-digit-color: #ff7272;
+  --month-selection-color:  #ff7272;
+  --aside-bg-color:   #121212;
+  --aside-hover-color: #3E3E3E;
+  --aside-text-hover-color: white;
+  --aside-text-color: white;
+  --aside-bg-main-color: #121212;
+  --set-holiday-date: #a98e7d;
+}
+.light-mode {
+  --bg-color: rgb(255, 255, 255);
+  --text-color: rgb(53, 36, 22);
+  --navi-bar-bg-color: rgb(85, 58, 36);
+  --navi-bar-hover-color: rgb(98, 68, 43);
+  --box-bg-color:  rgba(254,243,236,1);
+  --box-bg-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2), 0px 1px 2px rgba(0, 0, 0, 0.12);
+  --result-time-text-color: rgba(149,139,130,255);
+  --setvalue-text-color: rgb(88,60,36);
+  --dotted-line-color: rgb(55, 55, 55);
+  --result-digit-color: rgba(211,113,60,1);
+  --main-num-color: white;
+  --mainnum-shadow:4px 4px 10px rgba(0, 0, 0, 0.3);
+  --sliding-bg-color: rgba(178, 178, 178, 0.3); 
+  --sliding-text-color:  #303030;
+  --result-month-container: rgb(85, 58, 36);
+  --tb-cell-border :rgba(160, 160, 160, 0.8);
+  --curr-date-box-border:  rgb(85, 58, 36);
+  --dayofmonth-text-color: rgba(0, 0, 0, 0.4);
+  --header-box-month: rgba(254,243,236,1);
+  --noti-back-bg-color: rgb(239,93,10);
+  --live-area-color: rgb(85, 58, 36);
+  --time-update-color: rgba(254,243,236,1);
+  --tooltip-color: white;
+  --tb-header-color: white;
+  --daybox-color: white;
+  --tb-digit-color:  #ff7272;
+  --month-selection-color: rgb(98, 68, 43);
+  --aside-text-color: rgb(85, 58, 36);
+  --aside-bg-color:  rgb(85, 58, 36);
+  --aside-hover-color: rgb(98, 68, 43);
+  --aside-text-hover-color: rgba(254,243,236,1);
+  --aside-bg-main-color: white;
+  --set-holiday-date: rgba(254,243,236,1);
+}
+
+p{
+  margin: 0;
+}
+
+.top-aside-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 0px;
+  height: 60px;
+  background-color: var(--aside-bg-color);
+}
+.app-logo-app-version{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-right: -10px;
+}
+.app-logo-app-version img{
+  margin-right: 10px;
+  height: 52px;
+  width: 52px;
+}
+.app-version{
+  color: white;
+  font-size: 0.65rem;
+  cursor: pointer;
+  margin-top: -6px;
+  margin-right: 10px;
+}
+.logo-home-link{
+  margin-top: -10px;
+}
+
+.blur-main{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.1);
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1000;
+}
+
+.blur-main.active{
+  opacity: 1;
+  visibility: visible;
+  backdrop-filter: blur(1.5px); /* Optional: adds a blur effect */
+}
+
+
+.left-aside-bar{
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 280px;
+  background-color: var(--aside-bg-main-color);
+  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.5);
+  z-index: 2000;
+  transform: translateX(-100%); /* Start hidden */
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  opacity: 0;
+  pointer-events: none; /* Prevent interaction when hidden */
+}
+.left-aside-bar-visible{
+  transform: translateX(0); /* Slide in */
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.row-aside-link {
+  text-decoration: none; /* Remove default underline */
+  display: inline-block; /* Ensures link size doesn't warp */
+  width: 100%; /* Makes the link clickable over the whole div */
+}
+
+
+.left-aside-upper-section, .left-aside-lower-section,.left-aside-bottom-section{
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 0.4px solid gray;
+  row-gap: 4px;
+}
+.left-aside-bottom-section{
+  border: none;
+}
+
+.row-aside {
+  padding: 10px;
+  font-size: 0.9rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  gap: 8px; /* Adds space between icon and text */
+  white-space: nowrap; /* Prevents wrapping */
+  cursor: pointer;
+  transition: 0.2s;
+  color: var(--aside-text-color);
+  border-radius: 12px;
+}
+.row-aside:hover{
+  background-color: var(--aside-hover-color);
+  color: var(  --aside-text-hover-color);
+}
+.row-aside  img{
+  height: 24px;
+}
+.navi-menu{
+  padding: 9.999px 14px;
+  height: 24px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.navi-menu:hover{
+  scale: 1.06;
+  background-color: var(--navi-bar-hover-color);
+  border-radius: 5px;
+}
+
+.number-live-area{
+  margin-top: 40px;
+  padding-top: 1px;
+  position: relative;
+  height: 200px;
+  background-color: var(--live-area-color);
+  margin-left: clamp(20px, 5vw, 100px); /* Reduced values */
+  margin-right: clamp(20px, 5vw, 100px); /* Reduced values */
+  border-radius: 16px;
+  box-shadow: var(--box-bg-shadow);
+}
+
+.theme-switch{
+  height: 24px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 0;
+  bottom: 0;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 20px;
+  background-color: rgb(180, 180, 180);
+  transition: 0.3s;
+}
+.theme-switch:hover{
+  scale: 1.1;
+  border-radius: 20px;
+}
+
+.theme-switch-light-visible{
+  display: initial;
+}
+
+.theme-switch-dark-visible{
+  display: initial;
+}
+
+.theme-switch-light-invisible{
+  display: none;
+}
+
+.theme-switch-dark-invisible{
+  display: none;
+}
+
+.main-number {
+  color: var(--main-num-color);
+  font-weight: 700;
+  font-size: 120px;
+  display: flex;
+  justify-content: center;
+  text-shadow: var(--mainnum-shadow);
+  gap: 5px; /* Space between digits */
+  margin-top: 20px;
+}
+
+.digit {
+  display: inline-block;
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.slide-in {
+  z-index: 100;
+  transform: translateY(100%);
+  opacity: 0;
+  animation: slideInDigit 0.5s ease-in-out forwards;
+}
+
+@keyframes slideInDigit {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+
+.updated-time-container{
+  color: var(--time-update-color);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.updated-time-container img{
+  margin-right: 4px;
+}
+

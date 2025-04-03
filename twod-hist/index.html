@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=3.0, minimun-scale=3.0, user-scalable=yes"
+    />
+    <title>2D results</title>
+
+    <link rel="icon" type="image/svg+xml" href="../icons/app-logo.png" />
+
+    <link rel="stylesheet" href="../style/general.css" />
+    <link rel="stylesheet" href="../style/twod-hist-tab.css" />
+    <link rel="stylesheet" href="../style/navi-bar.css" />
+    <link rel="stylesheet" href="../style/set-value-box.css" />
+    <link rel="stylesheet" href="../style/title-vw.css" />
+    <link rel="stylesheet" href="../style/loading-page.css" />
+    <link rel="stylesheet" href="../style/table-vw.css" />
+    <link rel="stylesheet" href="../style/pure-calendar.css" />
+    <link rel="stylesheet" href="../style/utils/mn-picker.css" />
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5602054901910200"
+     crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="tab-container">
+      <a class="home-link" href="../"><img src="../icons/back.svg" /> </a>
+      <div class="picker-container">
+        <button class="picker-button" id="picker-button">Select Month</button>
+
+        <div class="picker-dropdown" id="picker-dropdown">
+          <div class="month-grid" id="month-grid"></div>
+          <div class="year-selector">
+            <button id="prev-year">&#9665;</button>
+            <span id="year-display">2024</span>
+            <button id="next-year">&#9655;</button>
+          </div>
+        </div>
+        <img src="../icons/choose-month.svg" />
+      </div>
+      <div class="tab">
+        <button class="tab-button active" data-target="title-view">
+          <img src="../icons/title-view.svg" />
+          Title
+        </button>
+        <button class="tab-button" data-target="table-view">
+          <img src="../icons/table-view.svg" />
+          Table
+        </button>
+        <button class="tab-button" data-target="calendar-view">
+          <img src="../icons/calendar-view.svg" />
+          Calendar
+        </button>
+
+        <!--
+          <button class="tab-button" data-target="live-view">
+          <img src="icons/live-view.svg" />
+          Live
+        </button>
+        -->
+      </div>
+    </div>
+
+    <div class="tab-content">
+      <div class="loading-page js-loading-page-twod"></div>
+
+      <div
+        id="title-view"
+        class="tab-panel active title-view-panel js-title-view-panel"
+      ></div>
+
+      <div id="table-view" class="tab-panel js-table-vw-container"></div>
+
+      <div
+        id="calendar-view"
+        class="tab-panel calendar-viewing-angle js-calendar-vw-container"
+      >
+        <!--CalendarContainer-->
+        <div id="calendar-container"></div>
+        <!--CalendarContainer-->
+      </div>
+
+      <!--
+        <div id="live-view" class="tab-panel"></div>
+      -->
+    </div>
+
+    <script src="../scripts/twod-hist-tab.js"></script>
+    <script src="../scripts/modern-internet.js"></script>
+    <script src="../scripts/twod-title-vw.js"></script>
+    <script src="../scripts/table-vw.js"></script>
+    <script src="../scripts/calendar-vw.js"></script>
+    <script src="../scripts/dark-light-toggle.js"></script>
+    <script src="../scripts/utils/mn-picker.js"></script>
+  </body>
+</html>

@@ -1,0 +1,110 @@
+.navi-bar{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background-color: var(--navi-bar-bg-color);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 4px;
+  z-index: 1000;
+  border-bottom: 0.2px solid rgba(255, 255, 255, 0.1);
+}
+
+.navi-left-main{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.navi-menu-button {
+  all: unset; /* Resets all inherited styles */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+  margin-right: 4px;
+  margin-left: 7px;
+}
+
+/* Ensure the image does not affect the button's layout */
+.navi-menu-button img {
+  width: 24px;  /* Set fixed size */
+  height: 24px;
+  display: block; /* Prevents extra spacing */
+}
+
+
+
+
+.navi-left-section{
+  color: white;
+  font-size: 20px;
+  text-shadow: 6px 1px 5px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.navi-left-section:hover{
+  opacity: 0.8;
+}
+
+.navi-right-section{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3px;
+  margin-right: 2px;
+}
+.navi-right-section img{
+  padding: 9.999px 14px;
+  height: 24px;
+  transition: scale 0.2, opacity 0.2;
+  cursor: pointer;
+}
+
+.home-link img{
+  height: 36px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.navi-right-section img:hover {
+  scale: 1.06;
+  background-color: var(--navi-bar-hover-color);
+  border-radius: 5px;
+}
+.navi-right-section img:active{
+  opacity: 0.8;
+}
+
+.home-link{
+  border-radius: 5px;
+  padding: 5px 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 700;
+  transition: scale 0.2, opacity 0.2;
+}
+
+.logo-home-link{
+  background-color: none;
+}
+
+.text-main-header{
+  color: white;
+  font-size: 18px;
+  text-shadow: 6px 1px 5px rgba(0, 0, 0, 0.1);
+  font-weight: 700;
+}
