@@ -46,13 +46,13 @@ async function isLiveTime() {
     if (data.holiday.status === "2") {
       let now = new Date();
       let morningStart = new Date();
-      morningStart.setHours(9, 0, 0, 0);
+      morningStart.setHours(8, 30, 0, 0);
 
       let morningEnd = new Date();
       morningEnd.setHours(12, 1, 0, 999);
 
       let eveningStart = new Date();
-      eveningStart.setHours(13, 30, 0, 0);
+      eveningStart.setHours(13, 15, 0, 0);
 
       let eveningEnd = new Date();
       eveningEnd.setHours(16, 30, 0, 999);
@@ -267,16 +267,17 @@ async function renderingShowingLastResults() {
   let now = new Date();
 
   let morningStart = new Date();
-  morningStart.setHours(8, 40, 0, 0);
+  morningStart.setHours(8, 30, 0, 0);
 
   let morningEnd = new Date();
-  morningEnd.setHours(12, 1, 0, 0);
+  morningEnd.setHours(12, 1, 0, 999);
 
   let eveningStart = new Date();
-  eveningStart.setHours(13, 40, 0, 0);
+  eveningStart.setHours(13, 15, 0, 0);
 
   let eveningEnd = new Date();
-  eveningEnd.setHours(16, 30, 0, 0);
+  eveningEnd.setHours(16, 30, 0, 999);
+
 
   try {
     let finishedResults = await fetchFinishedResults();
