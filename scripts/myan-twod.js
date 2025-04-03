@@ -331,8 +331,8 @@ async function renderingShowingLastResults() {
     }
 
 
-  if (!isLiveActive){
-    if (now < eveningStart) {
+if (!isLiveActive){
+    if (now < eveningStart &&  now > morningEnd) {
       if (finishedResults.child[1]) {
         mainNumberElement.innerHTML = finishedResults.child[1].twod;
       } else {
@@ -340,7 +340,7 @@ async function renderingShowingLastResults() {
       }
     }
 
-    if (now > eveningEnd) {
+    if (now > eveningEnd || now < morningStart) {
       if (finishedResults.child[3]) {
         mainNumberElement.innerHTML = finishedResults.child[3].twod;
       } else {
