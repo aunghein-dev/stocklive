@@ -36,6 +36,7 @@ function updateClock() {
 
     updatedTimeContainer.innerHTML = `<img src="icons/light-live.svg" /> Updating at ${formattedTime}`;
   }
+  
 }
 
 async function isLiveTime() {
@@ -52,7 +53,7 @@ async function isLiveTime() {
       morningEnd.setHours(12, 1, 0, 999);
 
       let eveningStart = new Date();
-      eveningStart.setHours(13, 30, 0, 0);
+      eveningStart.setHours(13, 40, 0, 0);
 
       let eveningEnd = new Date();
       eveningEnd.setHours(16, 30, 0, 999);
