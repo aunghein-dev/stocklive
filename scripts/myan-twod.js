@@ -18,11 +18,12 @@ let clockInterval = null;
 
 // Function to update the UI with the current system time (local time)
 function updateClock() {
-  let updatedTimeContainer = document.querySelector(".updated-time-container");
+  
 
   if (isLiveActive) {
     let now = new Date();
-    
+
+    // Format: YYYY-MM-DD HH:MM:SS (Local Time)
     let formattedTime = now.toLocaleString("en-GB", {
       year: "numeric",
       month: "2-digit",
@@ -30,19 +31,18 @@ function updateClock() {
       hour: "2-digit",
       minute: "2-digit",
       second: "2-digit",
-      hour12: false,
-    }).replace(",", "");
+      hour12: false, // Ensure 24-hour format
+    }).replace(",", ""); // Remove comma in some locales
 
-    let icon = `<img src="icons/loading-time.svg" />`;
-    
-    // Reduce unnecessary re-renders
-    if (updatedTimeContainer.dataset.lastUpdate !== formattedTime) {
-      updatedTimeContainer.dataset.lastUpdate = formattedTime;
-      updatedTimeContainer.innerHTML = `${icon} Updating at ${formattedTime}`;
-    }
+    renderClockLive(formattedTime);
   }
+  
 }
 
+function renderClockLive(formattedTime){
+
+  document.querySelector(".updated-time-container").innerHTML =  `<img src="icons/light-live.svg" /> Updating at ${formattedTime}`;
+}
 
 async function isLiveTime() {
   try {
@@ -377,16 +377,14 @@ async function renderingShowingLastResults() {
     if (!isLiveActive) {
       if (now < eveningEnd) {
         updatedTimeContainer.innerHTML = `<img src="icons/green-tick.svg" /> Updated at ${finishedDateTime.trim() === "" ? `${dayjs().format("YYYY-MM-DD 12:01:01")}` : finishedDateTime}`;
-      } else if (now > eveningEnd){
+      } else {
         updatedTimeContainer.innerHTML = `<img src="icons/green-tick.svg" /> Updated at ${finishedDateTime.trim() === "" ? `${dayjs().format("YYYY-MM-DD 16:30:01")}` : finishedDateTime}`;
-      }
-
-      if (isHoliday) {
-        updatedTimeContainer.innerHTML = `<img src="icons/green-tick.svg" /> Updated at ${finishedDateTime}`;
       }
     }
 
-
+    if (isHoliday) {
+      updatedTimeContainer.innerHTML = `<img src="icons/green-tick.svg" /> Updated at ${finishedDateTime}`;
+    }
 
   } catch (error) {
     console.error("Error fetching finished results:", error);
