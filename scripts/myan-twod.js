@@ -46,13 +46,13 @@ async function isLiveTime() {
     if (data.holiday.status === "2") {
       let now = new Date();
       let morningStart = new Date();
-      morningStart.setHours(8, 30, 0, 0);
+      morningStart.setHours(9, 0, 0, 0);
 
       let morningEnd = new Date();
       morningEnd.setHours(12, 1, 0, 999);
 
       let eveningStart = new Date();
-      eveningStart.setHours(12, 45, 0, 0);
+      eveningStart.setHours(13, 30, 0, 0);
 
       let eveningEnd = new Date();
       eveningEnd.setHours(16, 30, 0, 999);
@@ -270,14 +270,13 @@ async function renderingShowingLastResults() {
   morningStart.setHours(8, 30, 0, 0);
 
   let morningEnd = new Date();
-  morningEnd.setHours(12, 1, 0, 999);
+  morningEnd.setHours(12, 1, 1, 0);
 
   let eveningStart = new Date();
-  eveningStart.setHours(12, 45, 0, 0);
+  eveningStart.setHours(13, 30, 0, 0);
 
   let eveningEnd = new Date();
-  eveningEnd.setHours(16, 30, 0, 999);
-
+  eveningEnd.setHours(16, 30, 1, 0);
 
   try {
     let finishedResults = await fetchFinishedResults();
@@ -289,12 +288,13 @@ async function renderingShowingLastResults() {
       return;
     }
 
-    
 
     if(isHoliday){
       renderMorningInPage(finishedResults.child[1].set, finishedResults.child[1].value, finishedResults.child[1].twod);
       renderEveningInPage(finishedResults.child[3].set, finishedResults.child[3].value, finishedResults.child[3].twod);
     } else {
+
+          //IN !HOLIDAY 
         if (now < morningStart) {
           renderMorningInPage(finishedResults.child[1].set, finishedResults.child[1].value, finishedResults.child[1].twod);
           renderEveningInPage(finishedResults.child[3].set, finishedResults.child[3].value, finishedResults.child[3].twod);
@@ -330,24 +330,44 @@ async function renderingShowingLastResults() {
     }
 
 
-if (!isLiveActive){
-    if (now < eveningStart &&  now > morningEnd) {
+  if (!isLiveActive){
+    if(now < morningStart && now > eveningEnd){
+      if (finishedResults.child[3]) {
+        mainNumberElement.innerHTML = finishedResults.child[3].twod;
+      } else {
+        mainNumberElement.innerHTML = mainCachedEvening.twod;
+      }
+    } else if (now > morningEnd && now > eveningStart){
       if (finishedResults.child[1]) {
         mainNumberElement.innerHTML = finishedResults.child[1].twod;
       } else {
         mainNumberElement.innerHTML = mainCachedMorning.twod;
       }
     }
-
-    if (now > eveningEnd || now < morningStart) {
-      if (finishedResults.child[3]) {
-        mainNumberElement.innerHTML = finishedResults.child[3].twod;
-      } else {
-        mainNumberElement.innerHTML = mainCachedEvening.twod;
-      }
-    }
   }
-  
+
+    /*
+
+    // During the evening live period, use the cached data
+    if (now > eveningStart && now < eveningEnd) {
+      if (!JSON.parse(localStorage.getItem('cachedMorningLocal'))) {
+        localStorage.setItem('cachedMorningLocal', JSON.stringify(finishedResults.child[1]));
+      }
+      let instanceMorning = JSON.parse(localStorage.getItem('cachedMorningLocal'));
+      renderMorningInPage(instanceMorning.set, instanceMorning.value, instanceMorning.twod);
+
+      // After the morning live period, use the fetched data
+    } else if (finishedResults.child[1] && now > morningEnd) {
+      renderMorningInPage(finishedResults.child[1].set, finishedResults.child[1].value, finishedResults.child[1].twod);
+    } 
+
+    if(!isLiveActive) {
+      if (finishedResults.child[3]) {
+        renderEveningInPage(finishedResults.child[3].set, finishedResults.child[3].value, finishedResults.child[3].twod);
+      } 
+    }
+*/
+
     if (!isLiveActive) {
       if (now < eveningEnd) {
         updatedTimeContainer.innerHTML = `<img src="icons/green-tick.svg" /> Updated at ${finishedDateTime.trim() === "" ? `${dayjs().format("YYYY-MM-DD 12:01:01")}` : finishedDateTime}`;
@@ -356,7 +376,7 @@ if (!isLiveActive){
       }
     }
 
-    if (isHoliday && !isLiveActive) {
+    if (isHoliday) {
       updatedTimeContainer.innerHTML = `<img src="icons/green-tick.svg" /> Updated at ${finishedDateTime}`;
     }
 
@@ -373,12 +393,12 @@ function renderingResultNormal() {
   const currentHour = now.getHours();
   let updatedTimeContainer = document.querySelector(".updated-time-container");
 
-  if (currentHour === 12 && !isLiveActive) {
+  if (currentHour === 12) {
     document.querySelector('.js-morning-result-digit').textContent = mainCachedMorning.twod;
     updatedTimeContainer.innerHTML = `<img src="icons/green-tick.svg" /> Updated at ${mainCachedMorning.time}`;
   }
 
-  if (currentHour === 16 && !isLiveActive) {
+  if (currentHour === 16) {
     document.querySelector('.js-evening-result-digit').textContent = mainCachedEvening.twod;
     updatedTimeContainer.innerHTML = `<img src="icons/green-tick.svg" /> Updated at ${mainCachedEvening.time}`;
   }
