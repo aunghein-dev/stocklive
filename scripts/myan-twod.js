@@ -33,7 +33,7 @@ function updateClock() {
       hour12: false,
     }).replace(",", "");
 
-    let icon = `<img src="icons/light-live.svg" />`;
+    let icon = `<img src="icons/loading-time.svg" />`;
     
     // Reduce unnecessary re-renders
     if (updatedTimeContainer.dataset.lastUpdate !== formattedTime) {
