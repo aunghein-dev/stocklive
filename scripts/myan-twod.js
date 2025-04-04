@@ -52,7 +52,7 @@ async function isLiveTime() {
       morningEnd.setHours(12, 1, 0, 999);
 
       let eveningStart = new Date();
-      eveningStart.setHours(13, 15, 0, 0);
+      eveningStart.setHours(12, 45, 0, 0);
 
       let eveningEnd = new Date();
       eveningEnd.setHours(16, 30, 0, 999);
@@ -273,7 +273,7 @@ async function renderingShowingLastResults() {
   morningEnd.setHours(12, 1, 0, 999);
 
   let eveningStart = new Date();
-  eveningStart.setHours(13, 15, 0, 0);
+  eveningStart.setHours(12, 45, 0, 0);
 
   let eveningEnd = new Date();
   eveningEnd.setHours(16, 30, 0, 999);
@@ -289,13 +289,12 @@ async function renderingShowingLastResults() {
       return;
     }
 
+    
 
     if(isHoliday){
       renderMorningInPage(finishedResults.child[1].set, finishedResults.child[1].value, finishedResults.child[1].twod);
       renderEveningInPage(finishedResults.child[3].set, finishedResults.child[3].value, finishedResults.child[3].twod);
     } else {
-
-          //IN !HOLIDAY 
         if (now < morningStart) {
           renderMorningInPage(finishedResults.child[1].set, finishedResults.child[1].value, finishedResults.child[1].twod);
           renderEveningInPage(finishedResults.child[3].set, finishedResults.child[3].value, finishedResults.child[3].twod);
@@ -348,28 +347,7 @@ if (!isLiveActive){
       }
     }
   }
-    /*
-
-    // During the evening live period, use the cached data
-    if (now > eveningStart && now < eveningEnd) {
-      if (!JSON.parse(localStorage.getItem('cachedMorningLocal'))) {
-        localStorage.setItem('cachedMorningLocal', JSON.stringify(finishedResults.child[1]));
-      }
-      let instanceMorning = JSON.parse(localStorage.getItem('cachedMorningLocal'));
-      renderMorningInPage(instanceMorning.set, instanceMorning.value, instanceMorning.twod);
-
-      // After the morning live period, use the fetched data
-    } else if (finishedResults.child[1] && now > morningEnd) {
-      renderMorningInPage(finishedResults.child[1].set, finishedResults.child[1].value, finishedResults.child[1].twod);
-    } 
-
-    if(!isLiveActive) {
-      if (finishedResults.child[3]) {
-        renderEveningInPage(finishedResults.child[3].set, finishedResults.child[3].value, finishedResults.child[3].twod);
-      } 
-    }
-*/
-
+  
     if (!isLiveActive) {
       if (now < eveningEnd) {
         updatedTimeContainer.innerHTML = `<img src="icons/green-tick.svg" /> Updated at ${finishedDateTime.trim() === "" ? `${dayjs().format("YYYY-MM-DD 12:01:01")}` : finishedDateTime}`;
