@@ -65,7 +65,7 @@ async function main(param) {
 }
 
 
-  main(new Date().toISOString().slice(0, 7));
+//  main(new Date().toISOString().slice(0, 7));
 
 
 
