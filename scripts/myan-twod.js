@@ -377,14 +377,16 @@ async function renderingShowingLastResults() {
     if (!isLiveActive) {
       if (now < eveningEnd) {
         updatedTimeContainer.innerHTML = `<img src="icons/green-tick.svg" /> Updated at ${finishedDateTime.trim() === "" ? `${dayjs().format("YYYY-MM-DD 12:01:01")}` : finishedDateTime}`;
-      } else {
+      } else if (now > eveningEnd){
         updatedTimeContainer.innerHTML = `<img src="icons/green-tick.svg" /> Updated at ${finishedDateTime.trim() === "" ? `${dayjs().format("YYYY-MM-DD 16:30:01")}` : finishedDateTime}`;
+      }
+
+      if (isHoliday) {
+        updatedTimeContainer.innerHTML = `<img src="icons/green-tick.svg" /> Updated at ${finishedDateTime}`;
       }
     }
 
-    if (isHoliday) {
-      updatedTimeContainer.innerHTML = `<img src="icons/green-tick.svg" /> Updated at ${finishedDateTime}`;
-    }
+
 
   } catch (error) {
     console.error("Error fetching finished results:", error);
