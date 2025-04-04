@@ -412,12 +412,12 @@ function renderingResultNormal() {
   const currentHour = now.getHours();
   let updatedTimeContainer = document.querySelector(".updated-time-container");
 
-  if (currentHour === 12) {
+  if (currentHour >= 12 && currentHour < 16) {
     document.querySelector('.js-morning-result-digit').textContent = mainCachedMorning.twod;
     updatedTimeContainer.innerHTML = `<img src="icons/green-tick.svg" /> Updated at ${mainCachedMorning.time}`;
   }
 
-  if (currentHour === 16) {
+  if (currentHour >= 16) {
     document.querySelector('.js-evening-result-digit').textContent = mainCachedEvening.twod;
     updatedTimeContainer.innerHTML = `<img src="icons/green-tick.svg" /> Updated at ${mainCachedEvening.time}`;
   }
