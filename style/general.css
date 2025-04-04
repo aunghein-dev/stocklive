@@ -337,6 +337,7 @@ p{
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  min-height: 24px;
 }
 
 .updated-time-container img{
@@ -344,4 +345,7 @@ p{
   height: 22px;
   width: 22px;
 }
+
+
+
 
