@@ -22,8 +22,7 @@ function updateClock() {
 
   if (isLiveActive) {
     let now = new Date();
-
-    // Format: YYYY-MM-DD HH:MM:SS (Local Time)
+    
     let formattedTime = now.toLocaleString("en-GB", {
       year: "numeric",
       month: "2-digit",
@@ -31,13 +30,19 @@ function updateClock() {
       hour: "2-digit",
       minute: "2-digit",
       second: "2-digit",
-      hour12: false, // Ensure 24-hour format
-    }).replace(",", ""); // Remove comma in some locales
+      hour12: false,
+    }).replace(",", "");
 
-    updatedTimeContainer.innerHTML = `<img src="icons/light-live.svg" /> Updating at ${formattedTime}`;
+    let icon = `<img src="icons/light-live.svg" />`;
+    
+    // Reduce unnecessary re-renders
+    if (updatedTimeContainer.dataset.lastUpdate !== formattedTime) {
+      updatedTimeContainer.dataset.lastUpdate = formattedTime;
+      updatedTimeContainer.innerHTML = `${icon} Updating at ${formattedTime}`;
+    }
   }
-  
 }
+
 
 async function isLiveTime() {
   try {
