@@ -39,10 +39,21 @@ function updateClock() {
   
 }
 
-function renderClockLive(formattedTime){
+function renderClockLive(formattedTime) {
+  let container = document.querySelector(".updated-time-container");
+  let existingIcon = container.querySelector("img");
 
-  document.querySelector(".updated-time-container").innerHTML =  `<img src="icons/light-live.svg" /> Updating at ${formattedTime}`;
+  // Check if the existing image is the specific "light-live.svg"
+  if (!existingIcon || !existingIcon.src.includes("icons/light-live.svg")) {
+    let icon = document.createElement("img");
+    icon.src = "icons/light-live.svg";
+    container.replaceChildren(icon, document.createTextNode(` Updating at ${formattedTime}`));
+  } else {
+    // Only update the text, keep the existing correct icon
+    container.lastChild.textContent = ` Updating at ${formattedTime}`;
+  }
 }
+
 
 async function isLiveTime() {
   try {
@@ -141,11 +152,13 @@ async function stopLiveFetch() {
 
 
 async function checkLiveStatus() {
+
   const live = await isLiveTime();
 
   if (live && !fetchMainInterval) {
     startLiveFetch();
     renderMainNumber();
+    
   } else if (!live && fetchMainInterval) {
     stopLiveFetch();
   }
