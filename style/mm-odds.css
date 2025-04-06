@@ -1,0 +1,104 @@
+body {
+  font-family: Roboto,Arial;
+  background-color: var(--);
+  color: #333;
+  padding: 10px;
+  text-align: center;
+  padding-top: 80px;
+}
+
+
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f8f8;
+  color: #333;
+  text-align: center;
+}
+
+.odds-table {
+  width: 100%;
+  max-width: 900px;
+  margin: auto;
+  border-collapse: separate; /* Needed for border-radius to work */
+  border-spacing: 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  border-radius: 12px;
+  overflow: hidden; /* Clips internal content if necessary */
+}
+
+/* Add this to visually clip edges */
+thead th:first-child {
+  border-top-left-radius: 12px;
+}
+
+thead th:last-child {
+  border-top-right-radius: 12px;
+}
+
+tbody tr:last-child td:first-child {
+  border-bottom-left-radius: 12px;
+}
+
+tbody tr:last-child td:last-child {
+  border-bottom-right-radius: 12px;
+}
+
+th{
+  padding: 10px;
+}
+
+td{
+  padding: 6px;
+  }
+
+th,
+td {
+
+  font-size: 0.7rem;
+  border: 0.1px dotted rgb(178, 178, 178);
+}
+
+td {
+  font-size: 0.68rem;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tr:hover,
+tr:nth-child(even):hover {
+  background-color: #5b3e3e;
+}
+
+.highlight {
+  color: red;
+  font-weight: bold;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.vote-home {
+  color: green;
+  font-weight: bold;
+}
+
+.vote-away {
+  color: orange;
+  font-weight: bold;
+}
+
+.section-header {
+  background-color: #414141;
+  font-weight: bold;
+  text-align: left;
+  padding: 10px;
+  font-size: 15px;
+}
+
+th {
+  background-color: #a3b18a;
+  border: 0.1px solid #ddd;
+}
