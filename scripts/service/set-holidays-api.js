@@ -60,4 +60,6 @@ export async function loadHolidays() {
   }
 }
 
+loadHolidays();
+
 localStorage.removeItem("cachedSetHolidays");

@@ -1,3 +1,5 @@
+
+
 let cachedData = {}; // Store fetched data by month
 
 async function fetchDataForMonth(monthString = null) {
@@ -49,23 +51,29 @@ async function fetchDataForMonth(monthString = null) {
 
 
 async function main(param) {
-
   let specificMonthData = await fetchDataForMonth(param); 
-  
+
   // Extract the month from the parameter
   let targetMonth = param.split("-")[1];
 
-  // Filter the data instead of modifying the array during iteration
+  // Get holidays from localStorage
+  let holidays = JSON.parse(localStorage.getItem("cachedSetHolidays")) || [];
+  let holidayDates = holidays.map(day => day.date); // Create an array of holiday dates
+
+  // Filter the data: match the month and exclude holidays
   specificMonthData = specificMonthData.filter(value => {
     let month = new Date(value.date).getMonth() + 1;
-    return month === Number(targetMonth);
+    return (
+      month === Number(targetMonth) &&
+      !holidayDates.includes(value.date)
+    );
   });
-  
+
   localStorage.setItem('cached1MResult', JSON.stringify(specificMonthData));
 }
 
 
-//  main(new Date().toISOString().slice(0, 7));
+ main(new Date().toISOString().slice(0, 7));
 
 
 
