@@ -105,8 +105,6 @@ async function renderingResultsIntoCalendar() {
 
     const isPastOrToday = dateValue <= today;
 
-    
-
     if (dayTop) dayTop.innerHTML = isPastOrToday ? value.child[1]?.twod || "--" : value.child[1]?.twod || "--";
     if (dayBottom) dayBottom.innerHTML = isPastOrToday ? value.child[3]?.twod || "--" : value.child[3]?.twod || "--";
     
