@@ -1,3 +1,19 @@
+/* === Tablet Styles (768px - 1024px) === */
+@media  (min-width: 768px) {
+  .odds-table td,
+  .odds-table th {
+    font-size: 0.8rem;
+  }
+}
+
+/* === Phone Styles (less than 768px) === */
+@media (max-width: 767px) {
+  .odds-table td,
+  .odds-table th {
+    font-size: 0.73rem;
+  }
+}
+
 
 body {
   position: relative;
@@ -8,6 +24,18 @@ body {
   text-align: center;
   padding-top: 80px;
 }
+
+/* Option 1: Hide horizontal scrollbar (overflowing content gets clipped) */
+body {
+  overflow-x: hidden;
+}
+
+/* Option 2: Specifically for a container */
+.table-container {
+  overflow-x: hidden;
+}
+
+
 
 .odds-table {
   width: 100%;
@@ -22,6 +50,7 @@ body {
   overflow: hidden; /* Clips internal content if necessary */
   margin-bottom: -80px;
 }
+
 
 
 /* Add this to visually clip edges */
