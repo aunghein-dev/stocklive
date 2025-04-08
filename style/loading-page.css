@@ -1,5 +1,6 @@
 
 .loading-page,.loading-page-title,.loading-page-table {
+  font-family: Roboto, Arial;
   position: fixed;
   top: 0;
   left: 0;

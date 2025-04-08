@@ -87,7 +87,7 @@
     <pre id="output">Loading odds...</pre>
     <script>
       const API_KEY = "17c3902e429df632e59ff7b156e376f4";
-      const url = `https://api.the-odds-api.com/v4/sports/soccer_germany_bundesliga/odds?markets=spreads&regions=us&apiKey=${API_KEY}`;
+      const url = `https://api.the-odds-api.com/v4/sports/soccer_italy_serie_a/odds?markets=spreads&regions=us&apiKey=${API_KEY}`;
 
       const today = luxon.DateTime.now()
         .setZone("Asia/Yangon")
@@ -106,10 +106,10 @@
 
             const matchDateStr = mmtDate.toFormat("yyyy-MM-dd");
 
-            if (matchDateStr === today) {
-              const matchTimeFormatted = mmtDate.toFormat("yyyy-MM-dd hh:mm a");
+            // if (matchDateStr === today) {
+            const matchTimeFormatted = mmtDate.toFormat("yyyy-MM-dd hh:mm a");
 
-              outputHTML += `
+            outputHTML += `
                 <div class="match-container">
                   <div class="match-header">🕒 Kickoff (MMT): ${matchTimeFormatted}</div>
                   <div class="match-details">${match.home_team} vs ${match.away_team}</div>
@@ -128,8 +128,8 @@
                 </div>
                 <hr />
               `;
-              count++;
-            }
+            count++;
+            //}
           });
 
           document.getElementById("output").innerHTML = outputHTML;

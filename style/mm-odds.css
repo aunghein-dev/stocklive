@@ -1,32 +1,28 @@
+
 body {
-  font-family: Roboto,Arial;
-  background-color: var(--);
-  color: #333;
+  position: relative;
   padding: 10px;
+  font-family: Roboto,Arial;
+  background-color: var(--bg-color);
+  color: var(--result-month-container);
   text-align: center;
   padding-top: 80px;
-}
-
-
-
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f8f8f8;
-  color: #333;
-  text-align: center;
 }
 
 .odds-table {
   width: 100%;
   max-width: 900px;
   margin: auto;
+  color: var(--text-color);
+  background-color: var(--tb-bg-color);
   border-collapse: separate; /* Needed for border-radius to work */
   border-spacing: 0;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
+  box-shadow: var(--box-bg-shadow);
   border-radius: 12px;
   overflow: hidden; /* Clips internal content if necessary */
+  
 }
+
 
 /* Add this to visually clip edges */
 thead th:first-child {
@@ -55,22 +51,27 @@ td{
 
 th,
 td {
-
   font-size: 0.7rem;
   border: 0.1px dotted rgb(178, 178, 178);
 }
 
 td {
-  font-size: 0.68rem;
+  font-size: 0.7rem;
 }
 
 tr:nth-child(even) {
-  background-color: #f2f2f2;
+  background-color: var(--hover-color);
+}
+
+tr{
+  
 }
 
 tr:hover,
 tr:nth-child(even):hover {
-  background-color: #5b3e3e;
+  background-color: var(--hover-color);
+ 
+  cursor: pointer;
 }
 
 .highlight {
@@ -91,7 +92,6 @@ tr:nth-child(even):hover {
 }
 
 .section-header {
-  background-color: #414141;
   font-weight: bold;
   text-align: left;
   padding: 10px;
@@ -99,6 +99,65 @@ tr:nth-child(even):hover {
 }
 
 th {
-  background-color: #a3b18a;
+  background-color: var(--header-box-month);
   border: 0.1px solid #ddd;
+  color: black;
 }
+
+.header-tag{
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.match-group-header{
+  opacity: 0.6;
+  color: black;
+  font-weight: 500  ;
+  text-align: center;
+  padding: 6px;
+}
+
+
+
+.loading-container{
+  font-family: Roboto, Arial;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 17px;
+  font-weight: 500;
+  z-index: 800;
+  opacity: 0;
+  padding: 10px 20px;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.loading-container{
+  transition: opacity 0.5s ease-in-out;
+}
+
+.active{
+  opacity: 1;
+}
+
+.loading-container img{
+  height: 28px;
+  margin-right: 5px;
+}
+
+
+  .no-match-view {
+    position: absolute;
+    font-size: 14px;
+  
+    font-weight: 700;
+    height: 100%; 
+    width: 100%; 
+  }
