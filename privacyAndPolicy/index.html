@@ -119,8 +119,21 @@
         <a href="mailto:burmaminidev@gmail.com">burmaminidev@gmail.com</a>.
       </p>
     </div>
-    <div class="text-center" style="text-align: center; margin-top: 50px">
-      © 2025. All rights reserved.
-    </div>
+    <div
+    class="text-center"
+    style="
+      text-align: center;
+      margin-top: 100px;
+      margin-bottom: -100px;
+      font-size: 0.78rem;
+    "
+  >
+    © <span id="currentYear"></span>. All rights reserved.
+  </div>
+</div>
+<script>
+  document.getElementById("currentYear").textContent =
+    new Date().getFullYear();
+</script>
   </body>
 </html>

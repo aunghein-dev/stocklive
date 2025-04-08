@@ -20,7 +20,7 @@ body {
   box-shadow: var(--box-bg-shadow);
   border-radius: 12px;
   overflow: hidden; /* Clips internal content if necessary */
-  
+  margin-bottom: -80px;
 }
 
 
