@@ -20,6 +20,7 @@ fetchOddsData()
       const formatVal = valG >= 0 ? `+${valG}` : valG;
       const finalGP = `${eachMatch[55]}${formatVal}` === '0-0.01' ? '' : `${eachMatch[55]}${formatVal}`;
 
+
       // Determine which team is highlighted
       const spanHighLight = eachMatch[34] === 1 ? eachMatch[16] : eachMatch[20];
 
@@ -34,7 +35,7 @@ fetchOddsData()
       // HTML for a match row
       const matchRowHTML = `
         <tr>
-          <td class="main-td">${eachMatch[8]}</td>
+          <td class="main-td">${subtract90Minutes(eachMatch[8])}</td>
           <td class="main-td">${checkHome} - ${checkAway}</td>
           <td class="main-td">${formatOdds(eachMatch[52], eachMatch[50])}</td>
           <td class="main-td">${finalGP}</td>
@@ -74,3 +75,51 @@ fetchOddsData()
     // Hide loading spinner
     document.querySelector('.js-loading-container').classList.remove('active');
   });
+
+  function formatToReadableTime(rawTime) {
+    if (!rawTime || typeof rawTime !== 'string') return 'Invalid input';
+  
+    const normalized = rawTime.replace(/(AM|PM)/, ' $1').trim();
+    const parsed = dayjs(normalized, 'hh:mm A');
+  
+    if (!parsed.isValid()) {
+      console.error('Invalid time format:', rawTime);
+      return 'Invalid time';
+    }
+  
+    return parsed.format('HH:mm A'); // 24-hour format + space before AM/PM
+  }
+
+function subtract90Minutes(timeStr) {
+  // Normalize time string (e.g. "03:00AM" → "03:00 AM")
+  const normalized = timeStr.replace(/(AM|PM)/, ' $1').trim();
+
+  // Extract hours, minutes, and period
+  const [time, period] = normalized.split(' ');
+  let [hour, minute] = time.split(':').map(Number);
+
+  // Convert to 24-hour format
+  if (period === 'PM' && hour !== 12) hour += 12;
+  if (period === 'AM' && hour === 12) hour = 0;
+
+  // Convert to total minutes
+  let totalMinutes = hour * 60 + minute;
+
+  // Subtract 90 minutes
+  totalMinutes -= 90;
+  if (totalMinutes < 0) totalMinutes += 1440; // wrap around midnight
+
+  // Convert back to hours and minutes
+  let newHour = Math.floor(totalMinutes / 60);
+  let newMinute = totalMinutes % 60;
+
+  // Determine new period
+  const newPeriod = newHour >= 12 ? 'PM' : 'AM';
+  newHour = newHour % 12;
+  if (newHour === 0) newHour = 12;
+
+  // Format result
+  const formattedTime = `${String(newHour).padStart(2, '0')}:${String(newMinute).padStart(2, '0')}${newPeriod}`;
+  return formattedTime;
+}
+  

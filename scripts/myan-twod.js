@@ -279,95 +279,106 @@ async function fetchFinishedResults() {
   }
 }
 
-
-
 async function renderingShowingLastResults() {
-  const now = new Date();
 
-  const morningStart = new Date();
+  let now = new Date();
+
+  let morningStart = new Date();
   morningStart.setHours(8, 30, 0, 0);
 
-  const morningEnd = new Date();
+  let morningEnd = new Date();
   morningEnd.setHours(12, 1, 1, 0);
 
-  const eveningStart = new Date();
+  let eveningStart = new Date();
   eveningStart.setHours(13, 30, 0, 0);
 
-  const eveningEnd = new Date();
+  let eveningEnd = new Date();
   eveningEnd.setHours(16, 30, 1, 0);
 
-  const updatedTimeContainer = document.querySelector(".updated-time-container");
-
   try {
-    const [finishedResults, finishedDateTime] = await Promise.all([
-      fetchFinishedResults(),
-      fetchFinishedTime()
-    ]);
+    let finishedResults = await fetchFinishedResults();
+    finishedDateTime = await fetchFinishedTime(); // Get the latest stock_datetime
 
-    const morningResult = finishedResults?.child?.[1];
-    const eveningResult = finishedResults?.child?.[3];
-
+    let updatedTimeContainer = document.querySelector(".updated-time-container");
     if (!finishedResults || !Array.isArray(finishedResults.child)) {
       console.log("No valid data available.");
       return;
     }
 
-    if (isHoliday) {
-      renderMorningInPage(morningResult?.set, morningResult?.value, morningResult?.twod);
-      renderEveningInPage(eveningResult?.set, eveningResult?.value, eveningResult?.twod);
-      updatedTimeContainer.innerHTML = `<img src="icons/green-tick.svg" /> Updated at ${finishedDateTime}`;
-      return;
+
+    if(isHoliday){
+      renderMorningInPage(finishedResults.child[1].set, finishedResults.child[1].value, finishedResults.child[1].twod);
+      renderEveningInPage(finishedResults.child[3].set, finishedResults.child[3].value, finishedResults.child[3].twod);
+    } else {
+
+          //IN !HOLIDAY 
+        if (now < morningStart) {
+          renderMorningInPage(finishedResults.child[1].set, finishedResults.child[1].value, finishedResults.child[1].twod);
+          renderEveningInPage(finishedResults.child[3].set, finishedResults.child[3].value, finishedResults.child[3].twod);
+        }
+
+        if (now > morningStart && now < morningEnd) {
+          renderEveningInPage('--', '--', '--');
+        }
+
+        if (now > morningEnd && now < eveningStart || now > eveningStart && now < eveningEnd) {
+          if (finishedResults.child[1]) {
+            renderMorningInPage(finishedResults.child[1].set, finishedResults.child[1].value, finishedResults.child[1].twod);
+          } else {
+            renderMorningInPage(mainCachedMorning.set, mainCachedMorning.value, mainCachedMorning.twod);
+          }
+        }
+
+
+        if (now > eveningEnd) {
+          if (finishedResults.child[3]) {
+            renderEveningInPage(finishedResults.child[3].set, finishedResults.child[3].value, finishedResults.child[3].twod);
+          } else {
+            renderEveningInPage(mainCachedEvening.set, mainCachedEvening.value, mainCachedEvening.twod);
+          }
+
+          if (finishedResults.child[1]) {
+            renderMorningInPage(finishedResults.child[1].set, finishedResults.child[1].value, finishedResults.child[1].twod);
+          } else {
+            renderMorningInPage(mainCachedMorning.set, mainCachedMorning.value, mainCachedMorning.twod);
+          }
+
+        }
     }
 
-    // Not holiday
-    if (now < morningStart) {
-      renderMorningInPage(morningResult?.set, morningResult?.value, morningResult?.twod);
-      renderEveningInPage(eveningResult?.set, eveningResult?.value, eveningResult?.twod);
-    } else if (now >= morningStart && now < morningEnd) {
-      renderEveningInPage('--', '--', '--');
-    } else if (now >= morningEnd && now < eveningEnd) {
-      renderMorningInPage(
-        morningResult?.set ?? mainCachedMorning.set,
-        morningResult?.value ?? mainCachedMorning.value,
-        morningResult?.twod ?? mainCachedMorning.twod
-      );
-    } else if (now >= eveningEnd) {
-      renderEveningInPage(
-        eveningResult?.set ?? mainCachedEvening.set,
-        eveningResult?.value ?? mainCachedEvening.value,
-        eveningResult?.twod ?? mainCachedEvening.twod
-      );
 
-      renderMorningInPage(
-        morningResult?.set ?? mainCachedMorning.set,
-        morningResult?.value ?? mainCachedMorning.value,
-        morningResult?.twod ?? mainCachedMorning.twod
-      );
+  if (!isLiveActive){
+    if(now < morningStart && now > eveningEnd){
+      if (finishedResults.child[3]) {
+        mainNumberElement.innerHTML = finishedResults.child[3].twod;
+      } else {
+        mainNumberElement.innerHTML = mainCachedEvening.twod;
+      }
+    } else if (now > morningEnd && now > eveningStart){
+      if (finishedResults.child[1]) {
+        mainNumberElement.innerHTML = finishedResults.child[1].twod;
+      } else {
+        mainNumberElement.innerHTML = mainCachedMorning.twod;
+      }
     }
+  }
 
-    // Show main number if not live
     if (!isLiveActive) {
-      if (now < morningStart || now > eveningEnd) {
-        mainNumberElement.innerHTML = eveningResult?.twod ?? mainCachedEvening.twod;
-      } else if (now > morningEnd) {
-        mainNumberElement.innerHTML = morningResult?.twod ?? mainCachedMorning.twod;
+      if (now < eveningEnd) {
+        updatedTimeContainer.innerHTML = `<img src="icons/green-tick.svg" /> Updated at ${dayjs().format("YYYY-MM-DD 12:01:01")}`;
+      } else {
+        updatedTimeContainer.innerHTML = `<img src="icons/green-tick.svg" /> Updated at ${dayjs().format("YYYY-MM-DD 16:30:01")}`;
       }
     }
 
-    // Update time display (if not holiday)
-    if (!isLiveActive && !isHoliday) {
-      const updateTime = now < eveningEnd
-        ? "12:01:01"
-        : "16:30:01";
-
-      updatedTimeContainer.innerHTML = `<img src="icons/green-tick.svg" /> Updated at ${dayjs().format(`YYYY-MM-DD ${updateTime}`)}`;
+    if (isHoliday) {
+      updatedTimeContainer.innerHTML = `<img src="icons/green-tick.svg" /> Updated at ${finishedDateTime}`;
     }
 
   } catch (error) {
     console.error("Error fetching finished results:", error);
   }
 }
-
 
 
 
