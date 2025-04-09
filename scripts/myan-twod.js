@@ -389,12 +389,12 @@ function renderingResultNormal() {
 
   if (currentHour >= 12 && currentHour < 16) {
     document.querySelector('.js-morning-result-digit').textContent = mainCachedMorning.twod;
-    updatedTimeContainer.innerHTML = `<img src="icons/green-tick.svg" /> Updated at ${mainCachedMorning.time}`;
+    updatedTimeContainer.innerHTML = `<img src="icons/green-tick.svg" /> Updated at ${dayjs().format("YYYY-MM-DD 12:01:01")}`;
   }
 
   if (currentHour >= 16) {
     document.querySelector('.js-evening-result-digit').textContent = mainCachedEvening.twod;
-    updatedTimeContainer.innerHTML = `<img src="icons/green-tick.svg" /> Updated at ${mainCachedEvening.time}`;
+    updatedTimeContainer.innerHTML = `<img src="icons/green-tick.svg" /> Updated at ${dayjs().format("YYYY-MM-DD 16:30:01")}`;
   }
 
 

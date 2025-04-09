@@ -36,7 +36,7 @@ function getTimeUntilTriggerMorning() {
   const now = new Date();
   const target = new Date();
 
-  target.setHours(12, 1, 0, 0); // Set target time to 12:01 PM
+  target.setHours(12, 1, 1, 0); // Set target time to 12:01 PM
 
   if (now > target) {
       // If the time has already passed, set it for tomorrow

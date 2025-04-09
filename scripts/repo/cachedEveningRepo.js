@@ -36,7 +36,7 @@ function getTimeUntilTriggerEvening() {
   const now = new Date();
   const target = new Date();
 
-  target.setHours(16, 30, 0, 0); // Set target time to 16:30 PM
+  target.setHours(16, 30, 1, 0); // Set target time to 16:30 PM
 
   if (now > target) {
       // If the time has already passed, set it for tomorrow
