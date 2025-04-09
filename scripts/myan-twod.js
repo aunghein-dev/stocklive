@@ -348,7 +348,7 @@ async function renderingShowingLastResults() {
 
 
   if (!isLiveActive){
-    if(now < morningStart && now > eveningEnd){
+    if(now > eveningEnd){
       if (finishedResults.child[3]) {
         mainNumberElement.innerHTML = finishedResults.child[3].twod;
       } else {
