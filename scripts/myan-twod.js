@@ -284,16 +284,16 @@ async function renderingShowingLastResults() {
   let now = new Date();
 
   let morningStart = new Date();
-  morningStart.setHours(8, 30, 0, 0);
+  morningStart.setHours(9, 0, 0, 0);
 
   let morningEnd = new Date();
-  morningEnd.setHours(12, 1, 1, 0);
+  morningEnd.setHours(12, 1, 0, 999);
 
   let eveningStart = new Date();
-  eveningStart.setHours(13, 30, 0, 0);
+  eveningStart.setHours(13, 40, 0, 0);
 
   let eveningEnd = new Date();
-  eveningEnd.setHours(16, 30, 1, 0);
+  eveningEnd.setHours(16, 30, 0, 999);
 
   try {
     let finishedResults = await fetchFinishedResults();
@@ -363,11 +363,13 @@ async function renderingShowingLastResults() {
     }
   }
 
-    if (!isLiveActive) {
+    if (!isLiveActive && !isHoliday) {
       if (now < eveningEnd && now > morningEnd) {
         updatedTimeContainer.innerHTML = `<img src="icons/green-tick.svg" /> Updated at ${dayjs().format("YYYY-MM-DD 12:01:01")}`;
-      } else {
+      } else if (now > eveningEnd && now < morningStart) {
         updatedTimeContainer.innerHTML = `<img src="icons/green-tick.svg" /> Updated at ${dayjs().format("YYYY-MM-DD 16:30:01")}`;
+      } else {
+        updatedTimeContainer.innerHTML = `<img src="icons/green-tick.svg" /> Updated at ${dayjs().subtract(1, "day").format("YYYY-MM-DD 16:30:01")}`;
       }
     }
 
