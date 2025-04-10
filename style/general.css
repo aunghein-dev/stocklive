@@ -47,7 +47,6 @@ body {
   background-position: center;
   padding-bottom: 50px;
   transition: background 0.3s ease-in-out; /* Smooth transition */
-  
 }
 
 .dark-mode {

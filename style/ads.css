@@ -1,0 +1,27 @@
+.responsive-ad-container {
+  width: 100%;
+  max-width: 468px; /* Mobile default */
+  margin: 0 auto;
+  margin-top: 10px;
+  margin-bottom: -50px;
+  color: var(--text-color);
+}
+
+.responsive-ad-container iframe {
+  width: 100% !important;
+  height: auto !important;
+}
+
+/* Tablet size */
+@media (min-width: 600px) and (max-width: 1023px) {
+  .responsive-ad-container {
+    max-width: 728px; /* Medium rectangle or banner for tablets */
+  }
+}
+
+/* Desktop size */
+@media (min-width: 1024px) {
+  .responsive-ad-container {
+    max-width: 1380px; /* Leaderboard or large banner on desktops */
+  }
+}
