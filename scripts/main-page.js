@@ -22,37 +22,44 @@ textElement.addEventListener("animationiteration", updateText);
 
 // Force first update on page load
 updateText();
-
+// Sidebar Toggle
 document.querySelector('.js-navi-menu-button').addEventListener('click', () => {
   const asideBar = document.querySelector('.js-left-aside-bar');
   const blurMain = document.querySelector('.js-blur-main');
 
   if (asideBar.classList.contains('left-aside-bar-visible')) {
-      asideBar.classList.remove('left-aside-bar-visible');
-      blurMain.classList.remove('active');
+    asideBar.classList.remove('left-aside-bar-visible');
+    blurMain.classList.remove('active');
   } else {
-      asideBar.classList.add('left-aside-bar-visible');
-      blurMain.classList.add('active');
+    asideBar.classList.add('left-aside-bar-visible');
+    blurMain.classList.add('active');
   }
 });
 
+// Click on blur area to close sidebar
 document.querySelector('.js-blur-main').addEventListener('click', () => {
   document.querySelector('.js-left-aside-bar').classList.remove('left-aside-bar-visible');
   document.querySelector('.js-blur-main').classList.remove('active');
 });
 
-let isTabSwitching = false;
+// Improved Tab Switching Detection
+let lastHiddenTime = null;
 
-window.addEventListener("blur", () => {
-  isTabSwitching = true;
-});
+document.addEventListener("visibilitychange", () => {
+  const asideBar = document.querySelector('.js-left-aside-bar');
+  const blurMain = document.querySelector('.js-blur-main');
 
-window.addEventListener("focus", () => {
-  setTimeout(() => {
-      if (isTabSwitching) {
-          document.querySelector('.js-left-aside-bar').classList.remove('left-aside-bar-visible');
-          document.querySelector('.js-blur-main').classList.remove('active');
-          isTabSwitching = false;
-      }
-  }, 300); // Prevents quick reopening
+  if (document.hidden) {
+    // Tab was hidden (user switched tabs or minimized window)
+    lastHiddenTime = Date.now();
+  } else {
+    // Tab becomes visible again
+    const now = Date.now();
+    if (lastHiddenTime && now - lastHiddenTime > 300) {
+      // Close sidebar if tab was hidden for longer than 300ms
+      asideBar.classList.remove('left-aside-bar-visible');
+      blurMain.classList.remove('active');
+    }
+    lastHiddenTime = null;
+  }
 });
