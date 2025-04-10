@@ -65,9 +65,27 @@ async function main(param) {
     let month = new Date(value.date).getMonth() + 1;
     return (
       month === Number(targetMonth) &&
-      !holidayDates.includes(value.date)
+      !holidayDates.includes(value.date) 
     );
   });
+
+  specificMonthData
+    .forEach(data=>{
+      if(data.child[1].value==='0.00'){
+        data.child[1].twod = '--';
+      } 
+
+      if(data.child[3].value==='0.00'){
+        data.child[3].twod = '--';
+      } 
+
+      if(data.child[3].value===data.child[1].value){
+        data.child[1].twod = '--';
+        data.child[3].twod = '--';
+      }
+    });
+  
+  
 
   localStorage.setItem('cached1MResult', JSON.stringify(specificMonthData));
 }

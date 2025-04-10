@@ -364,7 +364,7 @@ async function renderingShowingLastResults() {
   }
 
     if (!isLiveActive) {
-      if (now < eveningEnd) {
+      if (now < eveningEnd && now > morningEnd) {
         updatedTimeContainer.innerHTML = `<img src="icons/green-tick.svg" /> Updated at ${dayjs().format("YYYY-MM-DD 12:01:01")}`;
       } else {
         updatedTimeContainer.innerHTML = `<img src="icons/green-tick.svg" /> Updated at ${dayjs().format("YYYY-MM-DD 16:30:01")}`;

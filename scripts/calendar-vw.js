@@ -105,8 +105,25 @@ async function renderingResultsIntoCalendar() {
 
     const isPastOrToday = dateValue <= today;
 
-    if (dayTop) dayTop.innerHTML = isPastOrToday ? value.child[1]?.twod || "--" : value.child[1]?.twod || "--";
-    if (dayBottom) dayBottom.innerHTML = isPastOrToday ? value.child[3]?.twod || "--" : value.child[3]?.twod || "--";
+    if(value.child[1].value === '0.00'){
+      dayTop.innerHTML = '';
+  
+    } else if (value.child[1].value === value.child[3].value){
+      dayTop.innerHTML = '';
+    }
+     else {
+      if (dayTop) dayTop.innerHTML = isPastOrToday ? value.child[1]?.twod || "--" : value.child[1]?.twod || "--";
+    }
+
+    if(value.child[3].value === '0.00'){
+      dayBottom.innerHTML = '';
+  
+    } else if (value.child[1].value === value.child[3].value){
+      dayBottom.innerHTML = '';
+    }
+     else {
+      if (dayBottom) dayBottom.innerHTML = isPastOrToday ? value.child[3]?.twod || "--" : value.child[3]?.twod || "--";
+    }
     
   });
 }

@@ -59,7 +59,3 @@ export async function loadHolidays() {
     holidays = JSON.parse(localStorage.getItem("cachedSetHolidays"));
   }
 }
-
-loadHolidays();
-
-localStorage.removeItem("cachedSetHolidays");
