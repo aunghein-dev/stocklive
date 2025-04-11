@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="../style/threed-general.css" />
     <link rel="stylesheet" href="../style/mm-odds.css" />
     <link rel="stylesheet" href="../style/loading-page.css" />
+    <link rel="stylesheet" href="../style/ads.css" />
 
     <script
       async
@@ -32,8 +33,8 @@
       ><img src="../icons/loading.svg">loading...</pre>
 
       <pre class="no-match-view js-no-match-view"></pre>
-
-      <div class="js-view-root">
+      <div id="ad-container"></div>
+      <div class="view-root js-view-root">
         <div class="header-tag js-header-tag"></div>
         <table class="odds-table">
           <thead>
@@ -46,6 +47,14 @@
           <tbody id="odds-body" class="js-odds-body"></tbody>
         </table>
       </div>
+      <div class="responsive-ad-container">
+        <script
+          async="async"
+          data-cfasync="false"
+          src="https://pl26266554.profitableratecpm.com/02358cbf82787ece2ceaf514d9b6d4f2/invoke.js"
+        ></script>
+        <div id="container-02358cbf82787ece2ceaf514d9b6d4f2"></div>
+      </div>
     </div>
 
     <div
@@ -53,7 +62,7 @@
       style="
         text-align: center;
         margin-top: 100px;
-        margin-bottom: -100px;
+        margin-bottom: -300px;
         font-size: 0.78rem;
       "
     >
@@ -70,4 +79,5 @@
     type="text/javascript"
     src="//pl26344876.profitableratecpm.com/d3/14/78/d31478ae1d7c3baf1622f80dd2f273c1.js"
   ></script>
+  <script src="../scripts/ads/ads.js"></script>
 </html>
