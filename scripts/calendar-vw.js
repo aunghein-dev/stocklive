@@ -108,17 +108,17 @@ async function renderingResultsIntoCalendar() {
     if(value.child[1].value === '0.00'){
       dayTop.innerHTML = '';
   
-    } else if (value.child[1].value === value.child[3].value){
+    } else if (value.child[3] && value.child[1].value === value.child[3].value){
       dayTop.innerHTML = '';
     }
      else {
       if (dayTop) dayTop.innerHTML = isPastOrToday ? value.child[1]?.twod || "--" : value.child[1]?.twod || "--";
     }
 
-    if(value.child[3].value === '0.00'){
+    if(value.child[3] && value.child[3].value === '0.00'){
       dayBottom.innerHTML = '';
   
-    } else if (value.child[1].value === value.child[3].value){
+    } else if (value.child[3] && value.child[1].value === value.child[3].value){
       dayBottom.innerHTML = '';
     }
      else {

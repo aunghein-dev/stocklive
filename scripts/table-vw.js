@@ -75,14 +75,18 @@ async function main(param) {
         data.child[1].twod = '--';
       } 
 
-      if(data.child[3].value==='0.00'){
-        data.child[3].twod = '--';
-      } 
-
-      if(data.child[3].value===data.child[1].value){
-        data.child[1].twod = '--';
-        data.child[3].twod = '--';
+      if(data.child[3]){
+        if(data.child[3].value==='0.00'){
+          data.child[3].twod = '--';
+        } 
+        if(data.child[3].value===data.child[1].value){
+          data.child[1].twod = '--';
+          data.child[3].twod = '--';
+        }
       }
+     
+
+     
     });
   
   
