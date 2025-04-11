@@ -18,7 +18,6 @@
       src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5602054901910200"
       crossorigin="anonymous"
     ></script>
-
   </head>
   <body class="threed-bd">
     <nav class="navi-bar-3D">
@@ -28,10 +27,20 @@
 
     <div class="loading-page"></div>
 
+    <div id="ad-container"></div>
     <div class="lotto-wrapper"></div>
+
+    <div class="text-center">
+      © <span id="currentYear"></span>. All rights reserved.
+    </div>
+    <script>
+      document.getElementById("currentYear").textContent =
+        new Date().getFullYear();
+    </script>
 
     <script type="module" src="../scripts/lotto.js"></script>
     <script type="module" src="../scripts/modern-internet.js"></script>
     <script type="module" src="../scripts/dark-light-toggle.js"></script>
+    <script src="../scripts/ads/ads.js"></script>
   </body>
 </html>

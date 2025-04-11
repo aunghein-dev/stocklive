@@ -2,6 +2,7 @@
   padding-left: 0.6px;
   padding-right: 0.6px;
   margin-top: -10px;
+  margin-bottom: -20px;
 }
 
 @keyframes fadeIn {
@@ -157,6 +158,7 @@
   font-size: 16px;
   font-weight: 700;
   box-shadow: var(--box-bg-shadow);
+  margin-top: 38px;
 }
 
 table td.day-cell.today-date-box {

@@ -167,7 +167,7 @@ async function renderTitleView() {
       <!-- #one-box -->`;
   });
 
-  titleViewPanel.innerHTML = titleViewHTML; // Update the UI
+  titleViewPanel.innerHTML =  titleViewHTML; // Update the UI
 }
 
 function formatDateManually(dateString) {

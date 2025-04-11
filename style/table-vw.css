@@ -8,6 +8,7 @@
   align-items: center;
   text-align: center;
   margin-top: -10px;
+  margin-bottom: -12px;
   overflow-y: auto; /* ✅ Enables scrolling inside the container */
   position: relative; /* ✅ Required for sticky to work */
   overflow: hidden;
@@ -28,6 +29,7 @@
   font-size: 16px;
   font-weight: 700;
   margin-bottom: -10px;
+  margin-top: 38px;
   box-shadow: var(--box-bg-shadow);
 }
 
