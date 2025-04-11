@@ -3,6 +3,7 @@
 .tab-content{
   position: relative;
   top: -38px;
+  min-height: 600px;
 }
 
 .tab-container{

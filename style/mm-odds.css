@@ -14,6 +14,9 @@
   }
 }
 
+.root{
+  min-height: 550px;
+}
 
 body {
   position: relative;
@@ -23,6 +26,7 @@ body {
   color: var(--result-month-container);
   text-align: center;
   padding-top: 80px;
+ 
 }
 
 /* Option 1: Hide horizontal scrollbar (overflowing content gets clipped) */
