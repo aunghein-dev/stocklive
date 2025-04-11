@@ -25,6 +25,15 @@
       crossorigin="anonymous"
     ></script>
 
+    <script>
+      (function() {
+        const isDark = localStorage.getItem("theme") === "dark";
+        if (isDark) {
+          document.documentElement.classList.add("dark-mode");
+        }
+      })();
+    </script>
+
   </head>
   <body>
     <div id="ad-container"></div>
