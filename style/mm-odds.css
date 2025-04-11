@@ -100,10 +100,6 @@ tr:nth-child(even) {
   background-color: var(--hover-color);
 }
 
-tr{
-  
-}
-
 tr:hover,
 tr:nth-child(even):hover {
   background-color: var(--hover-color);
