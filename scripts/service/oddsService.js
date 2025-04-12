@@ -3,23 +3,29 @@ export const leagueCollection = new Set();
 const baseApiUrl =
   "https://www.realty88.com/_view/MOddsGen2.ashx?ot=t&update=true&r=1392804364&ov=0&mt=0&LID=";
 
-const proxyUrl = "https://corsproxy.io/?"; // ✅ More reliable proxy
+const proxyUrl = "https://api.allorigins.win/get?url=";
 
+// 👇 This version adds a timestamp dynamically every time it's called
 async function fetchAndProcessData() {
   try {
-    const ts = Date.now();
+    const ts = Date.now(); // ⏱ cache-busting timestamp
     const fullUrl = proxyUrl + encodeURIComponent(`${baseApiUrl}&_=${ts}`);
     const response = await fetch(fullUrl);
 
     if (!response.ok) {
-      throw new Error("Failed to fetch from CORS proxy.");
+      throw new Error("Failed to fetch from API proxy.");
     }
 
-    const rawText = await response.text(); // CORSProxy returns raw response, not JSON
+    const proxyData = await response.json();
+    const rawText = proxyData.contents;
+
+    // Clean bad JSON
     const cleaned = rawText.replace(/'/g, '"');
 
+    // Parse safely
     const parsed = JSON.parse(cleaned);
-    return parsed[3];
+
+    return parsed[3]; // Return only the matches array
   } catch (error) {
     console.error("API Fetching/Parsing Error:", error.message);
     return [];
@@ -33,7 +39,7 @@ export async function fetchOddsData() {
 
   result.forEach(([leagueMeta, matches]) => {
     matches.forEach(match => {
-      match.league = leagueMeta[1];
+      match.league = leagueMeta[1]; // Attach league name
 
       const matchId = match[3];
       if (!uniqueMatchIds.has(matchId)) {
@@ -41,7 +47,9 @@ export async function fetchOddsData() {
         finalArr.push(match);
       }
 
-      leagueCollection.add(match.league);
+      if (!leagueCollection.has(match.league)) {
+        leagueCollection.add(match.league);
+      }
     });
   });
 
