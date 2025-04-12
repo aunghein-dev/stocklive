@@ -301,7 +301,7 @@ async function renderingShowingLastResults() {
     let updatedTimeContainer = document.querySelector(".updated-time-container");
     if (!finishedResults || !Array.isArray(finishedResults.child)) {
       console.log("No valid data available.");
-      updatedTimeContainer.innerHTML = `No data available for ${dayjs().format("DD/MM/YYYY")}.`;
+      updatedTimeContainer.innerHTML = `No data available...`;
       return;
     }
 
