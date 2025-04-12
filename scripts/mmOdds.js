@@ -5,59 +5,53 @@ import dayjs from "https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js";
 document.querySelector('.js-loading-container').classList.add('active');
 document.querySelector('.js-header-tag').innerHTML = `Myanmar ဘော်ဒီ၊ ဂိုးပေါင်း ပေါက်ကြေး (${dayjs().format('DD/MMM/YYYY')})`;
 
-// Add cache-busting param to avoid stale data
-const fetchWithCacheBust = () => fetchOddsData(`${Date.now()}`);
-
-fetchWithCacheBust()
+fetchOddsData()
   .then(data => {
     const leagueMap = new Map();
-
-    const noMatchView = document.querySelector('.js-no-match-view');
-    const container = document.querySelector('.js-odds-body');
-    container.innerHTML = '';
-
-    if (data.length === 0) {
-      noMatchView.innerHTML = 'ပွဲစဉ်မရှိသေးပါ...';
-      return;
+   
+    if(data.length === 0) {
+      document.querySelector('.js-no-match-view').innerHTML = 'ပွဲစဉ်မရှိသေးပါ...';
+      document.querySelector('.js-view-root').innerHTML = '';
     } else {
-      noMatchView.innerHTML = '';
-    }
 
-    data.forEach(eachMatch => {
-      const league = eachMatch.league || "Unknown League";
-      const valG = eachMatch[51] / 100;
-      const formatVal = valG >= 0 ? `+${valG}` : valG;
-      const finalGP = `${eachMatch[55]}${formatVal}` === '0-0.01' ? '' : `${eachMatch[55]}${formatVal}`;
-      const spanHighLight = eachMatch[34] === 1 ? eachMatch[16] : eachMatch[20];
+      // Build league map with match rows
+      data.forEach(eachMatch => {
+        const league = eachMatch.league || "Unknown League";
+        const valG = eachMatch[51] / 100;
+        const formatVal = valG >= 0 ? `+${valG}` : valG;
+        const finalGP = `${eachMatch[55]}${formatVal}` === '0-0.01' ? '' : `${eachMatch[55]}${formatVal}`;
 
-      const checkHome = spanHighLight === eachMatch[16]
-        ? `<span class="highlight">${eachMatch[16]}</span>`
-        : `<span>${eachMatch[16]}</span>`;
+        const spanHighLight = eachMatch[34] === 1 ? eachMatch[16] : eachMatch[20];
 
-      const checkAway = spanHighLight === eachMatch[20]
-        ? `<span class="highlight">${eachMatch[20]}</span>`
-        : `<span>${eachMatch[20]}</span>`;
+        const checkHome = spanHighLight === eachMatch[16]
+          ? `<span class="highlight">${eachMatch[16]}</span>`
+          : `<span>${eachMatch[16]}</span>`;
 
-      const matchRowHTML = `
-        <tr>
-          <td class="main-td">${subtract90Minutes(eachMatch[8])}</td>
-          <td class="main-td">${checkHome} - ${checkAway}</td>
-          <td class="main-td">${formatOdds(eachMatch[52], eachMatch[50])}</td>
-          <td class="main-td">${finalGP}</td>
-        </tr>
-      `;
+        const checkAway = spanHighLight === eachMatch[20]
+          ? `<span class="highlight">${eachMatch[20]}</span>`
+          : `<span>${eachMatch[20]}</span>`;
 
-      if (!leagueMap.has(league)) {
-        leagueMap.set(league, []);
-      }
+        const matchRowHTML = `
+          <tr>
+            <td class="main-td">${subtract90Minutes(eachMatch[8])}</td>
+            <td class="main-td">${checkHome} - ${checkAway}</td>
+            <td class="main-td">${formatOdds(eachMatch[52], eachMatch[50])}</td>
+            <td class="main-td">${finalGP}</td>
+          </tr>
+        `;
 
-      leagueMap.get(league).push(matchRowHTML);
-    });
+        if (!leagueMap.has(league)) {
+          leagueMap.set(league, []);
+        }
 
-    // Defer rendering until browser is idle
-    requestIdleCallback(() => {
+        leagueMap.get(league).push(matchRowHTML);
+      });
+
+      // Create fragment for faster rendering
+      const container = document.querySelector('.js-odds-body');
+      container.innerHTML = ''; // Clear previous content
+
       const fragment = document.createDocumentFragment();
-
       [...leagueMap.entries()].slice(0, 7).forEach(([leagueName, rows]) => {
         const groupRow = document.createElement('tr');
         groupRow.className = 'match-group-header';
@@ -67,13 +61,13 @@ fetchWithCacheBust()
 
         rows.forEach(rowHTML => {
           const row = document.createElement('tr');
-          row.innerHTML = rowHTML.trim().replace(/^<tr>|<\/tr>$/g, '');
+          row.innerHTML = rowHTML.trim().replace(/^<tr>|<\/tr>$/g, ''); // Remove outer <tr> if exists
           fragment.appendChild(row);
         });
       });
 
       container.appendChild(fragment);
-    });
+    }
   })
   .catch(error => {
     console.error("Error fetching odds data:", error);
@@ -81,12 +75,14 @@ fetchWithCacheBust()
     container.innerHTML = `<tr><td colspan="6" style="text-align:center;">Failed to load data. Please try again later.</td></tr>`;
   })
   .finally(() => {
+    // Hide loading spinner
     document.querySelector('.js-loading-container').classList.remove('active');
   });
 
-// Adjust match time function
+// Your original time adjust function
 function subtract90Minutes(timeStr) {
   const normalized = timeStr.replace(/(AM|PM)/, ' $1').trim();
+
   const [time, period] = normalized.split(' ');
   let [hour, minute] = time.split(':').map(Number);
 
@@ -106,3 +102,4 @@ function subtract90Minutes(timeStr) {
 
   return `${String(newHour).padStart(2, '0')}:${String(newMinute).padStart(2, '0')}${newPeriod}`;
 }
+

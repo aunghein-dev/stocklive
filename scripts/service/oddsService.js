@@ -1,12 +1,18 @@
 export const leagueCollection = new Set();
-const apiUrl =
-  "https://www.realty88.com/_view/MOddsGen2.ashx?ot=t&update=true&r=1392804364&ov=0&mt=0&LID=&_=1744002123285";
+const apiUrlBase =
+  "https://www.realty88.com/_view/MOddsGen2.ashx?ot=t&update=true&r=1392804364&ov=0&mt=0&LID=";
 
 const proxyUrl = "https://api.allorigins.win/get?url=";
 
+// Function to add cache busting
+function addCacheBusting(url) {
+  const timestamp = new Date().getTime();
+  return `${url}&_=${timestamp}`;
+}
+
 async function fetchAndProcessData(apiUrl) {
   try {
-    const fullUrl = proxyUrl + encodeURIComponent(apiUrl);
+    const fullUrl = proxyUrl + encodeURIComponent(addCacheBusting(apiUrl)); // Add cache-busting to the apiUrl
     const response = await fetch(fullUrl);
 
     if (!response.ok) {
@@ -31,10 +37,8 @@ async function fetchAndProcessData(apiUrl) {
   }
 }
 
-
-
 export async function fetchOddsData() {
-  const result = await fetchAndProcessData(apiUrl);
+  const result = await fetchAndProcessData(apiUrlBase);
   const uniqueMatchIds = new Set();
   const finalArr = [];
 
@@ -51,14 +55,11 @@ export async function fetchOddsData() {
       if (!leagueCollection.has(match.league)) {
         leagueCollection.add(match.league);
       }
-      
     });
   });
 
   return finalArr;
 }
-
-
 
 export function formatOdds(num1, num2) {
   const val = num2 / 100;
