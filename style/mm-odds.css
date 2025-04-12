@@ -43,6 +43,9 @@ body {
   overflow-x: hidden;
 }
 
+.no-match-view{
+  min-height: 300px;
+}
 
 
 .odds-table {
