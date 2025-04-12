@@ -61,3 +61,4 @@ export function formatOdds(num1, num2) {
   const formatted = ${num1}${val > 0 ? +${val} : val === -0.01 ? '' : val};
   return formatted === '0-0.01' ? '' : formatted;
 }
+
