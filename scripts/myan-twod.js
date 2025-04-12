@@ -263,13 +263,12 @@ async function fetchFinishedResults() {
     if (!isHoliday) {
       // Ensure we return valid lastData when the date matches
       if (lastData && lastData.date === new Date().toISOString().split("T")[0]) {
-        return lastData || {};
+        return lastData ;
       } else {
-
-        return lastData || {};
+        {};
       }
     } else {
-      return lastData || {};
+      return  {};
     }
 
     
@@ -302,25 +301,10 @@ async function renderingShowingLastResults() {
     let updatedTimeContainer = document.querySelector(".updated-time-container");
     if (!finishedResults || !Array.isArray(finishedResults.child)) {
       console.log("No valid data available.");
+      updatedTimeContainer.innerHTML = `No data available for ${dayjs().format("DD/MM/YYYY")}.`;
       return;
     }
 
-
-    // Adjustment API Error
-    if(!finishedResults.child[3] && isHoliday){
-      finishedResults.child[3] = 
-      {
-        "time": "16:30:00",
-        "set": "1,128.66",
-        "value": "34,662.31",
-        "twod": "62",
-        "history_id": "1967296"
-    }
-    
-      finishedDateTime = '2025-04-11 16:30:01';
-    }
-
-    
 
     if(isHoliday){
       renderMorningInPage(finishedResults.child[1].set, finishedResults.child[1].value, finishedResults.child[1].twod);
@@ -385,14 +369,12 @@ async function renderingShowingLastResults() {
         updatedTimeContainer.innerHTML = `<img src="icons/green-tick.svg" /> Updated at ${dayjs().format("YYYY-MM-DD 12:01:01")}`;
       } else if (now > eveningEnd && now < morningStart) {
         updatedTimeContainer.innerHTML = `<img src="icons/green-tick.svg" /> Updated at ${dayjs().format("YYYY-MM-DD 16:30:01")}`;
-      } else {
-        updatedTimeContainer.innerHTML = `<img src="icons/green-tick.svg" /> Updated at ${dayjs().subtract(1, "day").format("YYYY-MM-DD 16:30:01")}`;
-      }
+      } 
     }
 
-    if (isHoliday) {
-      updatedTimeContainer.innerHTML = `<img src="icons/green-tick.svg" /> Updated at ${finishedDateTime}`;
-    }
+
+    
+
 
   } catch (error) {
     console.error("Error fetching finished results:", error);
@@ -448,7 +430,10 @@ function renderMorningInPage(itemSet, itemValue, itemTwod) {
 
 }
 
+
 renderingShowingLastResults();
+
+
 
 // ✅ Fetch and update main number
 async function fetchMainNumber() {
