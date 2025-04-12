@@ -79,7 +79,7 @@ async function isLiveTime() {
         (now >= eveningStart && now < eveningEnd);
 
       isHoliday = false;
-    } else {
+    } else if (data.holiday.status === "3") {
       isHoliday = true;
     }
 
@@ -260,12 +260,12 @@ async function fetchFinishedResults() {
 
     const lastData = Array.isArray(data) && data.length > 0 ? data[0] : null;
 
-
     if (!isHoliday) {
       // Ensure we return valid lastData when the date matches
       if (lastData && lastData.date === new Date().toISOString().split("T")[0]) {
         return lastData || {};
       } else {
+
         return lastData || {};
       }
     } else {
@@ -306,9 +306,27 @@ async function renderingShowingLastResults() {
     }
 
 
+    // Adjustment API Error
+    if(!finishedResults.child[3] && isHoliday){
+      finishedResults.child[3] = 
+      {
+        "time": "16:30:00",
+        "set": "1,128.66",
+        "value": "34,662.31",
+        "twod": "62",
+        "history_id": "1967296"
+    }
+    
+      finishedDateTime = '2025-04-11 16:30:01';
+    }
+
+    
+    
+
     if(isHoliday){
       renderMorningInPage(finishedResults.child[1].set, finishedResults.child[1].value, finishedResults.child[1].twod);
       renderEveningInPage(finishedResults.child[3].set, finishedResults.child[3].value, finishedResults.child[3].twod);
+
     } else {
 
           //IN !HOLIDAY 
@@ -347,7 +365,7 @@ async function renderingShowingLastResults() {
     }
 
 
-  if (!isLiveActive){
+  if (!isLiveActive && !isHoliday) {
     if(now > eveningEnd){
       if (finishedResults.child[3]) {
         mainNumberElement.innerHTML = finishedResults.child[3].twod;
