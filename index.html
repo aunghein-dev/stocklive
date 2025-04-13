@@ -49,55 +49,7 @@
     ></script>
     <!--google ads-->
 
-    <!--MoneyTag-->
 
-      <!--Top Push Notification (Desktop + Tablet only)-->
-      <script>
-        if (window.innerWidth >= 768) { // 768px and above = tablet and desktop
-          var topPushScript = document.createElement('script');
-          topPushScript.src = "https://staupsoaksy.net/act/files/tag.min.js?z=9207319";
-          topPushScript.setAttribute('data-cfasync', 'false');
-          topPushScript.async = true;
-          document.head.appendChild(topPushScript);
-        }
-      </script>
-
-      <!--Vignette Banner-->
-      <script>
-        (function(d, z, s) {
-          s.src = 'https://' + d + '/401/' + z;
-          try {
-            (document.body || document.documentElement).appendChild(s)
-          } catch (e) {}
-        })('gizokraijaw.net', 9207355, document.createElement('script'));
-      </script>
-
-      <!--Native Banner-->
-      <script>
-        (function(d, z, s) {
-          s.src = 'https://' + d + '/401/' + z;
-          try {
-            (document.body || document.documentElement).appendChild(s)
-          } catch (e) {}
-        })('groleegni.net', 9207348, document.createElement('script'));
-      </script>
-
-      <!--Push Notification (No screen check – will load on all devices)-->
-      <script src="https://shoukigaigoors.net/act/files/tag.min.js?z=9207319" data-cfasync="false" async></script>
-
-      <!--InPage Push Notification (Desktop + Tablet only)-->
-      <script>
-        if (window.innerWidth >= 768) {
-          (function(d, z, s) {
-            s.src = 'https://' + d + '/400/' + z;
-            try {
-              (document.body || document.documentElement).appendChild(s);
-            } catch (e) {}
-          })('vemtoutcheeg.com', 9207359, document.createElement('script'));
-        }
-      </script>
-
-      <!--MoneyTag-->
     
   </head>
 
@@ -291,6 +243,46 @@
 <div class="text-center">
   © <span id="currentYear"></span>. All rights reserved.
 </div>
+
+<!-- Monetag Ads – Load after DOM is ready -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Top Push Notification (Desktop + Tablet only)
+    if (window.innerWidth >= 768) {
+      var topPushScript = document.createElement('script');
+      topPushScript.src = "https://staupsoaksy.net/act/files/tag.min.js?z=9207319";
+      topPushScript.setAttribute('data-cfasync', 'false');
+      topPushScript.async = true;
+      document.body.appendChild(topPushScript);
+    }
+
+    // Push Notification (for all devices)
+    var pushScript = document.createElement('script');
+    pushScript.src = "https://shoukigaigoors.net/act/files/tag.min.js?z=9207319";
+    pushScript.setAttribute('data-cfasync', 'false');
+    pushScript.async = true;
+    document.body.appendChild(pushScript);
+
+    // Vignette Banner
+    var vignette = document.createElement('script');
+    vignette.src = 'https://gizokraijaw.net/401/9207355';
+    document.body.appendChild(vignette);
+
+    // Native Banner
+    var nativeBanner = document.createElement('script');
+    nativeBanner.src = 'https://groleegni.net/401/9207348';
+    document.body.appendChild(nativeBanner);
+
+    // InPage Push (Desktop + Tablet only)
+    if (window.innerWidth >= 300) {
+      var inPagePush = document.createElement('script');
+      inPagePush.src = 'https://vemtoutcheeg.com/400/9207359';
+      document.body.appendChild(inPagePush);
+    }
+  });
+</script>
+
+
   </body>
   <script>
     document.getElementById("currentYear").textContent =
