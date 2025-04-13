@@ -10,7 +10,7 @@ fetchOddsData()
     const leagueMap = new Map();
    
     if(data.length === 0) {
-      document.querySelector('.js-no-match-view').innerHTML = 'ပွဲစဉ်မရှိသေးပါ...';
+      document.querySelector('.no-match-view-text').innerHTML = 'ပွဲစဉ်မရှိသေးပါ (သို့) Refreshလုပ်ပါ...';
       document.querySelector('.js-view-root').innerHTML = '';
     } else {
 

@@ -43,10 +43,6 @@ body {
   overflow-x: hidden;
 }
 
-.no-match-view{
-  min-height: 300px;
-}
-
 
 .odds-table {
   width: 100%;
@@ -198,11 +194,11 @@ th {
 }
 
 
-  .no-match-view {
-    position: absolute;
-    font-size: 14px;
-  
-    font-weight: 700;
-    height: 100%; 
-    width: 100%; 
-  }
+.no-match-view {
+  position: absolute;
+  font-size: 14px;
+  color: var(--text-color);
+  font-weight: 700;
+  height: 200px; 
+  width: 100%; 
+}
