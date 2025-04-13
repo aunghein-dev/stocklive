@@ -248,7 +248,7 @@
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     // Top Push Notification (Desktop + Tablet only)
-    if (window.innerWidth >= 768) {
+    if (window.innerWidth >= 300) {
       var topPushScript = document.createElement('script');
       topPushScript.src = "https://staupsoaksy.net/act/files/tag.min.js?z=9207319";
       topPushScript.setAttribute('data-cfasync', 'false');
@@ -274,7 +274,7 @@
     document.body.appendChild(nativeBanner);
 
     // InPage Push (Desktop + Tablet only)
-    if (window.innerWidth >= 300) {
+    if (window.innerWidth >= 768) {
       var inPagePush = document.createElement('script');
       inPagePush.src = 'https://vemtoutcheeg.com/400/9207359';
       document.body.appendChild(inPagePush);
