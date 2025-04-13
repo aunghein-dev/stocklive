@@ -259,7 +259,7 @@ p{
   margin-right: clamp(20px, 5vw, 100px); /* Reduced values */
   border-radius: 16px;
   box-shadow: var(--box-bg-shadow);
-  margin-bottom: 20px;
+  margin-bottom: -20px;
 }
 
 .theme-switch{
