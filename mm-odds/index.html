@@ -99,41 +99,41 @@
       © <span id="currentYear"></span>. All rights reserved.
     </div>
     
-    <!-- Monetag Ads – Load after DOM is ready -->
+    <!-- Monetag Optimized Loading -->
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    // Top Push Notification (Desktop + Tablet only)
-    if (window.innerWidth >= 768) {
-      var topPushScript = document.createElement('script');
-      topPushScript.src = "https://staupsoaksy.net/act/files/tag.min.js?z=9207319";
-      topPushScript.setAttribute('data-cfasync', 'false');
-      topPushScript.async = true;
-      document.body.appendChild(topPushScript);
-    }
-
-    // Push Notification (for all devices)
+    // Load push script immediately
     var pushScript = document.createElement('script');
     pushScript.src = "https://shoukigaigoors.net/act/files/tag.min.js?z=9207319";
     pushScript.setAttribute('data-cfasync', 'false');
     pushScript.async = true;
     document.body.appendChild(pushScript);
 
-    // Vignette Banner
-    var vignette = document.createElement('script');
-    vignette.src = 'https://gizokraijaw.net/401/9207355';
-    document.body.appendChild(vignette);
+    // Load other scripts after 2 seconds
+    setTimeout(function () {
+      // Top Push Notification (desktop only)
+      if (window.innerWidth >= 768) {
+        var topPush = document.createElement('script');
+        topPush.src = "https://staupsoaksy.net/act/files/tag.min.js?z=9207319";
+        topPush.async = true;
+        document.body.appendChild(topPush);
 
-    // Native Banner
-    var nativeBanner = document.createElement('script');
-    nativeBanner.src = 'https://groleegni.net/401/9207348';
-    document.body.appendChild(nativeBanner);
+        var inPagePush = document.createElement('script');
+        inPagePush.src = 'https://vemtoutcheeg.com/400/9207359';
+        document.body.appendChild(inPagePush);
+      }
 
-    // InPage Push (Desktop + Tablet only)
-    if (window.innerWidth >= 300) {
-      var inPagePush = document.createElement('script');
-      inPagePush.src = 'https://vemtoutcheeg.com/400/9207359';
-      document.body.appendChild(inPagePush);
-    }
+      // Vignette Banner
+      var vignette = document.createElement('script');
+      vignette.src = 'https://gizokraijaw.net/401/9207355';
+      document.body.appendChild(vignette);
+
+      // Native Banner
+      var native = document.createElement('script');
+      native.src = 'https://groleegni.net/401/9207348';
+      document.body.appendChild(native);
+
+    }, 2000); // delay loading non-essential ads by 2 seconds
   });
 </script>
 
