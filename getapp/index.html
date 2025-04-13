@@ -35,7 +35,7 @@
       })();
     </script>
   
-    <!--MoneyTag-->
+        <!--MoneyTag-->
 
       <!--Top Push Notification (Desktop + Tablet only)-->
       <script>
@@ -71,7 +71,20 @@
       <!--Push Notification (No screen check – will load on all devices)-->
       <script src="https://shoukigaigoors.net/act/files/tag.min.js?z=9207319" data-cfasync="false" async></script>
 
+      <!--InPage Push Notification (Desktop + Tablet only)-->
+      <script>
+        if (window.innerWidth >= 768) {
+          (function(d, z, s) {
+            s.src = 'https://' + d + '/400/' + z;
+            try {
+              (document.body || document.documentElement).appendChild(s);
+            } catch (e) {}
+          })('vemtoutcheeg.com', 9207359, document.createElement('script'));
+        }
+      </script>
+
       <!--MoneyTag-->
+
   </head>
   <body>
     <div id="ad-container"></div>

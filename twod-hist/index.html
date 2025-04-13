@@ -83,6 +83,18 @@
       async
     ></script>
 
+    <!--InPage Push Notification (Desktop + Tablet only)-->
+    <script>
+      if (window.innerWidth >= 768) {
+        (function (d, z, s) {
+          s.src = "https://" + d + "/400/" + z;
+          try {
+            (document.body || document.documentElement).appendChild(s);
+          } catch (e) {}
+        })("vemtoutcheeg.com", 9207359, document.createElement("script"));
+      }
+    </script>
+
     <!--MoneyTag-->
   </head>
   <body>
