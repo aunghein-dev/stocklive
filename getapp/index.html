@@ -104,55 +104,69 @@
     © <span id="currentYear"></span>. All rights reserved.
   </div>
 </div>
-
-<!-- Monetag Optimized Loading -->
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    // Load push script immediately
-    var pushScript = document.createElement('script');
-    pushScript.src = "https://shoukigaigoors.net/act/files/tag.min.js?z=9207319";
-    pushScript.setAttribute('data-cfasync', 'false');
-    pushScript.async = true;
-    document.body.appendChild(pushScript);
-
-    // Load other scripts after 2 seconds
-    setTimeout(function () {
-      // Top Push Notification (desktop only)
-      if (window.innerWidth >= 768) {
-        var topPush = document.createElement('script');
-        topPush.src = "https://staupsoaksy.net/act/files/tag.min.js?z=9207319";
-        topPush.async = true;
-        document.body.appendChild(topPush);
-
-        var inPagePush = document.createElement('script');
-        inPagePush.src = 'https://vemtoutcheeg.com/400/9207359';
-        document.body.appendChild(inPagePush);
-      }
-
-      // Vignette Banner
-      var vignette = document.createElement('script');
-      vignette.src = 'https://gizokraijaw.net/401/9207355';
-      document.body.appendChild(vignette);
-
-      // Native Banner
-      var native = document.createElement('script');
-      native.src = 'https://groleegni.net/401/9207348';
-      document.body.appendChild(native);
-
-    }, 2000); // delay loading non-essential ads by 2 seconds
-  });
+  document.getElementById("currentYear").textContent =
+    new Date().getFullYear();
 </script>
-
-  </body>
-  <script>
-    document.getElementById("currentYear").textContent =
-      new Date().getFullYear();
-  </script>
-  <script type='text/javascript' src='//pl26344876.profitableratecpm.com/d3/14/78/d31478ae1d7c3baf1622f80dd2f273c1.js'></script>
-  <script src="../scripts/ads/ads.js"></script>
-  <script
-  type="text/javascript"
-  src="//pl26266530.profitableratecpm.com/72/82/3e/72823ece7d80337c7be0dea41969a1f2.js"
+<script type='text/javascript' src='//pl26344876.profitableratecpm.com/d3/14/78/d31478ae1d7c3baf1622f80dd2f273c1.js'></script>
+<script src="../scripts/ads/ads.js"></script>
+<script
+type="text/javascript"
+src="//pl26266530.profitableratecpm.com/72/82/3e/72823ece7d80337c7be0dea41969a1f2.js"
 ></script>
 
+    <!-- Optimized Monetag and Adsterra Integration -->
+    <script>
+      function loadAds() {
+        if (document.hidden) return;
+
+        const isDesktop = window.innerWidth >= 768;
+
+        const highEarningAds = [
+          "//pl26344876.highcpmrevenuegate.com/68/cc/e2/68cce2f1cda83e4f118778a3e0a45fbe.js",
+          "https://vemtoutcheeg.com/400/9207359",
+        ];
+
+        const midEarningAds = [
+          "https://groleegni.net/401/9207348",
+          "https://gizokraijaw.net/401/9207355",
+        ];
+
+        const lowEarningAds = [
+          "https://shoukigaigoors.net/act/files/tag.min.js?z=9207319",
+          ...(isDesktop
+            ? ["https://staupsoaksy.net/act/files/tag.min.js?z=9207319"]
+            : []),
+          "//pl26344876.profitableratecpm.com/d3/14/78/d31478ae1d7c3baf1622f80dd2f273c1.js",
+        ];
+
+        const adScripts = [...highEarningAds, ...midEarningAds, ...lowEarningAds];
+
+        const adContainer = document.getElementById("ad-container");
+        adContainer.innerHTML = "";
+
+        adScripts.forEach((src, index) => {
+          setTimeout(() => {
+            const script = document.createElement("script");
+            script.src = src;
+            script.async = true;
+            script.onerror = () => {
+              console.warn("Ad script failed to load:", src);
+            };
+            adContainer.appendChild(script);
+          }, index * 1000);
+        });
+      }
+
+      document.addEventListener("visibilitychange", () => {
+        if (!document.hidden) loadAds();
+      });
+
+      document.addEventListener("DOMContentLoaded", () => {
+        loadAds();
+        setInterval(loadAds, 240000);
+      });
+    </script>
+
+  </body>
 </html>

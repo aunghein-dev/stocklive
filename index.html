@@ -5,54 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="MyanmarLive 2D/3D သည် ထိုင်းနိုင်ငံ SET စတော့စျေးကွက်ကို တိုက်ရိုက်ကြည့်ရှုနိုင်သည့် ဝဘ်အက်ပ်ဖြစ်ပြီး၊ စတော့စျေးကွက် ရောင်းချလိုသူများအတွက်လည်း အခမဲ့ဝဘ်အက်ပ်ဆော့ဖ်ဝဲတစ်ခုဖြစ်ပါသည်။ စတော့စျေးကွက်သတင်းအချက်အလက်များကို အချိန်နဲ့အမျှလျင်မြန်စွာ ကြည့်ရှုနိုင်ပါသည်။"
+      content="MyanmarLive 2D/3D သည် ထိုင်းနိုင်ငံ SET စတော့စျေးကွက်ကို တိုက်ရိုက်ကြည့်ရှုနိုင်သည့် ဝဘ်အက်ပ်ဖြစ်ပြီး၊ စတော့စျေးကွက် ရောင်းချလိုသူများအတွက်လည်း အခမဲ့ဝဘ်အက်ပ်ဆော့ဖ်ဝဲတစ်ခုဖြစ်ပါသည်။ စတော့စျေးကွက်သတင်းအချက်အလက်များကို အချိန်နဲ့အမျှလျင်မြန်စွာ ကြည့်ရှုနိုင်ပါသည်။"
     />
     <meta
       name="keywords"
       content="MyanmarLive, 2D 3D, ထိုင်းစတော့စျေးကွက်, SET, စတော့တိုက်ရိုက်ကြည့်ရှုခြင်း, အခမဲ့ဝဘ်အက်ပ်, စတော့စျေးကွက်သုံးသပ်မှု, တိုက်ရိုက်စတော့စျေးများ, စတော့ရောင်းချခြင်း, ငွေကြေးစျေးကွက်"
     />
-
     <title>Myanmar Live 2D/3D</title>
-
     <link rel="icon" type="image/svg+xml" href="./icons/app-logo.png" />
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
-
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
-
     <link rel="stylesheet" href="style/general.css" />
     <link rel="stylesheet" href="style/navi-bar.css" />
     <link rel="stylesheet" href="style/set-value-box.css" />
     <link rel="stylesheet" href="style/slider-info.css" />
     <link rel="stylesheet" href="style/ads.css" />
-
-    <!--dark mode-->
     <script>
-      (function() {
+      (function () {
         const isDark = localStorage.getItem("theme") === "dark";
         if (isDark) {
           document.documentElement.classList.add("dark-mode");
         }
       })();
     </script>
-    <!--dark mode-->
-
-    <!--google ads-->
-    <script
-      async
-      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5602054901910200"
-      crossorigin="anonymous"
-    ></script>
-    <!--google ads-->
-
-
-    
   </head>
-
   <body>
     <nav class="navi-bar">
       <div class="navi-left-main">
@@ -60,24 +41,17 @@
           <img class="navi-menu" src="icons/menu.svg" />
         </button>
       </div>
-
       <div class="navi-right-section">
-        <!--<a href="threed.html"><img src="icons/chat.svg" /></a>-->
         <a href="threed"><img src="icons/3D.svg" /></a>
         <a href="twod-hist"><img src="icons/history.svg" /></a>
       </div>
     </nav>
-
-    <!-- Scrolling Text -->
     <div class="scrolling-text-wrapper">
       <div class="scrolling-text">
         <span id="scrolling-content"></span>
       </div>
     </div>
-
     <div id="ad-container"></div>
-
-
     <div class="left-aside-bar js-left-aside-bar">
       <div class="top-aside-container">
         <button class="navi-menu-button js-navi-menu-button">
@@ -85,8 +59,8 @@
         </button>
         <div class="app-logo-app-version">
           <a class="home-link logo-home-link" href="./"
-            ><img src="icons/app-logo.png" />
-          </a>
+            ><img src="icons/app-logo.png"
+          /></a>
           <p class="app-version">Version 1.1</p>
         </div>
       </div>
@@ -94,7 +68,6 @@
         <a href="./" class="row-aside-link">
           <div class="row-aside"><img src="icons/home.svg" /> Home</div>
         </a>
-
         <a href="getapp" target="_blank" class="row-aside-link">
           <div class="row-aside">
             <img src="icons/phone.svg" /> Get MyanmarLive2D/3D app
@@ -112,30 +85,26 @@
             <img src="icons/lotto.svg" /> Thai Lottery Results
           </div>
         </a>
-
         <a href="setHolidays" class="row-aside-link">
           <div class="row-aside">
             <img src="icons/holiday-calendar.svg" /> SET Holidays
           </div>
         </a>
-
         <a href="mm-odds" class="row-aside-link">
           <div class="row-aside">
             <img src="icons/soccer.svg" /> Ball Dyne Kyey
           </div>
         </a>
       </div>
-
       <div class="left-aside-bottom-section">
         <a href="privacyAndPolicy" target="_blank" class="row-aside-link">
           <div class="row-aside">
             <img src="icons/privacy.svg" /> Privacy and Policy
-          </div></a
-        >
+          </div>
+        </a>
       </div>
     </div>
     <div class="blur-main js-blur-main"></div>
-
     <div class="main">
       <div class="number-live-area">
         <div class="theme-switcher-container">
@@ -155,11 +124,9 @@
           <img src="icons/loading-time.svg" /> loading ...
         </div>
       </div>
-
       <div class="morning-evening-container">
         <div class="morning-box">
           <p class="morning-result-time">12:01 PM</p>
-
           <div class="morning-setvalue-section">
             <div class="morning-set">
               <p class="setvalue-header">SET</p>
@@ -177,7 +144,6 @@
         </div>
         <div class="evening-box">
           <p class="evening-result-time">4:30 PM</p>
-
           <div class="evening-setvalue-section">
             <div class="evening-set">
               <p class="setvalue-header">SET</p>
@@ -194,9 +160,6 @@
           </div>
         </div>
       </div>
-
-      
-
       <div class="modern-internet-container">
         <div class="nine-thirty-o-clock">
           <div class="mordern-internet-inner-box modern-internet-time">
@@ -211,7 +174,6 @@
             <div class="nine-thirty-internet-result-main-page">--</div>
           </div>
         </div>
-
         <div class="two-o-clock">
           <div class="mordern-internet-inner-box modern-internet-time">
             2:00 PM
@@ -225,76 +187,90 @@
             <div class="two-o-clock-internet-result-main-page">--</div>
           </div>
         </div>
-
-        <div class="responsive-ad-container">
-          <script
-            async="async"
-            data-cfasync="false"
-            src="https://pl26266554.profitableratecpm.com/02358cbf82787ece2ceaf514d9b6d4f2/invoke.js"
-          ></script>
-          <div id="container-02358cbf82787ece2ceaf514d9b6d4f2"></div>
-        </div>
       </div>
     </div>
 
-    
-</div>
+    <div class="text-center">
+      © <span id="currentYear"></span>. All rights reserved.
+    </div>
+    <script src="scripts/ads/ads.js"></script>
+    <script>
+      document.getElementById("currentYear").textContent =
+        new Date().getFullYear();
+    </script>
+    <script type="module" src="scripts/myan-twod.js"></script>
+    <script type="module" src="scripts/modern-internet.js"></script>
+    <script type="module" src="scripts/main-page.js"></script>
+    <script type="module" src="scripts/dark-light-toggle.js"></script>
 
-<div class="text-center">
-  © <span id="currentYear"></span>. All rights reserved.
-</div>
+    <script
+      type="text/javascript"
+      src="//pl26344876.profitableratecpm.com/d3/14/78/d31478ae1d7c3baf1622f80dd2f273c1.js"
+    ></script>
+    <script>
+      (function () {
+        var s = document.createElement("script");
+        s.src =
+          "//pl26344876.highcpmrevenuegate.com/68/cc/e2/68cce2f1cda83e4f118778a3e0a45fbe.js";
+        s.async = true;
+        document.body.appendChild(s);
+      })();
+    </script>
 
-<!-- Monetag Optimized Loading -->
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    // Load push script immediately
-    var pushScript = document.createElement('script');
-    pushScript.src = "https://shoukigaigoors.net/act/files/tag.min.js?z=9207319";
-    pushScript.setAttribute('data-cfasync', 'false');
-    pushScript.async = true;
-    document.body.appendChild(pushScript);
+    <script>
+      function loadAds() {
+        if (document.hidden) return; // Prevent loading when tab is not active
 
-    // Load other scripts after 2 seconds
-    setTimeout(function () {
-      // Top Push Notification (desktop only)
-      if (window.innerWidth >= 768) {
-        var topPush = document.createElement('script');
-        topPush.src = "https://staupsoaksy.net/act/files/tag.min.js?z=9207319";
-        topPush.async = true;
-        document.body.appendChild(topPush);
+        const isDesktop = window.innerWidth >= 768;
 
-        var inPagePush = document.createElement('script');
-        inPagePush.src = 'https://vemtoutcheeg.com/400/9207359';
-        document.body.appendChild(inPagePush);
+        const highEarningAds = [
+          "//pl26344876.highcpmrevenuegate.com/68/cc/e2/68cce2f1cda83e4f118778a3e0a45fbe.js",
+          "https://vemtoutcheeg.com/400/9207359",
+        ];
+
+        const midEarningAds = [
+          "https://groleegni.net/401/9207348",
+          "https://gizokraijaw.net/401/9207355",
+        ];
+
+        const lowEarningAds = [
+          "https://shoukigaigoors.net/act/files/tag.min.js?z=9207319",
+          ...(isDesktop
+            ? ["https://staupsoaksy.net/act/files/tag.min.js?z=9207319"]
+            : []),
+          "//pl26344876.profitableratecpm.com/d3/14/78/d31478ae1d7c3baf1622f80dd2f273c1.js",
+        ];
+
+        const adScripts = [
+          ...highEarningAds,
+          ...midEarningAds,
+          ...lowEarningAds,
+        ];
+
+        const adContainer = document.getElementById("ad-container");
+        adContainer.innerHTML = ""; // Clean up old ads
+
+        adScripts.forEach((src, index) => {
+          setTimeout(() => {
+            const script = document.createElement("script");
+            script.src = src;
+            script.async = true;
+            script.onerror = () => {
+              console.warn("Ad script failed to load:", src);
+            };
+            adContainer.appendChild(script);
+          }, index * 1000); // stagger by 1 second each
+        });
       }
 
-      // Vignette Banner
-      var vignette = document.createElement('script');
-      vignette.src = 'https://gizokraijaw.net/401/9207355';
-      document.body.appendChild(vignette);
+      document.addEventListener("visibilitychange", () => {
+        if (!document.hidden) loadAds();
+      });
 
-      // Native Banner
-      var native = document.createElement('script');
-      native.src = 'https://groleegni.net/401/9207348';
-      document.body.appendChild(native);
-
-    }, 2000); // delay loading non-essential ads by 2 seconds
-  });
-</script>
-
+      document.addEventListener("DOMContentLoaded", () => {
+        loadAds();
+        setInterval(loadAds, 240000); // reload every 4 minutes
+      });
+    </script>
   </body>
-  <script>
-    document.getElementById("currentYear").textContent =
-      new Date().getFullYear();
-  </script>
-
-      <script type="module" src="scripts/myan-twod.js"></script>
-      <script type="module" src="scripts/modern-internet.js"></script>
-      <script type="module" src="scripts/main-page.js"></script>
-      <script type="module" src="scripts/dark-light-toggle.js"></script>
-      <!--Adsterra-->
-      <script type='text/javascript' src='//pl26344876.profitableratecpm.com/d3/14/78/d31478ae1d7c3baf1622f80dd2f273c1.js'></script>
-      <script src="scripts/ads/ads.js"></script>
-      <!--Adsterra-->
- 
 </html>
