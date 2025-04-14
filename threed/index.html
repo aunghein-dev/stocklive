@@ -94,9 +94,6 @@
           ...lowEarningAds,
         ];
 
-        const adContainer = document.getElementById("ad-container");
-        adContainer.innerHTML = "";
-
         adScripts.forEach((src, index) => {
           setTimeout(() => {
             const script = document.createElement("script");

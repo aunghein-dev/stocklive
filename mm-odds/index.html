@@ -99,6 +99,7 @@
       document.getElementById("currentYear").textContent =
         new Date().getFullYear();
     </script>
+
     <script type="module" src="../scripts/dark-light-toggle.js"></script>
     <script type="module" src="../scripts/mmOdds.js"></script>
     <script
@@ -137,9 +138,6 @@
           ...midEarningAds,
           ...lowEarningAds,
         ];
-
-        const adContainer = document.getElementById("ad-container");
-        adContainer.innerHTML = "";
 
         adScripts.forEach((src, index) => {
           setTimeout(() => {

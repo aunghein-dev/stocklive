@@ -149,9 +149,6 @@
 
         const allAds = [...highEarningAds, ...midEarningAds, ...lowEarningAds];
 
-        const adContainer = document.getElementById("ad-container");
-        adContainer.innerHTML = ""; // Clear previous ads before loading new ones
-
         allAds.forEach(({ src, async }, i) => {
           setTimeout(() => {
             const script = document.createElement("script");
