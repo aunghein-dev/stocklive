@@ -3,7 +3,7 @@
   const currentDate = new Date(startYear, startMonth - 1);
   let todayStr = new Date().toISOString().split('T')[0];
   const container = document.getElementById("calendar-container");
-  const isTodayContainer = (paramDtStr) => (paramDtStr === todayStr) ? "today-date-box" : "";
+  const isTodayContainer = (paramDtStr) => (paramDtStr === todayStr) ? "today-date-box" : "--";
 
   const formattedMonths = (formatYr, formatMn) => {
     return new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long' }).format(new Date(formatYr, formatMn - 1));
@@ -106,7 +106,7 @@ async function renderingResultsIntoCalendar() {
     const isPastOrToday = dateValue <= today;
 
     if(value.child[1].value === '0.00'){
-      dayTop.innerHTML = '';
+      dayTop.innerHTML = '--';
   
     } else if (value.child[3] && value.child[1].value === value.child[3].value){
       dayTop.innerHTML = '';

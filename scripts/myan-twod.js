@@ -1,6 +1,7 @@
 import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js';
 import { mainCachedEvening } from './repo/cachedEveningRepo.js';
 import { mainCachedMorning } from './repo/cachedMorningRepo.js';
+import {loadHolidays, holidays} from './service/set-holidays-api.js';
 
 let mainNumberElement = document.querySelector('.js-main-number');
 let finishedDateTime = '';
@@ -278,6 +279,23 @@ async function fetchFinishedResults() {
   }
 }
 
+
+
+let holidaysArr = [];
+
+function loadHolidaysArr(){
+  if (!JSON.parse(localStorage.getItem("cachedSetHolidays"))){
+    loadHolidays();
+  }
+  let holidays = JSON.parse(localStorage.getItem("cachedSetHolidays")) || [];
+  holidays
+   .forEach(holiday => {
+     holidaysArr.push(holiday.date);
+   })
+}
+
+loadHolidaysArr();
+
 async function renderingShowingLastResults() {
 
   let now = new Date();
@@ -305,11 +323,13 @@ async function renderingShowingLastResults() {
       return;
     }
 
+  
 
-    if(isHoliday){
+    if(holidaysArr.includes(dayjs().format("YYYY-MM-DD")) || isHoliday){
       renderMorningInPage('--', '--', '--');
-      renderEveningInPage(finishedResults.child[3].set, finishedResults.child[3].value, finishedResults.child[3].twod);
-
+      renderEveningInPage('--', '--', '--');
+      mainNumberElement.innerHTML = "--";
+      updatedTimeContainer.innerHTML = `No data available...`;
     } else {
 
           //IN !HOLIDAY 
@@ -345,34 +365,31 @@ async function renderingShowingLastResults() {
           }
 
         }
+
+        if (!isLiveActive && !isHoliday) {
+          if(now > eveningEnd){
+            if (finishedResults.child[3]) {
+              mainNumberElement.innerHTML = finishedResults.child[3].twod;
+            } else {
+              mainNumberElement.innerHTML = mainCachedEvening.twod;
+            }
+          } else if (now > morningEnd && now > eveningStart){
+            if (finishedResults.child[1]) {
+              mainNumberElement.innerHTML = finishedResults.child[1].twod;
+            } else {
+              mainNumberElement.innerHTML = mainCachedMorning.twod;
+            }
+          }
+        }
+
+        if (!isLiveActive && !isHoliday ) {
+          if (now < eveningEnd && now > morningEnd) {
+            updatedTimeContainer.innerHTML = `<img src="icons/green-tick.svg" /> Updated at ${dayjs().format("YYYY-MM-DD 12:01:01")}`;
+          } else if (now > eveningEnd && now < morningStart) {
+            updatedTimeContainer.innerHTML = `<img src="icons/green-tick.svg" /> Updated at ${dayjs().format("YYYY-MM-DD 16:30:01")}`;
+          } 
+        } 
     }
-
-
-  if (!isLiveActive && !isHoliday) {
-    if(now > eveningEnd){
-      if (finishedResults.child[3]) {
-        mainNumberElement.innerHTML = finishedResults.child[3].twod;
-      } else {
-        mainNumberElement.innerHTML = mainCachedEvening.twod;
-      }
-    } else if (now > morningEnd && now > eveningStart){
-      if (finishedResults.child[1]) {
-        mainNumberElement.innerHTML = finishedResults.child[1].twod;
-      } else {
-        mainNumberElement.innerHTML = mainCachedMorning.twod;
-      }
-    }
-  }
-
-    if (!isLiveActive && !isHoliday) {
-      if (now < eveningEnd && now > morningEnd) {
-        updatedTimeContainer.innerHTML = `<img src="icons/green-tick.svg" /> Updated at ${dayjs().format("YYYY-MM-DD 12:01:01")}`;
-      } else if (now > eveningEnd && now < morningStart) {
-        updatedTimeContainer.innerHTML = `<img src="icons/green-tick.svg" /> Updated at ${dayjs().format("YYYY-MM-DD 16:30:01")}`;
-      } 
-    }
-
-
     
 
 
