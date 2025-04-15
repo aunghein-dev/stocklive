@@ -307,7 +307,7 @@ async function renderingShowingLastResults() {
 
 
     if(isHoliday){
-      renderMorningInPage(finishedResults.child[1].set, finishedResults.child[1].value, finishedResults.child[1].twod);
+      renderMorningInPage('--', '--', '--');
       renderEveningInPage(finishedResults.child[3].set, finishedResults.child[3].value, finishedResults.child[3].twod);
 
     } else {
