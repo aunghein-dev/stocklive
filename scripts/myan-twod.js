@@ -244,7 +244,7 @@ async function fetchFinishedTime() {
 
     // Find the latest stock_datetime from filtered results
     validResults.sort((a, b) => new Date(b.stock_datetime) - new Date(a.stock_datetime));
-
+    
     return validResults[0].stock_datetime;
 
   } catch (error) {
@@ -368,12 +368,14 @@ async function renderingShowingLastResults() {
 
         if (!isLiveActive && !isHoliday) {
           if(now > eveningEnd){
+            updatedTimeContainer.innerHTML = `<img src="icons/green-tick.svg" /> Updated at ${dayjs().format("YYYY-MM-DD 16:30:01")}`;
             if (finishedResults.child[3]) {
               mainNumberElement.innerHTML = finishedResults.child[3].twod;
             } else {
               mainNumberElement.innerHTML = mainCachedEvening.twod;
             }
           } else if (now > morningEnd && now > eveningStart){
+            updatedTimeContainer.innerHTML = `<img src="icons/green-tick.svg" /> Updated at ${dayjs().format("YYYY-MM-DD 12:01:01")}`;
             if (finishedResults.child[1]) {
               mainNumberElement.innerHTML = finishedResults.child[1].twod;
             } else {
@@ -381,23 +383,11 @@ async function renderingShowingLastResults() {
             }
           }
         }
-
-        if (!isLiveActive && !isHoliday ) {
-          if (now < eveningEnd && now > morningEnd) {
-            updatedTimeContainer.innerHTML = `<img src="icons/green-tick.svg" /> Updated at ${dayjs().format("YYYY-MM-DD 12:01:01")}`;
-          } else if (now > eveningEnd && now < morningStart) {
-            updatedTimeContainer.innerHTML = `<img src="icons/green-tick.svg" /> Updated at ${dayjs().format("YYYY-MM-DD 16:30:01")}`;
-          } 
-        } 
     }
-    
-
-
   } catch (error) {
     console.error("Error fetching finished results:", error);
   }
 }
-
 
 
 function renderingResultNormal() {
