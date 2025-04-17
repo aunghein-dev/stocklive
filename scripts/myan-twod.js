@@ -325,7 +325,7 @@ async function renderingShowingLastResults() {
 
   
 
-    if(holidaysArr.includes(dayjs().format("YYYY-MM-DD")) || isHoliday){
+    if(holidaysArr.includes(dayjs().format("YYYY-MM-DD"))){
       renderMorningInPage('--', '--', '--');
       renderEveningInPage('--', '--', '--');
       mainNumberElement.innerHTML = "--";
