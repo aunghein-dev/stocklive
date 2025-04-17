@@ -21,12 +21,6 @@
         pointer-events: none !important;
       }
     </style>
-    <script
-      async
-      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5602054901910200"
-      crossorigin="anonymous"
-    ></script>
-
     <script>
       (function () {
         const isDark = localStorage.getItem("theme") === "dark";
@@ -43,9 +37,10 @@
         <p class="header-3D">Myanmar Odds</p>
       </nav>
 
-      <pre
-        class="loading-container js-loading-container"
-      ><img src="../icons/loading.svg">loading...</pre>
+      <div class="loading-container js-loading-container">
+        <img src="../icons/loading.svg" alt="Loading..." />
+        <p>loading...</p>
+      </div>
 
       <pre class="no-match-view js-no-match-view">
         <div class="no-match-view-text"

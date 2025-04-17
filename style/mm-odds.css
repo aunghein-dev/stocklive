@@ -186,6 +186,7 @@ th {
 
 .active{
   opacity: 1;
+  display: block;
 }
 
 .loading-container img{
