@@ -366,7 +366,7 @@ async function renderingShowingLastResults() {
 
         }
 
-        if (!isLiveActive && !isHoliday) {
+        if (!isLiveActive) {
           if(now > eveningEnd){
             updatedTimeContainer.innerHTML = `<img src="icons/green-tick.svg" /> Updated at ${dayjs().format("YYYY-MM-DD 16:30:01")}`;
             if (finishedResults.child[3]) {
