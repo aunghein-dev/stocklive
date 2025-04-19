@@ -6,6 +6,10 @@
 
     <link rel="icon" type="image/svg+xml" href="../icons/app-logo.png" />
     <link rel="icon" type="image/x-icon" href="../favicon.ico" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
     <title>MMLive Odds</title>
     <script src="https://cdn.jsdelivr.net/npm/luxon@3/build/global/luxon.min.js"></script>
     <link rel="stylesheet" href="../style/general.css" />
@@ -36,22 +40,30 @@
         <p class="header-3D">Myanmar Odds</p>
       </nav>
 
-      <pre class="no-match-view js-no-match-view">
-        <div class="no-match-view-text"
-         style="      
-         
-         max-width: 300px;
-         padding: 6px;
-         text-align: center;
-         position: absolute;
-         top: 150%;
-         left: 50%;
-         transform: translate(-50%, -50%);
-         border-radius: 8px;"></div>
-      </pre>
+      <div class="no-match-view js-no-match-view">
+        <div
+          class="no-match-view-text"
+          style="
+            padding: 6px;
+            text-align: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 8px;
+            z-index: 1000;
+          "
+        ></div>
+      </div>
       <div id="ad-container"></div>
       <div class="view-root js-view-root">
-        <div class="header-tag js-header-tag"></div>
+        <div class="header-container">
+          <div class="header-tag js-header-tag"></div>
+          <button class="copy-button">
+            <i class="material-icons">content_copy</i>
+          </button>
+        </div>
+
         <table class="odds-table">
           <thead>
             <tr class="header-row">
@@ -98,6 +110,40 @@
 
     <script type="module" src="../scripts/dark-light-toggle.js"></script>
     <script type="module" src="../scripts/mmOdds.js"></script>
+
+    <script>
+      document.querySelector(".copy-button")?.addEventListener("click", () => {
+        const rows = document.querySelectorAll(".js-odds-body tr");
+        let textToCopy = "";
+
+        rows.forEach((row) => {
+          const isHeader = row.classList.contains("match-group-header");
+          if (isHeader) {
+            const league = row.textContent.trim();
+            textToCopy += `\n${league}\n`;
+          } else {
+            const cells = row.querySelectorAll("td");
+            if (cells.length >= 4) {
+              const time = cells[0].textContent.trim();
+              const matchCell = cells[1];
+              const highlightedTeam =
+                matchCell.querySelector(".highlight")?.textContent.trim() || "";
+              const odd1 = cells[2].textContent.trim();
+              const odd2 = cells[3].textContent.trim();
+
+              if (highlightedTeam) {
+                textToCopy += `${time} ${highlightedTeam} ${odd1}/${odd2}\n`;
+              }
+            }
+          }
+        });
+
+        navigator.clipboard.writeText(textToCopy.trim()).then(() => {
+          alert("Copied to clipboard!");
+        });
+      });
+    </script>
+
     <script
       type="text/javascript"
       src="//pl26344876.profitableratecpm.com/d3/14/78/d31478ae1d7c3baf1622f80dd2f273c1.js"
