@@ -89,7 +89,10 @@
         </button>
         <div class="app-logo-app-version">
           <a class="home-link logo-home-link" href="./"
-            ><img src="icons/app-logo.png" />
+            ><img style="
+            object-fit: contain;
+            object-position: center;
+            " src="icons/app-log-transparent.png" />
           </a>
           <p class="app-version">Version 1.1</p>
         </div>
@@ -143,17 +146,21 @@
     <div class="main">
       <div class="number-live-area">
         <div class="theme-switcher-container">
+          <!-- Light mode icon -->
           <img
             class="theme-switch js-theme-switch theme-switch-light js-theme-switch-light"
             data-theme="light"
             src="icons/white-light-switch.svg"
           />
+          
+          <!-- Dark mode icon -->
           <img
             class="theme-switch js-theme-switch theme-switch-dark js-theme-switch-dark"
             data-theme="dark"
             src="icons/black-night-switch.svg"
           />
         </div>
+        
         <div class="main-number js-main-number">--</div>
         <div class="updated-time-container">
           <img src="icons/loading-time.svg" /> loading ...

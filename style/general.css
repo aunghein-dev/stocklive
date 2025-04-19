@@ -262,39 +262,49 @@ p{
   margin-bottom: -20px;
 }
 
-.theme-switch{
+.theme-switcher-container {
   height: 24px;
   position: absolute;
   top: 10px;
   left: 10px;
-  right: 0;
-  bottom: 0;
   cursor: pointer;
-  padding: 4px;
+  padding: 4px 6px;
   border-radius: 20px;
-  background-color: rgb(180, 180, 180);
+  background-color: rgba(103, 103, 103, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
   transition: 0.3s;
 }
-.theme-switch:hover{
+
+.theme-switcher-container:hover {
   scale: 1.1;
   border-radius: 20px;
 }
 
-.theme-switch-light-visible{
-  display: initial;
+.theme-switch {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  transition: opacity 0.3s ease-in-out;
 }
 
-.theme-switch-dark-visible{
-  display: initial;
-}
-
-.theme-switch-light-invisible{
+/* Initially hide the dark mode icon */
+.theme-switch-dark {
   display: none;
 }
 
-.theme-switch-dark-invisible{
+.dark-mode .theme-switch-light {
   display: none;
 }
+
+.dark-mode .theme-switch-dark {
+  display: inline-block;
+}
+.theme-switch {
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
 
 .main-number {
   color: var(--main-num-color);

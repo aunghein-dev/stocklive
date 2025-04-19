@@ -5,12 +5,16 @@ function toggleTheme() {
 }
 
 function updateThemeSwitch(isDark) {
-  document.querySelector('.js-theme-switch-light')?.classList.toggle('theme-switch-light-visible', isDark);
-  document.querySelector('.js-theme-switch-light')?.classList.toggle('theme-switch-light-invisible', !isDark);
+  const lightIcon = document.querySelector('.js-theme-switch-light');
+  const darkIcon = document.querySelector('.js-theme-switch-dark');
 
-  document.querySelector('.js-theme-switch-dark')?.classList.toggle('theme-switch-light-visible', !isDark);
-  document.querySelector('.js-theme-switch-dark')?.classList.toggle('theme-switch-light-invisible', isDark);
-
+  if (lightIcon && darkIcon) {
+    // Use opacity and visibility for smooth transition
+    lightIcon.style.opacity = isDark ? '0' : '1';
+    lightIcon.style.visibility = isDark ? 'hidden' : 'visible';
+    darkIcon.style.opacity = isDark ? '1' : '0';
+    darkIcon.style.visibility = isDark ? 'visible' : 'hidden';
+  }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
