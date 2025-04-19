@@ -323,7 +323,6 @@ async function renderingShowingLastResults() {
       return;
     }
 
-  
 
     if(holidaysArr.includes(dayjs().format("YYYY-MM-DD"))){
       renderMorningInPage('--', '--', '--');
@@ -366,7 +365,6 @@ async function renderingShowingLastResults() {
 
         }
 
-        if (!isLiveActive) {
           if(now > eveningEnd){
             updatedTimeContainer.innerHTML = `<img src="icons/green-tick.svg" /> Updated at ${dayjs().format("YYYY-MM-DD 16:30:01")}`;
             if (finishedResults.child[3]) {
@@ -381,8 +379,10 @@ async function renderingShowingLastResults() {
             } else {
               mainNumberElement.innerHTML = mainCachedMorning.twod;
             }
-          }
-        }
+          } else if (mainNumberElement.innerHTML === "--") {
+            updatedTimeContainer.innerHTML = `No data available...`;
+          } 
+        
     }
   } catch (error) {
     console.error("Error fetching finished results:", error);
@@ -396,12 +396,12 @@ function renderingResultNormal() {
   let updatedTimeContainer = document.querySelector(".updated-time-container");
 
   if (currentHour >= 12 && currentHour < 16) {
-    document.querySelector('.js-morning-result-digit').textContent = mainCachedMorning.twod;
+    document.querySelector('.js-morning-result-digit').textContent = mainNumberElement.textContent;
     updatedTimeContainer.innerHTML = `<img src="icons/green-tick.svg" /> Updated at ${dayjs().format("YYYY-MM-DD 12:01:01")}`;
   }
 
   if (currentHour >= 16) {
-    document.querySelector('.js-evening-result-digit').textContent = mainCachedEvening.twod;
+    document.querySelector('.js-evening-result-digit').textContent = mainNumberElement.textContent;
     updatedTimeContainer.innerHTML = `<img src="icons/green-tick.svg" /> Updated at ${dayjs().format("YYYY-MM-DD 16:30:01")}`;
   }
 
