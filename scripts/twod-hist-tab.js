@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+/*document.addEventListener("DOMContentLoaded", () => {
   const tabs = document.querySelectorAll(".tab-button");
   const panels = document.querySelectorAll(".tab-panel");
 
@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   });
 });
+*/
 
 
 

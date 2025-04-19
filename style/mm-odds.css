@@ -159,8 +159,6 @@ th {
   padding: 6px;
 }
 
-
-
 .loading-container{
   font-family: Roboto, Arial;
   position: fixed;
@@ -183,6 +181,18 @@ th {
 .loading-container{
   transition: opacity 0.5s ease-in-out;
 }
+
+.loading-items {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 
 .active{
   opacity: 1;
