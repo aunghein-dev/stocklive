@@ -3,7 +3,7 @@ import dayjs from "https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js";
 
 // Show loading spinner
 document.querySelector('.js-loading-container').classList.add('active');
-document.querySelector('.js-header-tag').innerHTML = `Myanmar ဘော်ဒီ၊ ဂိုးပေါင်း ပေါက်ကြေး (${dayjs().format('DD-MMM-YYYY')})`;
+document.querySelector('.js-header-tag').innerHTML = `Myanmar ဘော်ဒီ၊ ဂိုးပေါင်း (${dayjs().format('DD-MMM-YYYY')})`;
 
 fetchOddsData()
   .then(data => {
