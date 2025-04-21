@@ -374,7 +374,7 @@ async function renderingShowingLastResults() {
 
             console.log("here in evening");
             
-          } else if (now > morningEnd && now > eveningStart){
+          } else if (now > morningEnd && now < eveningStart){
 
             if (finishedResults.child[1]) {
               mainNumberElement.innerHTML = finishedResults.child[1].twod;
