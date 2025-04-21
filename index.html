@@ -62,14 +62,14 @@
     <nav class="navi-bar">
       <div class="navi-left-main">
         <button class="navi-menu-button js-navi-menu-button">
-          <img class="navi-menu" src="icons/menu.svg" />
+          <img class="navi-menu" src="icons/menu.svg" loading="lazy"/>
         </button>
       </div>
 
       <div class="navi-right-section">
         <!--<a href="threed.html"><img src="icons/chat.svg" /></a>-->
         <a href="threed"><img src="icons/3D.svg" /></a>
-        <a href="twod-hist"><img src="icons/history.svg" /></a>
+        <a href="twod-hist"><img src="icons/history.svg" loading="lazy"/></a>
       </div>
     </nav>
 
@@ -80,12 +80,14 @@
       </div>
     </div>
 
-    <div id="ad-container"></div>
+    <div id="ad-container">
+    </div>
+    
 
     <div class="left-aside-bar js-left-aside-bar">
       <div class="top-aside-container">
         <button class="navi-menu-button js-navi-menu-button">
-          <img class="navi-menu" src="icons/menu.svg" />
+          <img class="navi-menu" src="icons/menu.svg" loading="lazy"/>
         </button>
         <div class="app-logo-app-version">
           <a class="home-link logo-home-link" href="./"
@@ -99,42 +101,42 @@
       </div>
       <div class="left-aside-upper-section">
         <a href="./" class="row-aside-link">
-          <div class="row-aside"><img src="icons/home.svg" /> Home</div>
+          <div class="row-aside"><img src="icons/home.svg" loading="lazy"/> Home</div>
         </a>
 
         <a href="getapp" target="_blank" class="row-aside-link">
           <div class="row-aside">
-            <img src="icons/phone.svg" /> Get MyanmarLive2D/3D app
+            <img src="icons/phone.svg" loading="lazy"/> Get MyanmarLive2D/3D app
           </div>
         </a>
       </div>
       <div class="left-aside-lower-section">
         <a href="twod-hist" class="row-aside-link">
           <div class="row-aside">
-            <img src="icons/analysis.svg" /> 2D Results & Analysis
+            <img src="icons/analysis.svg" loading="lazy"/> 2D Results & Analysis
           </div>
         </a>
         <a href="threed" class="row-aside-link">
           <div class="row-aside">
-            <img src="icons/lotto.svg" /> Thai Lottery Results
+            <img src="icons/lotto.svg" loading="lazy"/> Thai Lottery Results
           </div>
         </a>
 
         <a href="setHolidays" class="row-aside-link">
           <div class="row-aside">
-            <img src="icons/holiday-calendar.svg" /> SET Holidays
+            <img src="icons/holiday-calendar.svg" loading="lazy" /> SET Holidays
           </div>
         </a>
 
         <a href="mm-odds" class="row-aside-link">
           <div class="row-aside">
-            <img src="icons/soccer.svg" /> Ball Dyne Kyey
+            <img src="icons/soccer.svg" loading="lazy"/> Ball Dyne Kyey
           </div>
         </a>
 
         <a href="ball-pwel/" class="row-aside-link">
           <div class="row-aside">
-            <img src="icons/soccer-match.svg" /> Ball Pwel Live
+            <img src="icons/soccer-match.svg" loading="lazy"/> Ball Pwel Live
           </div>
         </a>
       </div>
@@ -142,7 +144,7 @@
       <div class="left-aside-bottom-section">
         <a href="privacyAndPolicy" target="_blank" class="row-aside-link">
           <div class="row-aside">
-            <img src="icons/privacy.svg" /> Privacy and Policy
+            <img src="icons/privacy.svg" loading="lazy" /> Privacy and Policy
           </div></a
         >
       </div>
@@ -156,20 +158,20 @@
           <img
             class="theme-switch js-theme-switch theme-switch-light js-theme-switch-light"
             data-theme="light"
-            src="icons/white-light-switch.svg"
+            src="icons/white-light-switch.svg" loading="lazy"
           />
           
           <!-- Dark mode icon -->
           <img
             class="theme-switch js-theme-switch theme-switch-dark js-theme-switch-dark"
             data-theme="dark"
-            src="icons/black-night-switch.svg"
+            src="icons/black-night-switch.svg" loading="lazy"
           />
         </div>
         
         <div class="main-number js-main-number">--</div>
         <div class="updated-time-container">
-          <img src="icons/loading-time.svg" /> loading ...
+          <img src="icons/loading-time.svg" loading="lazy"/> loading ...
         </div>
       </div>
 
@@ -266,23 +268,24 @@
         new Date().getFullYear();
     </script>
 
-    <script type="module" src="scripts/myan-twod.js"></script>
-    <script type="module" src="scripts/modern-internet.js"></script>
-    <script type="module" src="scripts/main-page.js"></script>
-    <script type="module" src="scripts/dark-light-toggle.js"></script>
-    <script src="scripts/ads/ads.js"></script>
+    <script type="module" src="scripts/myan-twod.js" defer></script>
+    <script type="module" src="scripts/modern-internet.js" defer></script>
+    <script type="module" src="scripts/main-page.js" defer></script>
+    <script type="module" src="scripts/dark-light-toggle.js" defer></script>
+    <script src="scripts/ads/ads.js" defer></script>
 
     <script
     type="text/javascript"
     src="//pl26344876.profitableratecpm.com/d3/14/78/d31478ae1d7c3baf1622f80dd2f273c1.js"
     ></script>
-    <!-- Popunder Ad - Limited to Once Every 15 Minutes -->
+
+    <!-- Popunder Ad - Limited to Once Every 5 Minutes -->
     <script>
       (function () {
         const POPUNDER_KEY = "popunderLimit";
         const now = Date.now();
         const lastShown = localStorage.getItem(POPUNDER_KEY);
-        const interval = 15 * 60 * 1000; // 15 minutes
+        const interval = 5 * 60 * 1000; // 5 minutes
 
         if (!lastShown || now - parseInt(lastShown) > interval) {
           localStorage.setItem(POPUNDER_KEY, now.toString());

@@ -5,16 +5,36 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!adContainer) return;
 
-    const wrapper = document.createElement("div");
-    wrapper.style.textAlign = "center";
-    wrapper.style.marginTop = "16px";
-    wrapper.style.marginBottom = "-24px";
+    // Scrollable wrapper
+    const scrollWrapper = document.createElement("div");
+    scrollWrapper.style.display = "flex";
+    scrollWrapper.style.justifyContent = "center";
+    scrollWrapper.style.overflowX = "auto";
+    scrollWrapper.style.overflowY = "hidden";
+    scrollWrapper.style.whiteSpace = "nowrap";
+    scrollWrapper.style.marginTop = "16px";
+    scrollWrapper.style.marginBottom = "-24px";
+
+    // Hide scrollbars
+    scrollWrapper.style.scrollbarWidth = "none"; // Firefox
+    scrollWrapper.style.msOverflowStyle = "none"; // IE/Edge
+
+    // Hide Webkit scrollbar
+    const style = document.createElement("style");
+    style.textContent = `
+      #ad-container div::-webkit-scrollbar {
+        display: none;
+      }
+    `;
+    document.head.appendChild(style);
 
     const innerDiv = document.createElement("div");
     innerDiv.style.display = "inline-block";
+    innerDiv.style.textAlign = "center";
     innerDiv.style.width = isDesktop ? "728px" : "468px";
+    innerDiv.style.flexShrink = "0";
 
-    // Append the config script directly to the document head so it executes
+    // Ad options config script
     const configScript = document.createElement("script");
     configScript.type = "text/javascript";
     configScript.text = `
@@ -28,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
     document.head.appendChild(configScript);
 
-    // Create the loader script and append to the inner div
+    // Ad load script
     const loadScript = document.createElement("script");
     loadScript.type = "text/javascript";
     loadScript.src = isDesktop
@@ -36,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
       : "https://www.highperformanceformat.com/8f1346b00d0c22107fcc4328d8a37194/invoke.js";
 
     innerDiv.appendChild(loadScript);
-    wrapper.appendChild(innerDiv);
-    adContainer.appendChild(wrapper);
+    scrollWrapper.appendChild(innerDiv);
+    adContainer.appendChild(scrollWrapper);
   })();
 });

@@ -9,34 +9,34 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
-  
     <link rel="icon" type="image/svg+xml" href="../icons/app-logo.png" />
     <link rel="icon" type="image/x-icon" href="../favicon.ico" />
-    
+    <link rel="stylesheet" href="../style/downPage.css" />
+    <link rel="stylesheet" href="../style/general.css" />
+    <link rel="stylesheet" href="../style/ads.css" />
     <title>Get App - MyanmarLive 2D/3D App</title>
 
-    <link rel="stylesheet" href="../style/downPage.css" />
-    <link rel="stylesheet" href="../style/general.css">
-    <link rel="stylesheet" href="../style/ads.css">
-    <script src="../restriction.js"></script>
+    <!-- Preload critical CSS -->
+    <link rel="preload" href="../style/downPage.css" as="style" />
+    <link rel="stylesheet" href="../style/general.css" />
+    <link rel="stylesheet" href="../style/ads.css" />
+
+    <script src="../restriction.js" defer></script>
 
     <script>
-      (function() {
+      (function () {
         const isDark = localStorage.getItem("theme") === "dark";
         if (isDark) {
           document.documentElement.classList.add("dark-mode");
         }
       })();
     </script>
-  
-   
   </head>
   <body>
     <div id="ad-container"></div>
     <main class="py-4">
       <div class="main">
         <div class="content">
-         
           <p class="title">MyanmarLive 2D/3D App</p>
           <div class="button-group">
             <a href="" target="_blank" class="link-button">
@@ -85,32 +85,34 @@
         </div>
       </div>
     </main>
-   
+
     <div
-    class="text-center"
-    style="
-      text-align: center;
-      margin-top: 100px;
-      margin-bottom: -100px;
-      font-size: 0.78rem;
-    "
-  >
-    © <span id="currentYear"></span>. All rights reserved.
-  </div>
-</div>
-  <script>
-    document.getElementById("currentYear").textContent =
-      new Date().getFullYear();
-  </script>
-  <script type='text/javascript' src='//pl26344876.profitableratecpm.com/d3/14/78/d31478ae1d7c3baf1622f80dd2f273c1.js'></script>
-  <script src="../scripts/ads/ads.js"></script>
-    <!-- Popunder Ad - Limited to Once Every 15 Minutes -->
+      class="text-center"
+      style="
+        text-align: center;
+        margin-top: 100px;
+        margin-bottom: -100px;
+        font-size: 0.78rem;
+      "
+    >
+      © <span id="currentYear"></span>. All rights reserved.
+    </div>
+
+    <!-- Lazy-load ad script -->
+    <script
+      type="text/javascript"
+      src="//pl26344876.profitableratecpm.com/d3/14/78/d31478ae1d7c3baf1622f80dd2f273c1.js"
+      async
+    ></script>
+
+    <script src="../scripts/ads/ads.js" defer></script>
+
     <script>
       (function () {
         const POPUNDER_KEY = "popunderLimit";
         const now = Date.now();
         const lastShown = localStorage.getItem(POPUNDER_KEY);
-        const interval = 15 * 60 * 1000; // 15 minutes
+        const interval = 5 * 60 * 1000; // 5 minutes
 
         if (!lastShown || now - parseInt(lastShown) > interval) {
           localStorage.setItem(POPUNDER_KEY, now.toString());
@@ -122,6 +124,6 @@
           document.body.appendChild(script);
         }
       })();
-    </script>    
+    </script>
   </body>
 </html>

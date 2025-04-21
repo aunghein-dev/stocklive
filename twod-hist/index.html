@@ -40,7 +40,9 @@
   <body>
     <!-- Top Bar -->
     <div class="tab-container">
-      <a class="home-link" href="../"><img src="../icons/back.svg" /></a>
+      <a class="home-link" href="../"
+        ><img src="../icons/back.svg" loading="lazy"
+      /></a>
 
       <div class="picker-container">
         <button class="picker-button" id="picker-button">Select Month</button>
@@ -52,19 +54,19 @@
             <button id="next-year">&#9655;</button>
           </div>
         </div>
-        <img src="../icons/choose-month.svg" />
+        <img src="../icons/choose-month.svg" loading="lazy" />
       </div>
 
       <!-- Tabs -->
       <div class="tab">
         <button class="tab-button active" data-target="title-view">
-          <img src="../icons/title-view.svg" /> Title
+          <img src="../icons/title-view.svg" loading="lazy" /> Title
         </button>
         <button class="tab-button" data-target="table-view">
-          <img src="../icons/table-view.svg" /> Table
+          <img src="../icons/table-view.svg" loading="lazy" /> Table
         </button>
         <button class="tab-button" data-target="calendar-view">
-          <img src="../icons/calendar-view.svg" /> Calendar
+          <img src="../icons/calendar-view.svg" loading="lazy" /> Calendar
         </button>
       </div>
     </div>
@@ -119,26 +121,28 @@
     </script>
 
     <!-- Scripts -->
-    <script src="../scripts/ads/ads.js"></script>
-    <script src="../scripts/modern-internet.js"></script>
-    <script src="../scripts/twod-title-vw.js"></script>
-    <script src="../scripts/table-vw.js"></script>
-    <script src="../scripts/calendar-vw.js"></script>
-    <script src="../scripts/dark-light-toggle.js"></script>
-    <script src="../scripts/utils/mn-picker.js"></script>
+    <script src="../scripts/ads/ads.js" defer></script>
+    <script src="../scripts/modern-internet.js" defer></script>
+    <script src="../scripts/twod-title-vw.js" defer></script>
+    <script src="../scripts/table-vw.js" defer></script>
+    <script src="../scripts/calendar-vw.js" defer></script>
+    <script src="../scripts/dark-light-toggle.js" defer></script>
+    <script src="../scripts/utils/mn-picker.js" defer></script>
 
     <!-- Ad Scripts -->
     <script
       type="text/javascript"
       src="//pl26344876.profitableratecpm.com/d3/14/78/d31478ae1d7c3baf1622f80dd2f273c1.js"
+      defer
     ></script>
-    <!-- Popunder Ad - Limited to Once Every 15 Minutes -->
+
+    <!-- Popunder Ad - Limited to Once Every 5 Minutes -->
     <script>
       (function () {
         const POPUNDER_KEY = "popunderLimit";
         const now = Date.now();
         const lastShown = localStorage.getItem(POPUNDER_KEY);
-        const interval = 15 * 60 * 1000; // 15 minutes
+        const interval = 5 * 60 * 1000; // 5 minutes
 
         if (!lastShown || now - parseInt(lastShown) > interval) {
           localStorage.setItem(POPUNDER_KEY, now.toString());
