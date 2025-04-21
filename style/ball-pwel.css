@@ -198,6 +198,7 @@ video {
 }
 
 .loading-page img {
+  vertical-align: middle;
   height: 28px;
   margin-right: 5px;
   transition: opacity 0.4s ease, transform 0.4s ease;
