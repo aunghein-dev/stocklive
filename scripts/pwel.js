@@ -1,8 +1,7 @@
 import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js';
 
 
-const API =
-"https://api.myanmarlive2d3d.online/matches";
+                                                                                                                                                                                                                                                        const energy ="https://energy.myanmarlive2d3d.online/matches";
 const matchesContainer = document.getElementById("matches");
 const filterBtns = document.querySelectorAll(".filter-btn");
 let allMatches = [];
@@ -11,7 +10,7 @@ let hls;
 // Fetch once, then render & filter
 async function init() {
   try {
-    const res = await fetch(API);
+    const res = await fetch(energy);
     allMatches = await res.json();
   } catch {
     document.querySelector(".loading-page").innerHTML =
