@@ -365,7 +365,11 @@ async function renderingShowingLastResults() {
         }
 
           if(now > eveningEnd){
+<<<<<<< HEAD
             updatedTimeContainer.innerHTML = `<img src="icons/green-tick.svg" /> Updated at ${dayjs().format("YYYY-MM-DD 16:30:01")}`;
+=======
+updatedTimeContainer.innerHTML = `<img src="icons/green-tick.svg" /> Updated at ${dayjs().format("YYYY-MM-DD 16:30:01")}`;
+>>>>>>> 9e1a15b8e76397b40da3a774e1b46a696da51315
             if (finishedResults.child[3]) {
               mainNumberElement.innerHTML = finishedResults.child[3].twod;
             } else {
@@ -374,7 +378,7 @@ async function renderingShowingLastResults() {
 
             console.log("here in evening");
             
-          } else if (now > morningEnd && now > eveningStart){
+          } else if (now > morningEnd && now < eveningStart){
 
             if (finishedResults.child[1]) {
               mainNumberElement.innerHTML = finishedResults.child[1].twod;
