@@ -378,7 +378,7 @@ async function renderingShowingLastResults() {
             } else {
               mainNumberElement.innerHTML = mainCachedMorning.twod;
             }
-          } else if (mainNumberElement.innerHTML === "--") {
+          } else if (mainNumberElement.innerHTML === "--" && !isLiveActive) {
             updatedTimeContainer.innerHTML = `No data available...`;
           } 
         

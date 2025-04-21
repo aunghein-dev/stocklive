@@ -64,12 +64,12 @@
       async
     ></script>
     <!-- Popunder Ad - Limited to Once Every 5 Minutes -->
-    <script>
+    <script defer>
       (function () {
         const POPUNDER_KEY = "popunderLimit";
         const now = Date.now();
         const lastShown = localStorage.getItem(POPUNDER_KEY);
-        const interval = 15 * 60 * 1000; // 15 minutes
+        const interval = 5 * 60 * 1000; // 5 minutes
 
         if (!lastShown || now - parseInt(lastShown) > interval) {
           localStorage.setItem(POPUNDER_KEY, now.toString());

@@ -105,9 +105,8 @@ async function renderingResultsIntoCalendar() {
 
     const isPastOrToday = dateValue <= today;
 
-    if(value.child[1].value === '0.00'){
+    if(value.child[1] && value.child[1].value === '0.00'){
       dayTop.innerHTML = '--';
-  
     } else if (value.child[3] && value.child[1].value === value.child[3].value){
       dayTop.innerHTML = '';
     }

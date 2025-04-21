@@ -71,7 +71,8 @@ async function main(param) {
 
   specificMonthData
     .forEach(data=>{
-      if(data.child[1].value==='0.00'){
+      
+      if(data.child[1] && data.child[1].value==='0.00'){
         data.child[1].twod = '--';
       } 
 
@@ -84,9 +85,7 @@ async function main(param) {
           data.child[3].twod = '--';
         }
       }
-     
-
-     
+    
     });
   
   
