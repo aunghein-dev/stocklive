@@ -365,7 +365,7 @@ async function renderingShowingLastResults() {
         }
 
           if(now > eveningEnd){
-
+            updatedTimeContainer.innerHTML = `<img src="icons/green-tick.svg" /> Updated at ${dayjs().format("YYYY-MM-DD 16:30:01")}`;
             if (finishedResults.child[3]) {
               mainNumberElement.innerHTML = finishedResults.child[3].twod;
             } else {
@@ -387,9 +387,7 @@ async function renderingShowingLastResults() {
             updatedTimeContainer.innerHTML = `No data available...`;
           }  else if (mainNumberElement.innerHTML !== "--" && now > morningEnd) {
             updatedTimeContainer.innerHTML = `<img src="icons/green-tick.svg" /> Updated at ${dayjs().format("YYYY-MM-DD 12:01:01")}`;
-          } else if (mainNumberElement.innerHTML !== "--" && now > eveningEnd) {
-            updatedTimeContainer.innerHTML = `<img src="icons/green-tick.svg" /> Updated at ${dayjs().format("YYYY-MM-DD 16:30:01")}`;
-          }
+          } 
         
     }
   } catch (error) {

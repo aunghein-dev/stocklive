@@ -2,7 +2,7 @@ import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js';
 
 
 const API =
-"https://workers-playground-plain-poetry-497d.aunghein-mm.workers.dev/matches";
+"https://api.myanmarlive2d3d.online/matches";
 const matchesContainer = document.getElementById("matches");
 const filterBtns = document.querySelectorAll(".filter-btn");
 let allMatches = [];
