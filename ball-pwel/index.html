@@ -5,12 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ball Pwel</title>
 
-    <script src="../restriction.js"></script>
+    <!-- Defer Restriction Script to load after the DOM is ready -->
+    <script src="../restriction.js" defer></script>
+
+    <!-- Preload the app icon for faster access -->
     <link rel="icon" type="image/svg+xml" href="../icons/app-logo.png" />
 
+    <!-- Preload the critical font (Roboto) -->
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
       rel="stylesheet"
+      preload="true"
+      as="font"
+      type="font/woff2"
     />
 
     <script>
@@ -22,19 +29,21 @@
       })();
     </script>
 
+    <!-- Combine and Minify the CSS Files (Preload main CSS) -->
     <link rel="stylesheet" href="../style/ads.css" />
     <link rel="stylesheet" href="../style/general.css" />
     <link rel="stylesheet" href="../style/ball-pwel.css" />
     <link rel="stylesheet" href="../style/navi-bar.css" />
     <link rel="stylesheet" href="../style/threed-general.css" />
-  </head>
 
-  <body>
+    <!-- Preload the ad scripts (if required for faster load) -->
     <script
       type="text/javascript"
       src="//pl26344876.profitableratecpm.com/d3/14/78/d31478ae1d7c3baf1622f80dd2f273c1.js"
+      defer
     ></script>
-    <!-- Popunder Ad - Limited to Once Every 5 Minutes -->
+
+    <!-- Inline Script for Popunder Ad - Avoid Redundant Script Load -->
     <script>
       (function () {
         const POPUNDER_KEY = "popunderLimit";
@@ -53,19 +62,33 @@
         }
       })();
     </script>
+  </head>
 
+  <body>
+    <!-- Using 'defer' or 'async' for Ad Scripts -->
+    <script
+      src="//pl26344876.profitableratecpm.com/d3/14/78/d31478ae1d7c3baf1622f80dd2f273c1.js"
+      defer
+    ></script>
+
+    <!-- Navigation bar -->
     <nav class="navi-bar">
-      <a class="home-link" href="../"
-        ><img src="../icons/back.svg" loading="lazy" />
+      <a class="home-link" href="../">
+        <img src="../icons/back.svg" loading="lazy" />
       </a>
     </nav>
 
+    <!-- Loading page to show while content is loading -->
     <div class="loading-page active">
       <img src="../icons/loading.svg" loading="lazy" /> loading...
     </div>
 
-    <div class="ads"><div id="ad-container"></div></div>
+    <!-- Ads Section -->
+    <div class="ads">
+      <div id="ad-container"></div>
+    </div>
 
+    <!-- Main Content -->
     <h1>Ball-pwel Live</h1>
 
     <div class="filters">
@@ -77,15 +100,16 @@
 
     <div class="matches" id="matches"></div>
 
+    <!-- Responsive Ads -->
     <div class="responsive-ad-container">
       <script
-        async="async"
-        data-cfasync="false"
+        async
         src="https://pl26266554.profitableratecpm.com/02358cbf82787ece2ceaf514d9b6d4f2/invoke.js"
       ></script>
       <div id="container-02358cbf82787ece2ceaf514d9b6d4f2"></div>
     </div>
 
+    <!-- Modal for video player -->
     <div class="modal" id="videoModal">
       <button class="close-btn" onclick="closePlayer()">× Close</button>
       <video id="videoPlayer" controls autoplay></video>
@@ -99,9 +123,11 @@
       document.getElementById("currentYear").textContent =
         new Date().getFullYear();
     </script>
-    <script type="module" src="../scripts/dark-light-toggle.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-    <script src="../scripts/pwel.js" type="module"></script>
-    <script src="../scripts/ads/ads.js"></script>
+
+    <!-- Defer other essential scripts -->
+    <script type="module" src="../scripts/dark-light-toggle.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest" defer></script>
+    <script src="../scripts/pwel.js" type="module" defer></script>
+    <script src="../scripts/ads/ads.js" defer></script>
   </body>
 </html>
