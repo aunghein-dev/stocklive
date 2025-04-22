@@ -13,7 +13,7 @@ function checkVPNAndGeo() {
       const hostname = data.hostname ? data.hostname.toLowerCase() : "";
       const country = data.country;
 
-      console.log("IPinfo Response:", data);
+      //console.log("IPinfo Response:", data);
 
       const suspiciousOrgs = [
         "vpn", "proxy", "datacenter", "host", "cloud",
@@ -28,7 +28,7 @@ function checkVPNAndGeo() {
 
       // ✅ If user is from Tier 1 country → always allow
       if (isTier1) {
-        console.log("User from Tier 1 country. Access allowed.");
+        //console.log("User from Tier 1 country. Access allowed.");
         return;
       }
 
@@ -41,7 +41,7 @@ function checkVPNAndGeo() {
       
 
       // ✅ All others (non-VPN, non-Tier 1) → allow
-      console.log("Access allowed (non-VPN, non-Tier 1).");
+      //console.log("Access allowed (non-VPN, non-Tier 1).");
     })
     .catch(error => {
       console.error("Error checking IP info:", error);
