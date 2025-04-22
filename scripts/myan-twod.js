@@ -376,7 +376,7 @@ async function renderingShowingLastResults() {
             console.log("here in evening");
             
           } else if (now > morningEnd && now < eveningStart){
-
+            updatedTimeContainer.innerHTML = `<img src="icons/green-tick.svg" /> Updated at ${dayjs().format("YYYY-MM-DD 12:01:01")}`;
             if (finishedResults.child[1]) {
               mainNumberElement.innerHTML = finishedResults.child[1].twod;
             } else {
