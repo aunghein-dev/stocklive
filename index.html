@@ -25,6 +25,7 @@
     />
 
     <link rel="stylesheet" href="style/general.css" />
+    <link rel="stylesheet" href="style/my-ads-manager/my-ads-manager.css">
     <link rel="stylesheet" href="style/navi-bar.css" />
     <link rel="stylesheet" href="style/set-value-box.css" />
     <link rel="stylesheet" href="style/slider-info.css" />
@@ -78,11 +79,20 @@
       <div class="scrolling-text">
         <span id="scrolling-content"></span>
       </div>
+  
     </div>
 
-    <div id="ad-container">
+    <!-- <div id="ad-container"> </div>-->
+
+    <div class="my-ads-manager" id="adsContainer">
+      <a href="viber://chat?number=%2B959777338663">
+        <img id="myads" src="video/myads.gif" alt="Advertisement" />
+      </a>
+      <button id="closeAdsBtn" class="close-btn">×</button>
     </div>
     
+  
+    </div>
 
     <div class="left-aside-bar js-left-aside-bar">
       <div class="top-aside-container">
@@ -244,7 +254,7 @@
             <div class="two-o-clock-internet-result-main-page">--</div>
           </div>
         </div>
-
+        <div id="ad-container"> </div>
         <div class="responsive-ad-container">
           <script
             async="async"
@@ -298,6 +308,20 @@
         }
       })();
     </script>
+
+    <script defer>
+      const adsContainer = document.getElementById('adsContainer');
+      const closeBtn = document.getElementById('closeAdsBtn');
+
+      closeBtn.addEventListener('click', () => {
+        adsContainer.style.display = 'none';
+
+        setTimeout(() => {
+          adsContainer.style.display = 'flex';
+        }, 100000); 
+      });
+    </script>
+
     
   </body>
 </html>
