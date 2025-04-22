@@ -266,7 +266,7 @@ async function fetchFinishedResults() {
       if (lastData && lastData.date === new Date().toISOString().split("T")[0]) {
         return lastData ;
       } else {
-        {};
+        return {};
       }
     } else {
       return  {};
