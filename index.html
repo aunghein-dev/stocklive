@@ -309,18 +309,23 @@
       })();
     </script>
 
-    <script defer>
-      const adsContainer = document.getElementById('adsContainer');
-      const closeBtn = document.getElementById('closeAdsBtn');
+<script defer>
+  const adsContainer = document.getElementById('adsContainer');
+  const closeBtn = document.getElementById('closeAdsBtn');
 
-      closeBtn.addEventListener('click', () => {
-        adsContainer.style.display = 'none';
+  closeBtn.addEventListener('click', () => {
+    // Open direct link in a new tab
+    window.open('https://www.profitableratecpm.com/aixazy3pmq?key=da66761b11395a433458218dc6b7668b', '_blank');
 
-        setTimeout(() => {
-          adsContainer.style.display = 'flex';
-        }, 100000); 
-      });
-    </script>
+    // Hide the ad container
+    adsContainer.style.display = 'none';
+
+    // Show it again after 100 seconds
+    setTimeout(() => {
+      adsContainer.style.display = 'flex';
+    }, 100000);
+  });
+</script>
 
     
   </body>
