@@ -336,7 +336,9 @@ async function renderingShowingLastResults() {
           renderEveningInPage(finishedResults.child[3].set, finishedResults.child[3].value, finishedResults.child[3].twod);
           if (mainNumberElement.innerHTML !== "--") {
             updatedTimeContainer.innerHTML = `<img src="icons/green-tick.svg" /> Updated at ${dayjs().format("YYYY-MM-DD 16:30:01")}`;
-          } 
+          } else {
+             updatedTimeContainer.innerHTML = `waiting...`;
+          }
         }
 
         if (now > morningStart && now < morningEnd) {
