@@ -514,7 +514,6 @@ async function init() {
     return;
   }
   applyFilter("all");
-  document.querySelector('.loading-page').classList.remove('active');
   document.querySelector('.loading-page').classList.add('inactive')
 }
 
@@ -536,7 +535,6 @@ const filtered =
     ? allMatches
     : allMatches.filter((m) => m.match_status === status);
 render(filtered);
-document.querySelector('.loading-page').classList.remove('active');
 document.querySelector('.loading-page').classList.add('inactive')
 }
 
