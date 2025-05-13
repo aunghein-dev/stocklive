@@ -297,7 +297,6 @@ function loadHolidaysArr(){
 loadHolidaysArr();
 
 async function renderingShowingLastResults() {
-
   let now = new Date();
 
   let morningStart = new Date();
@@ -314,92 +313,61 @@ async function renderingShowingLastResults() {
 
   try {
     let finishedResults = await fetchFinishedResults();
-    finishedDateTime = await fetchFinishedTime(); // Get the latest stock_datetime
+    let finishedDateTime = await fetchFinishedTime();
 
     let updatedTimeContainer = document.querySelector(".updated-time-container");
+
     if (!finishedResults || !Array.isArray(finishedResults.child)) {
       console.log("No valid data available.");
       return;
     }
 
+    const isHoliday = holidaysArr.includes(dayjs().format("YYYY-MM-DD"));
 
-    if(holidaysArr.includes(dayjs().format("YYYY-MM-DD"))){
+    if (isHoliday) {
       renderMorningInPage('--', '--', '--');
       renderEveningInPage('--', '--', '--');
       mainNumberElement.innerHTML = "--";
       updatedTimeContainer.innerHTML = `No data available...`;
-    } else {
+      return;
+    }
 
-          //IN !HOLIDAY 
-        if (now < morningStart) {
-          renderMorningInPage(finishedResults.child[1].set, finishedResults.child[1].value, finishedResults.child[1].twod);
-          renderEveningInPage(finishedResults.child[3].set, finishedResults.child[3].value, finishedResults.child[3].twod);
-          if (mainNumberElement.innerHTML !== "--") {
-            updatedTimeContainer.innerHTML = `<img src="icons/green-tick.svg" /> Updated at ${dayjs().format("YYYY-MM-DD 16:30:01")}`;
-          } else {
-             updatedTimeContainer.innerHTML = `waiting...`;
-          }
-        }
+    // Helper fallbacks
+    const morning = finishedResults.child[1] || mainCachedMorning;
+    const evening = finishedResults.child[3] || mainCachedEvening;
 
-        if (now > morningStart && now < morningEnd) {
-          renderEveningInPage('--', '--', '--');
-        }
+    if (now < morningStart) {
+      renderMorningInPage(morning.set, morning.value, morning.twod);
+      renderEveningInPage(evening.set, evening.value, evening.twod);
+      updatedTimeContainer.innerHTML =
+        mainNumberElement.innerHTML !== "--"
+          ? `<img src="icons/green-tick.svg" /> Updated at ${dayjs().format("YYYY-MM-DD 16:30:01")}`
+          : `waiting...`;
+    } else if (now >= morningStart && now <= morningEnd) {
+      renderEveningInPage('--', '--', '--');
+    } else if (now > morningEnd && now < eveningStart) {
+      renderMorningInPage(morning.set, morning.value, morning.twod);
+      updatedTimeContainer.innerHTML = `<img src="icons/green-tick.svg" /> Updated at ${dayjs().format("YYYY-MM-DD 12:01:01")}`;
+      mainNumberElement.innerHTML = morning.twod;
+      console.log("here in morning");
+    } else if (now >= eveningStart && now <= eveningEnd) {
+      renderMorningInPage(morning.set, morning.value, morning.twod);
+    } else if (now > eveningEnd) {
+      renderMorningInPage(morning.set, morning.value, morning.twod);
+      renderEveningInPage(evening.set, evening.value, evening.twod);
+      mainNumberElement.innerHTML = evening.twod;
+      updatedTimeContainer.innerHTML = `<img src="icons/green-tick.svg" /> Updated at ${dayjs().format("YYYY-MM-DD 16:30:01")}`;
+      console.log("here in evening");
+    }
 
-        if (now > morningEnd && now < eveningStart || now > eveningStart && now < eveningEnd) {
-          if (finishedResults.child[1]) {
-            renderMorningInPage(finishedResults.child[1].set, finishedResults.child[1].value, finishedResults.child[1].twod);
-          } else {
-            renderMorningInPage(mainCachedMorning.set, mainCachedMorning.value, mainCachedMorning.twod);
-          }
-        }
-
-
-        if (now > eveningEnd) {
-          if (finishedResults.child[3]) {
-            renderEveningInPage(finishedResults.child[3].set, finishedResults.child[3].value, finishedResults.child[3].twod);
-          } else {
-            renderEveningInPage(mainCachedEvening.set, mainCachedEvening.value, mainCachedEvening.twod);
-          }
-
-          if (finishedResults.child[1]) {
-            renderMorningInPage(finishedResults.child[1].set, finishedResults.child[1].value, finishedResults.child[1].twod);
-          } else {
-            renderMorningInPage(mainCachedMorning.set, mainCachedMorning.value, mainCachedMorning.twod);
-          }
-
-        }
-
-          if(now > eveningEnd){
-            updatedTimeContainer.innerHTML = `<img src="icons/green-tick.svg" /> Updated at ${dayjs().format("YYYY-MM-DD 16:30:01")}`;
-
-            if (finishedResults.child[3]) {
-              mainNumberElement.innerHTML = finishedResults.child[3].twod;
-            } else {
-              mainNumberElement.innerHTML = mainCachedEvening.twod;
-            }
-
-            console.log("here in evening");
-            
-          } else if (now > morningEnd && now < eveningStart){
-            updatedTimeContainer.innerHTML = `<img src="icons/green-tick.svg" /> Updated at ${dayjs().format("YYYY-MM-DD 12:01:01")}`;
-            if (finishedResults.child[1]) {
-              mainNumberElement.innerHTML = finishedResults.child[1].twod;
-            } else {
-              mainNumberElement.innerHTML = mainCachedMorning.twod;
-            }
-
-            console.log("here in morning");
-          } else if (mainNumberElement.innerHTML === "--" && !isLiveActive) {
-            updatedTimeContainer.innerHTML = `No data available...`;
-          }  else if (mainNumberElement.innerHTML !== "--" && now > morningEnd) {
-            updatedTimeContainer.innerHTML = `<img src="icons/green-tick.svg" /> Updated at ${dayjs().format("YYYY-MM-DD 12:01:01")}`;
-          } 
-        
+    if (mainNumberElement.innerHTML === "--" && !isLiveActive) {
+      updatedTimeContainer.innerHTML = `No data available...`;
     }
   } catch (error) {
     console.error("Error fetching finished results:", error);
   }
 }
+
 
 
 function renderingResultNormal() {
