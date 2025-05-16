@@ -350,8 +350,6 @@ async function renderingShowingLastResults() {
       updatedTimeContainer.innerHTML = `<img src="icons/green-tick.svg" /> Updated at ${dayjs().format("YYYY-MM-DD 12:01:01")}`;
       mainNumberElement.innerHTML = morning.twod;
       console.log("here in morning");
-    } else if (now >= eveningStart && now <= eveningEnd) {
-      renderMorningInPage(morning.set, morning.value, morning.twod);
     } else if (now > eveningEnd) {
       renderMorningInPage(morning.set, morning.value, morning.twod);
       renderEveningInPage(evening.set, evening.value, evening.twod);
