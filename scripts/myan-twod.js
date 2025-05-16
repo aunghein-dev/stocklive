@@ -322,16 +322,7 @@ async function renderingShowingLastResults() {
       return;
     }
 
-    const isHoliday = holidaysArr.includes(dayjs().format("YYYY-MM-DD"));
-
-    if (isHoliday) {
-      renderMorningInPage('--', '--', '--');
-      renderEveningInPage('--', '--', '--');
-      mainNumberElement.innerHTML = "--";
-      updatedTimeContainer.innerHTML = `No data available...`;
-      return;
-    }
-
+    
     // Helper fallbacks
     const morning = finishedResults.child[1] || mainCachedMorning;
     const evening = finishedResults.child[3] || mainCachedEvening;
@@ -343,7 +334,7 @@ async function renderingShowingLastResults() {
         mainNumberElement.innerHTML !== "--"
           ? `<img src="icons/green-tick.svg" /> Updated at ${dayjs().format("YYYY-MM-DD 16:30:01")}`
           : `waiting...`;
-    } else if (now >= morningStart && now <= morningEnd) {
+    } else if (now >= morningStart && now < eveningStart) {
       renderEveningInPage('--', '--', '--');
     } else if (now > morningEnd && now < eveningStart) {
       renderMorningInPage(morning.set, morning.value, morning.twod);
