@@ -4,18 +4,9 @@ body {
   background: var(-bg-color);
   color: #ffffff;
 }
-.ads{
-  margin-top: 60px;
-  position: fixed;
-  min-height: 90px;
-  z-index: 1000;
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-}
+
 h1 {
-  margin-top: 11rem;
+  margin-top: 5rem;
   text-align: center;
   margin-bottom: 1.5rem;
   font-size: 2.5rem;
