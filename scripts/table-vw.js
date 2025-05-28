@@ -11,7 +11,7 @@ async function fetchDataForMonth(monthString = null) {
   let cacheKey = `${year}-${String(month).padStart(2, "0")}`;
 
   if (cachedData[cacheKey]) {
-    console.log(`✅ Returning cached data for ${cacheKey}`);
+    
     return cachedData[cacheKey];
   }
 

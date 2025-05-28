@@ -11,6 +11,7 @@ const eveningTwodEl = document.querySelector('.js-evening-result-digit');
 let isLiveActive = false;
 let intervalId = null;
 let childRenderIntervalId = null;
+let timeRenderIntervalId = null;
 
 // Time and day checks
 async function isHoliday(){
@@ -23,53 +24,66 @@ async function isWeekendAndIsHoliday() {
   return day === 'Sat' || day === 'Sun' || (await isHoliday());
 }
 
-function isLiveEvening() {
-  const time = dayjs().format('HH:mm');
-  return time >= '13:00' && time <= '16:30';
+function isLiveMorning() {
+  const now = dayjs();
+  const start = now.hour(9).minute(0).second(0);
+  const end = now.hour(12).minute(1).second(0);
+  return now.isAfter(start) && now.isBefore(end);
 }
 
-function isLiveMorning() {
-  const time = dayjs().format('HH:mm');
-  return time >= '09:00' && time <= '12:01';
+function isLiveEvening() {
+  const now = dayjs();
+  const start = now.hour(13).minute(0).second(0);
+  const end = now.hour(16).minute(30).second(0);
+  return now.isAfter(start) && now.isBefore(end);
 }
 
 function isLive() {
-  return isLiveEvening() || isLiveMorning();
+  return isLiveMorning() || isLiveEvening();
 }
 
 function isMorningResultRender() {
-  const time = dayjs().format('HH:mm');
-  return time >= '09:00' && time < '12:01';
+  const now = dayjs();
+  const start = now.hour(12).minute(1).second(0);
+  const end = now.hour(16).minute(30).second(0);
+  return now.isAfter(start) && now.isBefore(end);
 }
 
 function isEveningResultRender() {
-  const time = dayjs().format('HH:mm');
-  return time >= '16:30' && time <= '24:00';
+  const now = dayjs();
+  const start = now.hour(16).minute(30).second(0);
+  const end = now.hour(23).minute(59).second(59);
+  return now.isAfter(start) && now.isBefore(end);
 }
 
 function isMidNightRender() {
-  const time = dayjs().format('HH:mm');
-  return time >= '00:00' && time < '09:00';
+  const now = dayjs();
+  const start = now.hour(0).minute(0).second(0);
+  const end = now.hour(9).minute(0).second(0);
+  return now.isAfter(start) && now.isBefore(end);
 }
-
 
 const timeHTML = () => {
   const date = dayjs().format('YYYY-MM-DD');
   const time = dayjs().format('hh:mm:ss A');
 
   if (isLive()) {
+    
     return `<img src="icons/light-live.svg" /> Updating at ${date} ${time}`;
   }
 
   if (isMorningResultRender()) {
-    return `<img src="icons/green-tick.svg" /> Updated at ${date} 12:01 PM`;
+   
+    return `<img src="icons/green-tick.svg" /> Updated at ${date} 12:01:01 PM`;
   }
 
   if (isEveningResultRender()) {
-    return `<img src="icons/green-tick.svg" /> Updated at ${date} 4:30 PM`;
+  
+    return `<img src="icons/green-tick.svg" /> Updated at ${date} 4:30:01 PM`;
   }
 
   if (isMidNightRender()) {
+  
     return `Loading ...`;
   }
 
@@ -86,6 +100,7 @@ async function checkIsLiveActive() {
     isLiveActive = true;
     startRenderInterval();
     startRenderIntervalForChild();
+    startRenderIntervalForTime();
   } else if (!liveNow && isLiveActive) {
     isLiveActive = false;
     stopRenderInterval();
@@ -147,11 +162,8 @@ async function clearResult() {
 }
 
 
-
 function clearTime(){
-  if (!isLiveActive) {
     document.querySelector('.updated-time-container').innerHTML = timeHTML();
-  }
 }
 
 // Clear the displayed number (optional UI feedback)
@@ -242,6 +254,11 @@ async function liveRenderChild(){
   
 }
 
+async function renderTime() {
+   document.querySelector('.updated-time-container').innerHTML = timeHTML();
+}
+
+
 // Control intervals for rendering
 function startRenderInterval() {
   if (intervalId) return; // Prevent multiple intervals
@@ -255,6 +272,12 @@ function startRenderIntervalForChild() {
   childRenderIntervalId = setInterval(liveRenderChild, 2000);
 }
 
+function startRenderIntervalForTime() {
+  if (timeRenderIntervalId) return; // Prevent multiple intervals
+  renderTime();
+  timeRenderIntervalId = setInterval(renderTime, 1000);
+}
+
 function stopRenderInterval() {
   if (intervalId) {
     clearInterval(intervalId);
@@ -266,7 +289,7 @@ function stopRenderInterval() {
   }
 }
 
-// Start a separate interval to monitor live status every 1 second
+// Start a separate interval to monitor live status every 2 second
 setInterval(checkIsLiveActive, 1000);
 
 // Initial check on load

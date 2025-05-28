@@ -13,7 +13,6 @@ fetch(`${window.IPINFO_BASE_URL}${API_TOKEN}`)
       const hostname = data.hostname ? data.hostname.toLowerCase() : "";
       const country = data.country;
 
-      //console.log("IPinfo Response:", data);
 
       const suspiciousOrgs = [
         "vpn", "proxy", "datacenter", "host", "cloud",
@@ -28,7 +27,7 @@ fetch(`${window.IPINFO_BASE_URL}${API_TOKEN}`)
 
       // ✅ If user is from Tier 1 country → always allow
       if (isTier1) {
-        //console.log("User from Tier 1 country. Access allowed.");
+       
         return;
       }
 
@@ -39,9 +38,6 @@ fetch(`${window.IPINFO_BASE_URL}${API_TOKEN}`)
         return;
       }
       
-
-      // ✅ All others (non-VPN, non-Tier 1) → allow
-      //console.log("Access allowed (non-VPN, non-Tier 1).");
     })
     .catch(error => {
       console.error("Error checking IP info:", error);

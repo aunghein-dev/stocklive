@@ -8,7 +8,7 @@ async function fetchLottoData() {
   addingLoadingPage('.loading-page');
     lottoData = await lottoResultService();
     if (!Array.isArray(lottoData) || lottoData.length === 0) {
-        console.log("No valid data available.");
+       
         lottoData = []; // Ensure it's always an array
     }
     removeLoadingPage('.loading-page');
