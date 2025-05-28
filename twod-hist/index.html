@@ -30,13 +30,6 @@
         }
       })();
     </script>
-
-    <!-- Google Ads -->
-    <script
-      async
-      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5602054901910200"
-      crossorigin="anonymous"
-    ></script>
   </head>
   <body>
     <!-- Top Bar -->
@@ -122,7 +115,6 @@
     </script>
 
     <!-- Scripts -->
-    <script src="../scripts/ads/ads.js" defer></script>
     <script src="../scripts/modern-internet.js" defer></script>
     <script src="../scripts/twod-title-vw.js" defer></script>
     <script src="../scripts/table-vw.js" defer></script>
@@ -130,32 +122,6 @@
     <script src="../scripts/dark-light-toggle.js" defer></script>
     <script src="../scripts/utils/mn-picker.js" defer></script>
 
-    <!-- Ad Scripts -->
-    <script
-      type="text/javascript"
-      src="//pl26344876.profitableratecpm.com/d3/14/78/d31478ae1d7c3baf1622f80dd2f273c1.js"
-      async
-    ></script>
-
-    <!-- Popunder Ad - Limited to Once Every 5 Minutes -->
-    <script>
-      (function () {
-        const POPUNDER_KEY = "popunderLimit";
-        const now = Date.now();
-        const lastShown = localStorage.getItem(POPUNDER_KEY);
-        const interval = 5 * 60 * 1000; // 5 minutes
-
-        if (!lastShown || now - parseInt(lastShown) > interval) {
-          localStorage.setItem(POPUNDER_KEY, now.toString());
-
-          const script = document.createElement("script");
-          script.type = "text/javascript";
-          script.src =
-            "//pl26266530.profitableratecpm.com/72/82/3e/72823ece7d80337c7be0dea41969a1f2.js";
-          document.body.appendChild(script);
-        }
-      })();
-    </script>
     <script>
       window.MODERN_INTERNET_SHEET_ID =
         "1cIApUBTA6Gm6P-uRrwGZXkEByW2H9xatAyazynj4M38";
@@ -167,7 +133,6 @@
       window.IPINFO_TOKEN = "82e9d8a31bf7e1";
       window.IPINFO_BASE_URL = "https://ipinfo.io/json?token=";
       window.STOCK_RESULT_API_URL = "https://api.thaistock2d.com/2d_result";
-
     </script>
   </body>
 </html>

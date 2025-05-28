@@ -9,7 +9,7 @@
     <link rel="icon" type="image/x-icon" href="../favicon.ico" />
 
     <link rel="stylesheet" href="../style/general.css">
-    <link rel="stylesheet" href="../style/ads.css">
+
     <script src="../scripts/restriction.js" defer></script>
     <style>
       body {
@@ -148,28 +148,7 @@
       document.getElementById("currentYear").textContent =
         new Date().getFullYear();
     </script>
-    <script type='text/javascript' src='//pl26344876.profitableratecpm.com/d3/14/78/d31478ae1d7c3baf1622f80dd2f273c1.js' async></script>
-    <!-- Popunder Ad - Limited to Once Every 5 Minutes -->
-    <script defer>
-      (function () {
-        const POPUNDER_KEY = "popunderLimit";
-        const now = Date.now();
-        const lastShown = localStorage.getItem(POPUNDER_KEY);
-        const interval = 5 * 60 * 1000; // 5 minutes
     
-        if (!lastShown || now - parseInt(lastShown) > interval) {
-          localStorage.setItem(POPUNDER_KEY, now.toString());
-    
-          const script = document.createElement("script");
-          script.type = "text/javascript";
-          script.src =
-            "//pl26266530.profitableratecpm.com/72/82/3e/72823ece7d80337c7be0dea41969a1f2.js";
-          document.body.appendChild(script);
-        }
-      })();
-    </script>
-    
-    <script src="../scripts/ads/ads.js" defer></script>
     <script>
       window.IPINFO_TOKEN = "82e9d8a31bf7e1";
       window.IPINFO_BASE_URL = "https://ipinfo.io/json?token=";
