@@ -110,7 +110,6 @@ tr:nth-child(even) {
 tr:hover,
 tr:nth-child(even):hover {
   background-color: var(--hover-color);
- 
   cursor: pointer;
 }
 
@@ -139,9 +138,8 @@ tr:nth-child(even):hover {
 }
 
 th {
-  background-color: var(--header-box-month);
   border: 0.1px solid #ddd;
-  color: black;
+  color: var(--text-color);
 }
 
 .header-tag{

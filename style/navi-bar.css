@@ -11,7 +11,7 @@
   align-items: center;
   padding-right: 4px;
   z-index: 1000;
-  border-bottom: 0.2px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 0.1px solid rgba(255, 255, 255, 0.01);
 }
 
 .navi-left-main{

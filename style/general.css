@@ -6,7 +6,7 @@
   --navi-bar-bg-color: rgb(88,60,36);
   --navi-bar-hover-color: rgb(98, 68, 43);
   --box-bg-color: rgba(254,243,236,1);
-  --box-bg-shadow:  0px 1px 3px rgba(0, 0, 0, 0.2), 0px 1px 2px rgba(0, 0, 0, 0.12);
+  --box-bg-shadow:  0px 1px 3px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.12);
   --result-time-text-color: rgba(149,139,130,255);
   --setvalue-text-color: rgb(88,60,36);
   --dotted-line-color: rgb(55, 55, 55);
@@ -51,9 +51,9 @@ body {
 }
 
 .dark-mode {
-  --bg-color: #121212;
+  --bg-color: rgb(12, 18, 30);
   --text-color:white;
-  --navi-bar-bg-color:  #121212;
+  --navi-bar-bg-color:  rgb(12, 18, 30);
   --navi-bar-hover-color:  rgb(75, 75, 75);
   --box-bg-color: rgb(85, 58, 36);
   --box-bg-shadow:  0px 1px 3px rgba(0, 0, 0, 0.2), 0px 1px 2px rgba(0, 0, 0, 0.12);
@@ -79,14 +79,15 @@ body {
   --daybox-color:#644632;
   --tb-digit-color: #ff7272;
   --month-selection-color:  #ff7272;
-  --aside-bg-color:   #121212;
+  --aside-bg-color:   rgb(12, 18, 30);
   --aside-hover-color: #3E3E3E;
   --aside-text-hover-color: white;
   --aside-text-color: white;
-  --aside-bg-main-color: #121212;
+  --aside-bg-main-color: rgb(12, 18, 30);
   --set-holiday-date: #a98e7d;
   --ad-manager-rgba: rgba(0, 0, 0, 0.8);
 }
+
 .light-mode {
   --bg-color: rgb(255, 255, 255);
   --text-color: rgb(53, 36, 22);
@@ -187,7 +188,7 @@ p{
   bottom: 0;
   width: 280px;
   background-color: var(--aside-bg-main-color);
-  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.1);
   z-index: 2000;
   transform: translateX(-100%); /* Start hidden */
   transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
