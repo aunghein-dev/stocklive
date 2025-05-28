@@ -1,9 +1,9 @@
 
 
 async function fetchGoogleSheetModernInternet() {
-  const sheetId = "1cIApUBTA6Gm6P-uRrwGZXkEByW2H9xatAyazynj4M38";
+  const sheetId = window.MODERN_INTERNET_SHEET_ID;
   const sheetName = "modern-internet";
-  const sheetUrl = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:csv&sheet=${sheetName}`;
+  const sheetUrl = `${window.SHEET_BASE_URL}/${sheetId}/gviz/tq?tqx=out:csv&sheet=${sheetName}`;
 
   try {
       const response = await fetch(sheetUrl);
@@ -36,9 +36,9 @@ function csvToJson(csv) {
 }
 
 async function fetchModernInternetLatest() {
-  const sheetId = "1dLLPIHdJkl16tvajomgjn1iqTHeZLeo45Z2Ba2Zzi1Q";
+  const sheetId = window.MODERN_INTERNET_SHEET_ID_LATEST;
   const sheetName = "modern-internet-latest";
-  const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json&sheet=${sheetName}`;
+  const url = `${window.SHEET_BASE_URL}/${sheetId}/gviz/tq?tqx=out:json&sheet=${sheetName}`;
 
   try {
     const response = await fetch(url);

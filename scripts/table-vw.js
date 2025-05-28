@@ -25,7 +25,7 @@ async function fetchDataForMonth(monthString = null) {
   try {
     let fetchPromises = allDates.map(async (date) => {
       try {
-        const response = await fetch(`https://api.thaistock2d.com/2d_result?date=${date}`);
+        const response = await fetch(`${window.STOCK_BASE_API_URL}?date=${date}`);
         if (!response.ok) {
           console.warn(`⚠️ Skipped ${date}: HTTP ${response.status}`);
           return [];

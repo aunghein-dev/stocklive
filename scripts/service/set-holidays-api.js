@@ -6,8 +6,8 @@ function convertGoogleSheetsDate(serialNumber) {
 }
 
 async function fetchSetHolidaysObjects() {
-  const sheetId = "1DxmnINRAkdMM-qp4kWWVYMMXoO6xJDh8f1EtBiX_mgk";
-  const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json`;
+  const sheetId = window.HOLIDAY_SHEET_ID;
+  const url = `${window.SHEET_BASE_URL}/${sheetId}/gviz/tq?tqx=out:json`;
 
   try {
     const response = await fetch(url);

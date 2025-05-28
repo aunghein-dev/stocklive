@@ -1,4 +1,4 @@
-const API_TOKEN = '82e9d8a31bf7e1';
+const API_TOKEN = window.IPINFO_TOKEN;
 
 // ✅ Tier 1 countries that can use VPNs
 const allowedCountries = ["US", "GB", "CA", "AU", "DE"];
@@ -6,7 +6,7 @@ const allowedCountries = ["US", "GB", "CA", "AU", "DE"];
 const vpnDeniedUrl = "/vpn-denied.html";
 
 function checkVPNAndGeo() {
-  fetch(`https://ipinfo.io/json?token=${API_TOKEN}`)
+fetch(`${window.IPINFO_BASE_URL}${API_TOKEN}`)
     .then(response => response.json())
     .then(data => {
       const org = data.org ? data.org.toLowerCase() : "";

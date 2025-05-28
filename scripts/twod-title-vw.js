@@ -3,7 +3,7 @@ let titleViewHTML;
 
 async function fetchFinishedResults() {
   try {
-    const response = await fetch("https://api.thaistock2d.com/2d_result");
+    const response = await fetch(window.STOCK_RESULT_API_URL);
     const data = await response.json();
 
     return  data || {};
@@ -13,8 +13,6 @@ async function fetchFinishedResults() {
     return {}; // Return empty object on failure
   }
 }
-
-
 
 
 async function renderTitleView() {

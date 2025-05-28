@@ -104,7 +104,7 @@ fetchLottoData();
 
 async function lottoResultService() {
     try{
-        fetch = await fetch("https://api.lucky2d.com/api/result/GetList3dResult?searchKey=&pageNumber=1&rowsOfPage=100");
+        fetch = await fetch(window.API_LUCKY2D_PAGE_URL);
         const data = await fetch.json();
         return (data.results);        
     } catch (error) {

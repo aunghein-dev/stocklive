@@ -165,7 +165,7 @@ function clearMainNumber() {
 
 async function getFullResult() {
   try {
-    const response = await fetch("https://api.thaistock2d.com/live");
+    const response = await fetch(window.LIVE_API_URL);
     const data = await response.json();
     return data;
   } catch (error) {
@@ -177,7 +177,7 @@ async function getFullResult() {
 // Fetch live number from API
 async function fetchMainNumber() {
   try {
-    const response = await fetch("https://api.thaistock2d.com/live");
+    const response = await fetch(window.LIVE_API_URL);
     const data = await response.json();
     return data.live.twod;
   } catch (error) {
