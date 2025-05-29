@@ -204,11 +204,12 @@ let currentNumber = "";
 async function getLatestNumberTwod(){
   const data = await getFullResult();
 
+  const liveNum = await fetchMainNumber();
   const morning = data.result[1];
   const evening = data.result[3];
   
   if(isLiveActive){
-    return "--"
+    return liveNum;
   } else {
     if (morning.twod!=="--" && evening.twod==="--") {
         return morning.twod;
@@ -284,18 +285,18 @@ async function liveRenderChild(){
     eveningValueEl.innerHTML = '--';
     eveningTwodEl.innerHTML = '--';
 
-    morningSetEl.innerHTML = live.set ?? '--';
-    morningValueEl.innerHTML = live.value ?? '--';
-    morningTwodEl.innerHTML = live.twod ?? '--';
+    morningSetEl.innerHTML = live.set ;
+    morningValueEl.innerHTML = live.value ;
+    morningTwodEl.innerHTML = live.twod ;
   }
   if (isLiveActive && isLiveEvening()) {
     morningSetEl.innerHTML = morning.set ?? '--';
     morningValueEl.innerHTML = morning.value ?? '--';
     morningTwodEl.innerHTML = morning.twod ?? '--';
     
-    eveningSetEl.innerHTML = live.set ?? '--';
-    eveningValueEl.innerHTML = live.value ?? '--';
-    eveningTwodEl.innerHTML = live.twod ?? '--';
+    eveningSetEl.innerHTML = live.set ;
+    eveningValueEl.innerHTML = live.value ;
+    eveningTwodEl.innerHTML = live.twod ;
   }
   
 }
@@ -309,13 +310,13 @@ async function renderTime() {
 function startRenderInterval() {
   if (intervalId) return; // Prevent multiple intervals
   renderMainNumber(); // Initial render immediately
-  intervalId = setInterval(renderMainNumber, 1000);
+  intervalId = setInterval(renderMainNumber, 2000);
 }
 
 function startRenderIntervalForChild() {
   if (childRenderIntervalId) return; // Prevent multiple intervals
   liveRenderChild(); // Initial render immediately
-  childRenderIntervalId = setInterval(liveRenderChild, 1000);
+  childRenderIntervalId = setInterval(liveRenderChild, 2000);
 }
 
 function startRenderIntervalForTime() {
