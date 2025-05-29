@@ -309,13 +309,13 @@ async function renderTime() {
 function startRenderInterval() {
   if (intervalId) return; // Prevent multiple intervals
   renderMainNumber(); // Initial render immediately
-  intervalId = setInterval(renderMainNumber, 2000);
+  intervalId = setInterval(renderMainNumber, 1000);
 }
 
 function startRenderIntervalForChild() {
   if (childRenderIntervalId) return; // Prevent multiple intervals
   liveRenderChild(); // Initial render immediately
-  childRenderIntervalId = setInterval(liveRenderChild, 2000);
+  childRenderIntervalId = setInterval(liveRenderChild, 1000);
 }
 
 function startRenderIntervalForTime() {
