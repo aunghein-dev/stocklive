@@ -172,10 +172,6 @@ function clearMainNumber() {
     mainNumberElement.innerHTML = "--";
     return;
   }
-  if(isLive()){
-    mainNumberElement.innerHTML = "--";
-    return;
-  }
   clearRenderMainNumber();
 }
 
@@ -211,13 +207,18 @@ async function getLatestNumberTwod(){
   const morning = data.result[1];
   const evening = data.result[3];
   
-  if (morning.twod!=="--" && evening.twod==="--") {
-    return morning.twod;
-  } else if (morning.twod!=="--" && evening.twod!=="--") {
-    return evening.twod;
+  if(isLiveActive){
+    return "--"
   } else {
-    return "--";
+    if (morning.twod!=="--" && evening.twod==="--") {
+        return morning.twod;
+      } else if (morning.twod!=="--" && evening.twod!=="--") {
+        return evening.twod;
+      } else {
+        return "--";
+    }
   }
+  
 }
 
 async function clearRenderMainNumber(){
