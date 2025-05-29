@@ -172,7 +172,7 @@ function clearMainNumber() {
     mainNumberElement.innerHTML = "--";
     return;
   }
-  renderMainNumber();
+  clearRenderMainNumber();
 }
 
 async function getFullResult() {
@@ -200,6 +200,48 @@ async function fetchMainNumber() {
 
 // Render live number with animation
 let currentNumber = "";
+
+async function getLatestNumberTwod(){
+  const data = await getFullResult();
+
+  const morning = data.result[1];
+  const evening = data.result[3];
+  
+  if (morning.twod!=="--" && evening.twod==="--") {
+    return morning.twod;
+  } else if (morning.twod!=="--" && evening.twod!=="--") {
+    return evening.twod;
+  } else {
+    return "--";
+  }
+}
+
+async function clearRenderMainNumber(){
+
+  document.querySelector('.updated-time-container').innerHTML = timeHTML();
+  if (!mainNumberElement) return;
+
+  const newNumber = await getLatestNumberTwod();
+  if (!newNumber || newNumber.length < 2) return;
+
+  mainNumberElement.innerHTML = ""; // Clear previous digits
+
+  for (let i = 0; i < 2; i++) {
+    const digitSpan = document.createElement("span");
+    digitSpan.textContent = newNumber[i];
+    digitSpan.classList.add("digit");
+
+    // Add slide-in animation if digit changed
+    if (newNumber[i] !== currentNumber[i]) {
+      digitSpan.classList.add("slide-in");
+    }
+
+    mainNumberElement.appendChild(digitSpan);
+  }
+
+  
+}
+
 
 async function renderMainNumber() {
   document.querySelector('.updated-time-container').innerHTML = timeHTML();
