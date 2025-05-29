@@ -172,6 +172,10 @@ function clearMainNumber() {
     mainNumberElement.innerHTML = "--";
     return;
   }
+  if(isLive()){
+    mainNumberElement.innerHTML = "--";
+    return;
+  }
   clearRenderMainNumber();
 }
 
@@ -238,7 +242,6 @@ async function clearRenderMainNumber(){
 
     mainNumberElement.appendChild(digitSpan);
   }
-
   
 }
 
